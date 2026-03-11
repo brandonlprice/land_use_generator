@@ -1,0 +1,7066 @@
+ [
+
+        {
+
+            "name": "Full Map Extent",
+
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry": {
+					"type": "extent",
+
+                    "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13361176.724092733,
+
+                    "ymin": 3925630.673602907,
+
+                    "xmax": -12909586.76098413,
+
+                    "ymax": 4165337.194305104
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Acton",
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry": {
+					"type": "extent",
+
+                    "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13164650.190373853,
+
+                    "ymin": 4089629.5672557554,
+
+                    "xmax": -13144567.949629523,
+
+                    "ymax": 4101938.7176927812
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Agoura",
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13217774.246864526,
+
+                    "ymin": 4047098.7479847935,
+
+                    "xmax": -13213302.28710717,
+
+                    "ymax": 4051435.3504109066
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Agua Dulce",
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13177991.280647906,
+
+                    "ymin": 4089575.03657707,
+
+                    "xmax": -13164014.180712102,
+
+                    "ymax": 4104033.506283855
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Alondra Park / El Camino Village",
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13173999.1097883,
+
+                    "ymin": 4012328.0929440553,
+
+                    "xmax": -13172036.868878944,
+
+                    "ymax": 4015622.2904437855
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Alpine",
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13174844.019936685,
+
+                    "ymin": 4085836.865612568,
+
+                    "xmax": -13171850.27203153,
+
+                    "ymax": 4088211.2091319226
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Altadena",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13154822.623531714,
+
+                "ymin": 4051311.835555164,
+
+                "xmax": -13146274.0451698,
+
+                "ymax": 4058343.3554774616
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13154822.623531714,
+
+                    "ymin": 4051311.835555164,
+
+                    "xmax": -13146274.0451698,
+
+                    "ymax": 4058343.3554774616
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Antelope Acres",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13168973.334562372,
+
+                "ymin": 4128614.797948927,
+
+                "xmax": -13165518.015973372,
+
+                "ymax": 4135501.792776489
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13168973.334562372,
+
+                    "ymin": 4128614.797948927,
+
+                    "xmax": -13165518.015973372,
+
+                    "ymax": 4135501.792776489
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Antelope Valley",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13235291.117921017,
+
+                "ymin": 4048630.247609417,
+
+                "xmax": -13096080.916769238,
+
+                "ymax": 4139855.114946352
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13235291.117921017,
+
+                    "ymin": 4048630.247609417,
+
+                    "xmax": -13096080.916769238,
+
+                    "ymax": 4139855.114946352
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Avocado Heights",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13138067.881442748,
+
+                "ymin": 4032321.7998310765,
+
+                "xmax": -13131729.43223604,
+
+                "ymax": 4037259.619915562
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13138067.881442748,
+
+                    "ymin": 4032321.7998310765,
+
+                    "xmax": -13131729.43223604,
+
+                    "ymax": 4037259.619915562
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Baldwin Hills",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13179230.098488003,
+
+                "ymin": 4027351.8068554527,
+
+                "xmax": -13175510.751440186,
+
+                "ymax": 4030934.208433317
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13179230.098488003,
+
+                    "ymin": 4027351.8068554527,
+
+                    "xmax": -13175510.751440186,
+
+                    "ymax": 4030934.208433317
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Ballona Wetlands",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13185980.760540852,
+
+                "ymin": 4023999.988734592,
+
+                "xmax": -13183813.081960265,
+
+                "ymax": 4025863.14403574
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13185980.760540852,
+
+                    "ymin": 4023999.988734592,
+
+                    "xmax": -13183813.081960265,
+
+                    "ymax": 4025863.14403574
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Bandini Islands",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13158821.138155144,
+
+                "ymin": 4027394.48015325,
+
+                "xmax": -13158428.256383853,
+
+                "ymax": 4030014.946994521
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13158821.138155144,
+
+                    "ymin": 4027394.48015325,
+
+                    "xmax": -13158428.256383853,
+
+                    "ymax": 4030014.946994521
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Big Pines",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13103544.207908241,
+
+                "ymin": 4076337.528406351,
+
+                "xmax": -13099686.24994931,
+
+                "ymax": 4080439.713990757
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13103544.207908241,
+
+                    "ymin": 4076337.528406351,
+
+                    "xmax": -13099686.24994931,
+
+                    "ymax": 4080439.713990757
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Bouquet Canyon",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13189744.253559135,
+
+                "ymin": 4089845.4038252584,
+
+                "xmax": -13185754.826947616,
+
+                "ymax": 4095569.7971657645
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13189744.253559135,
+
+                    "ymin": 4089845.4038252584,
+
+                    "xmax": -13185754.826947616,
+
+                    "ymax": 4095569.7971657645
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Calabasas (Adjacent)",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13212952.310761942,
+
+                "ymin": 4048833.5121675557,
+
+                "xmax": -13207078.058933783,
+
+                "ymax": 4051496.742040884
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13212952.310761942,
+
+                    "ymin": 4048833.5121675557,
+
+                    "xmax": -13207078.058933783,
+
+                    "ymax": 4051496.742040884
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Castaic",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13208282.936463013,
+
+                "ymin": 4088952.411488921,
+
+                "xmax": -13204133.215796005,
+
+                "ymax": 4098395.061448389
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13208282.936463013,
+
+                    "ymin": 4088952.411488921,
+
+                    "xmax": -13204133.215796005,
+
+                    "ymax": 4098395.061448389
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Cerritos Islands",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13146326.85135137,
+
+                "ymin": 4007157.761751751,
+
+                "xmax": -13142268.336969558,
+
+                "ymax": 4012746.6334338346
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13146326.85135137,
+
+                    "ymin": 4007157.761751751,
+
+                    "xmax": -13142268.336969558,
+
+                    "ymax": 4012746.6334338346
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Charter Oak",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13122035.708157267,
+
+                "ymin": 4040297.574889949,
+
+                "xmax": -13117613.4111417,
+
+                "ymax": 4043159.4704470895
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13122035.708157267,
+
+                    "ymin": 4040297.574889949,
+
+                    "xmax": -13117613.4111417,
+
+                    "ymax": 4043159.4704470895
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Citrus",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13124490.491504477,
+
+                "ymin": 4042960.7590677664,
+
+                "xmax": -13122002.20945082,
+
+                "ymax": 4045869.8982706866
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13124490.491504477,
+
+                    "ymin": 4042960.7590677664,
+
+                    "xmax": -13122002.20945082,
+
+                    "ymax": 4045869.8982706866
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "City Terrace",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13158702.359784123,
+
+                "ymin": 4033099.7516451296,
+
+                "xmax": -13151775.254095789,
+
+                "ymax": 4038302.246882783
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 18055.9548215,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13158702.359784123,
+
+                    "ymin": 4033099.7516451296,
+
+                    "xmax": -13151775.254095789,
+
+                    "ymax": 4038302.246882783
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Cornell",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13222706.565927029,
+
+                "ymin": 4043647.883667597,
+
+                "xmax": -13220925.114438567,
+
+                "ymax": 4044994.573762919
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13222706.565927029,
+
+                    "ymin": 4043647.883667597,
+
+                    "xmax": -13220925.114438567,
+
+                    "ymax": 4044994.573762919
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Covina Islands",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13125244.423683938,
+
+                "ymin": 4041176.0484241587,
+
+                "xmax": -13122001.6273612,
+
+                "ymax": 4046348.32853167
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13125244.423683938,
+
+                    "ymin": 4041176.0484241587,
+
+                    "xmax": -13122001.6273612,
+
+                    "ymax": 4046348.32853167
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Crystalaire",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13119574.504347105,
+
+                "ymin": 4090074.1596715786,
+
+                "xmax": -13117332.316737024,
+
+                "ymax": 4093291.8508108133
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13119574.504347105,
+
+                    "ymin": 4090074.1596715786,
+
+                    "xmax": -13117332.316737024,
+
+                    "ymax": 4093291.8508108133
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Deerlake Ranch",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13203855.624944791,
+
+                "ymin": 4065213.901292742,
+
+                "xmax": -13200392.072100528,
+
+                "ymax": 4067815.148911641
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 9027.977411,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13203855.624944791,
+
+                    "ymin": 4065213.901292742,
+
+                    "xmax": -13200392.072100528,
+
+                    "ymax": 4067815.148911641
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Del Aire",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13178785.009632219,
+
+                "ymin": 4017112.981823443,
+
+                "xmax": -13175256.963045336,
+
+                "ymax": 4019766.7798992884
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 9027.977411,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13178785.009632219,
+
+                    "ymin": 4017112.981823443,
+
+                    "xmax": -13175256.963045336,
+
+                    "ymax": 4019766.7798992884
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Del Sur",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13178470.463967625,
+
+                "ymin": 4117757.666900685,
+
+                "xmax": -13163976.148296751,
+
+                "ymax": 4127619.5239841486
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13178470.463967625,
+
+                    "ymin": 4117757.666900685,
+
+                    "xmax": -13163976.148296751,
+
+                    "ymax": 4127619.5239841486
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Desert View Highlands",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13153691.993765133,
+
+                "ymin": 4107419.061440537,
+
+                "xmax": -13152119.661951384,
+
+                "ymax": 4109421.795883228
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13153691.993765133,
+
+                    "ymin": 4107419.061440537,
+
+                    "xmax": -13152119.661951384,
+
+                    "ymax": 4109421.795883228
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "East Azusa",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13125415.489792593,
+
+                "ymin": 4047960.5554414066,
+
+                "xmax": -13122140.412598638,
+
+                "ymax": 4050996.3731436934
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13125415.489792593,
+
+                    "ymin": 4047960.5554414066,
+
+                    "xmax": -13122140.412598638,
+
+                    "ymax": 4050996.3731436934
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "East Irwindale",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13129247.649125576,
+
+                "ymin": 4040181.4630282894,
+
+                "xmax": -13125439.043994969,
+
+                "ymax": 4044171.990782121
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13129247.649125576,
+
+                    "ymin": 4040181.4630282894,
+
+                    "xmax": -13125439.043994969,
+
+                    "ymax": 4044171.990782121
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "East La Mirada",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13136284.246088518,
+
+                "ymin": 4017701.292196795,
+
+                "xmax": -13133086.82125252,
+
+                "ymax": 4019664.4304507007
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13136284.246088518,
+
+                    "ymin": 4017701.292196795,
+
+                    "xmax": -13133086.82125252,
+
+                    "ymax": 4019664.4304507007
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "East Los Angeles",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13157143.016868941,
+
+                "ymin": 4029879.8218169995,
+
+                "xmax": -13149806.672696127,
+
+                "ymax": 4037179.574082079
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13157143.016868941,
+
+                    "ymin": 4029879.8218169995,
+
+                    "xmax": -13149806.672696127,
+
+                    "ymax": 4037179.574082079
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "East Pasadena - East San Gabriel",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13146212.450425753,
+
+                "ymin": 4040969.68166171,
+
+                "xmax": -13141997.304844977,
+
+                "ymax": 4049002.29978597
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13146212.450425753,
+
+                    "ymin": 4040969.68166171,
+
+                    "xmax": -13141997.304844977,
+
+                    "ymax": 4049002.29978597
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "East Rancho Dominguez",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13158653.247991558,
+
+                "ymin": 4012915.927144842,
+
+                "xmax": -13156420.25637329,
+
+                "ymax": 4016246.8411438665
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13158653.247991558,
+
+                    "ymin": 4012915.927144842,
+
+                    "xmax": -13156420.25637329,
+
+                    "ymax": 4016246.8411438665
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "East San Dimas",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13112774.49180364,
+
+                "ymin": 4043504.2746591126,
+
+                "xmax": -13111662.085149022,
+
+                "ymax": 4045252.8276362107
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13112774.49180364,
+
+                    "ymin": 4043504.2746591126,
+
+                    "xmax": -13111662.085149022,
+
+                    "ymax": 4045252.8276362107
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Elizabeth Lake",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13183625.816973269,
+
+                "ymin": 4115226.4141598614,
+
+                "xmax": -13173762.247070096,
+
+                "ymax": 4119693.2584940176
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13183625.816973269,
+
+                    "ymin": 4115226.4141598614,
+
+                    "xmax": -13173762.247070096,
+
+                    "ymax": 4119693.2584940176
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Fairmont",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13203396.725933596,
+
+                "ymin": 4122950.483081039,
+
+                "xmax": -13177682.617637377,
+
+                "ymax": 4139330.967375855
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13203396.725933596,
+
+                    "ymin": 4122950.483081039,
+
+                    "xmax": -13177682.617637377,
+
+                    "ymax": 4139330.967375855
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Fernwood",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13205419.001038928,
+
+                "ymin": 4036480.7446290315,
+
+                "xmax": -13198491.895350594,
+
+                "ymax": 4041683.2398666847
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 18055.9548215,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13205419.001038928,
+
+                    "ymin": 4036480.7446290315,
+
+                    "xmax": -13198491.895350594,
+
+                    "ymax": 4041683.2398666847
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Florence - Firestone",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13164236.724849481,
+
+                "ymin": 4021172.577038176,
+
+                "xmax": -13161145.799704282,
+
+                "ymax": 4027398.534252188
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13164236.724849481,
+
+                    "ymin": 4021172.577038176,
+
+                    "xmax": -13161145.799704282,
+
+                    "ymax": 4027398.534252188
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Forrest Park",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13184836.29955018,
+
+                "ymin": 4087292.8443742483,
+
+                "xmax": -13178404.318037517,
+
+                "ymax": 4092703.0729583194
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13184836.29955018,
+
+                    "ymin": 4087292.8443742483,
+
+                    "xmax": -13178404.318037517,
+
+                    "ymax": 4092703.0729583194
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Franklin Canyon",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13182185.072478682,
+
+                "ymin": 4041576.5839763638,
+
+                "xmax": -13180229.348546274,
+
+                "ymax": 4043926.9032090954
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13182185.072478682,
+
+                    "ymin": 4041576.5839763638,
+
+                    "xmax": -13180229.348546274,
+
+                    "ymax": 4043926.9032090954
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Gilmore Island",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13175604.69084152,
+
+                "ymin": 4038971.9140726854,
+
+                "xmax": -13175501.576376434,
+
+                "ymax": 4039009.3823394123
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13175604.69084152,
+
+                    "ymin": 4038971.9140726854,
+
+                    "xmax": -13175501.576376434,
+
+                    "ymax": 4039009.3823394123
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Glendora Islands",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13118591.713098189,
+
+                "ymin": 4049536.3690076387,
+
+                "xmax": -13115969.81559557,
+
+                "ymax": 4050986.8432934945
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13118591.713098189,
+
+                    "ymin": 4049536.3690076387,
+
+                    "xmax": -13115969.81559557,
+
+                    "ymax": 4050986.8432934945
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Glenview",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13202280.305565055,
+
+                "ymin": 4043829.4483015155,
+
+                "xmax": -13200548.529142924,
+
+                "ymax": 4045130.072110965
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 4513.9887055,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13202280.305565055,
+
+                    "ymin": 4043829.4483015155,
+
+                    "xmax": -13200548.529142924,
+
+                    "ymax": 4045130.072110965
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Gorman",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13231813.036833864,
+
+                "ymin": 4135094.170018385,
+
+                "xmax": -13230050.361937875,
+
+                "ymax": 4136566.5084722983
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13231813.036833864,
+
+                    "ymin": 4135094.170018385,
+
+                    "xmax": -13230050.361937875,
+
+                    "ymax": 4136566.5084722983
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Green Valley",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13184495.962693619,
+
+                "ymin": 4110871.935477954,
+
+                "xmax": -13179127.63334951,
+
+                "ymax": 4113832.66494789
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13184495.962693619,
+
+                    "ymin": 4110871.935477954,
+
+                    "xmax": -13179127.63334951,
+
+                    "ymax": 4113832.66494789
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Hacienda Heights",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13137833.452279933,
+
+                "ymin": 4025113.2135882135,
+
+                "xmax": -13128004.132712413,
+
+                "ymax": 4032996.773797788
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13137833.452279933,
+
+                    "ymin": 4025113.2135882135,
+
+                    "xmax": -13128004.132712413,
+
+                    "ymax": 4032996.773797788
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Hasley Canyon",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13212089.512350624,
+
+                "ymin": 4090183.3892605347,
+
+                "xmax": -13206289.0524318,
+
+                "ymax": 4095654.451344283
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13212089.512350624,
+
+                    "ymin": 4090183.3892605347,
+
+                    "xmax": -13206289.0524318,
+
+                    "ymax": 4095654.451344283
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Hawthorne Island",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13173012.559280181,
+
+                "ymin": 4016611.367032412,
+
+                "xmax": -13172026.911016533,
+
+                "ymax": 4017103.435940957
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13173012.559280181,
+
+                    "ymin": 4016611.367032412,
+
+                    "xmax": -13172026.911016533,
+
+                    "ymax": 4017103.435940957
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Hi Vista",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13116527.03788584,
+
+                "ymin": 4123815.7948322264,
+
+                "xmax": -13098601.096421106,
+
+                "ymax": 4139905.8724256945
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13116527.03788584,
+
+                    "ymin": 4123815.7948322264,
+
+                    "xmax": -13098601.096421106,
+
+                    "ymax": 4139905.8724256945
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Juniper Hills",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13134870.007098647,
+
+                "ymin": 4083948.7600063416,
+
+                "xmax": -13119267.245186679,
+
+                "ymax": 4097131.432119292
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13134870.007098647,
+
+                    "ymin": 4083948.7600063416,
+
+                    "xmax": -13119267.245186679,
+
+                    "ymax": 4097131.432119292
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Kagel / Lopez Canyons",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13181404.41861205,
+
+                "ymin": 4066279.4557741783,
+
+                "xmax": -13173148.35113651,
+
+                "ymax": 4074187.1688475227
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13181404.41861205,
+
+                    "ymin": 4066279.4557741783,
+
+                    "xmax": -13173148.35113651,
+
+                    "ymax": 4074187.1688475227
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Kinneloa Mesa",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13146878.05671184,
+
+                "ymin": 4050555.944272979,
+
+                "xmax": -13143005.022865592,
+
+                "ymax": 4054834.478479178
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13146878.05671184,
+
+                    "ymin": 4050555.944272979,
+
+                    "xmax": -13143005.022865592,
+
+                    "ymax": 4054834.478479178
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "La Crescenta - Montrose",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13163397.583388431,
+
+                "ymin": 4056414.896255886,
+
+                "xmax": -13160351.90338235,
+
+                "ymax": 4062736.680477014
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13163397.583388431,
+
+                    "ymin": 4056414.896255886,
+
+                    "xmax": -13160351.90338235,
+
+                    "ymax": 4062736.680477014
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "La Habra Heights Islands",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13131785.467573399,
+
+                "ymin": 4021558.2350012343,
+
+                "xmax": -13127450.591757704,
+
+                "ymax": 4022056.0753244758
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13131785.467573399,
+
+                    "ymin": 4021558.2350012343,
+
+                    "xmax": -13127450.591757704,
+
+                    "ymax": 4022056.0753244758
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "La Rambla",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13170116.175075216,
+
+                "ymin": 3993644.4465726786,
+
+                "xmax": -13168740.484021256,
+
+                "ymax": 3994499.4556403747
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13170116.175075216,
+
+                    "ymin": 3993644.4465726786,
+
+                    "xmax": -13168740.484021256,
+
+                    "ymax": 3994499.4556403747
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Ladera Heights / View Park - Windsor Hills",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13179230.098488003,
+
+                "ymin": 4025614.1864553723,
+
+                "xmax": -13172589.633380204,
+
+                "ymax": 4030944.254020883
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13179230.098488003,
+
+                    "ymin": 4025614.1864553723,
+
+                    "xmax": -13172589.633380204,
+
+                    "ymax": 4030944.254020883
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Lake Hughes",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13192003.38488627,
+
+                "ymin": 4115054.785238956,
+
+                "xmax": -13181645.884947795,
+
+                "ymax": 4123606.3003617227
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13192003.38488627,
+
+                    "ymin": 4115054.785238956,
+
+                    "xmax": -13181645.884947795,
+
+                    "ymax": 4123606.3003617227
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Lake Los Angeles",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13120444.44112077,
+
+                "ymin": 4106926.6416983837,
+
+                "xmax": -13114451.738007322,
+
+                "ymax": 4115362.095949361
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13120444.44112077,
+
+                    "ymin": 4106926.6416983837,
+
+                    "xmax": -13114451.738007322,
+
+                    "ymax": 4115362.095949361
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Lake Manor",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13210033.886621697,
+
+                "ymin": 4057703.963263842,
+
+                "xmax": -13203106.780933363,
+
+                "ymax": 4062906.458501495
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 18055.9548215,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13210033.886621697,
+
+                    "ymin": 4057703.963263842,
+
+                    "xmax": -13203106.780933363,
+
+                    "ymax": 4062906.458501495
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Lakeview",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13152891.917652987,
+
+                "ymin": 4100658.38901969,
+
+                "xmax": -13147054.632912653,
+
+                "ymax": 4103330.3689450584
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13152891.917652987,
+
+                    "ymin": 4100658.38901969,
+
+                    "xmax": -13147054.632912653,
+
+                    "ymax": 4103330.3689450584
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Lang",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13179840.611199629,
+
+                "ymin": 4085830.4722587774,
+
+                "xmax": -13175737.492990285,
+
+                "ymax": 4087796.6203367636
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13179840.611199629,
+
+                    "ymin": 4085830.4722587774,
+
+                    "xmax": -13175737.492990285,
+
+                    "ymax": 4087796.6203367636
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Lennox",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13176909.017752921,
+
+                "ymin": 4019516.843571632,
+
+                "xmax": -13174037.069178063,
+
+                "ymax": 4021464.013200219
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13176909.017752921,
+
+                    "ymin": 4019516.843571632,
+
+                    "xmax": -13174037.069178063,
+
+                    "ymax": 4021464.013200219
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Leona Valley",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13176214.769963726,
+
+                "ymin": 4106925.2477445477,
+
+                "xmax": -13160016.166581104,
+
+                "ymax": 4115792.6371373497
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13176214.769963726,
+
+                    "ymin": 4106925.2477445477,
+
+                    "xmax": -13160016.166581104,
+
+                    "ymax": 4115792.6371373497
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Littlerock",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13136019.727823941,
+
+                "ymin": 4098078.2619140744,
+
+                "xmax": -13130543.524883876,
+
+                "ymax": 4099965.3830915554
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13136019.727823941,
+
+                    "ymin": 4098078.2619140744,
+
+                    "xmax": -13130543.524883876,
+
+                    "ymax": 4099965.3830915554
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Llano",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13118664.237078527,
+
+                "ymin": 4092951.1907533123,
+
+                "xmax": -13109552.139750669,
+
+                "ymax": 4097941.9880284644
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13118664.237078527,
+
+                    "ymin": 4092951.1907533123,
+
+                    "xmax": -13109552.139750669,
+
+                    "ymax": 4097941.9880284644
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Long Beach Island",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13148675.551565314,
+
+                "ymin": 4005336.27620074,
+
+                "xmax": -13147695.546531932,
+
+                "ymax": 4006041.376597349
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13148675.551565314,
+
+                    "ymin": 4005336.27620074,
+
+                    "xmax": -13147695.546531932,
+
+                    "ymax": 4006041.376597349
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Lynwood Island",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13155597.339839343,
+
+                "ymin": 4017799.1387141543,
+
+                "xmax": -13155086.657556508,
+
+                "ymax": 4019516.7295972737
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13155597.339839343,
+
+                    "ymin": 4017799.1387141543,
+
+                    "xmax": -13155086.657556508,
+
+                    "ymax": 4019516.7295972737
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Malibou Lake",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13221171.163909068,
+
+                "ymin": 4042025.4296390624,
+
+                "xmax": -13219174.089906527,
+
+                "ymax": 4043983.7682913747
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13221171.163909068,
+
+                    "ymin": 4042025.4296390624,
+
+                    "xmax": -13219174.089906527,
+
+                    "ymax": 4043983.7682913747
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Malibu Bowl",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13218630.606779132,
+
+                "ymin": 4036825.655554567,
+
+                "xmax": -13217676.477182152,
+
+                "ymax": 4037822.3452510796
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13218630.606779132,
+
+                    "ymin": 4036825.655554567,
+
+                    "xmax": -13217676.477182152,
+
+                    "ymax": 4037822.3452510796
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Malibu Vista",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13223402.24172265,
+
+                "ymin": 4034469.402727101,
+
+                "xmax": -13221423.112310706,
+
+                "ymax": 4036878.1884848285
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13223402.24172265,
+
+                    "ymin": 4034469.402727101,
+
+                    "xmax": -13221423.112310706,
+
+                    "ymax": 4036878.1884848285
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Marina Del Rey",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13187275.749194128,
+
+                "ymin": 4024055.604556815,
+
+                "xmax": -13184201.845800951,
+
+                "ymax": 4026979.8332345868
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13187275.749194128,
+
+                    "ymin": 4024055.604556815,
+
+                    "xmax": -13184201.845800951,
+
+                    "ymax": 4026979.8332345868
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Mayflower Village",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13137584.581862217,
+
+                "ymin": 4042804.991706447,
+
+                "xmax": -13136134.945500659,
+
+                "ymax": 4046321.6493861834
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13137584.581862217,
+
+                    "ymin": 4042804.991706447,
+
+                    "xmax": -13136134.945500659,
+
+                    "ymax": 4046321.6493861834
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Monte Nido",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13213879.671027012,
+
+                "ymin": 4038799.2360821725,
+
+                "xmax": -13210975.34473298,
+
+                "ymax": 4040777.783088645
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13213879.671027012,
+
+                    "ymin": 4038799.2360821725,
+
+                    "xmax": -13210975.34473298,
+
+                    "ymax": 4040777.783088645
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Neenach",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13209330.140286248,
+
+                "ymin": 4131294.9942143005,
+
+                "xmax": -13201050.920137735,
+
+                "ymax": 4139242.854198652
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13209330.140286248,
+
+                    "ymin": 4131294.9942143005,
+
+                    "xmax": -13201050.920137735,
+
+                    "ymax": 4139242.854198652
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "North Claremont",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13104078.187690707,
+
+                "ymin": 4047682.2131447843,
+
+                "xmax": -13100367.277101817,
+
+                "ymax": 4051030.2967716283
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13104078.187690707,
+
+                    "ymin": 4047682.2131447843,
+
+                    "xmax": -13100367.277101817,
+
+                    "ymax": 4051030.2967716283
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "North El Monte",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13139094.835137412,
+
+                "ymin": 4041741.7647592304,
+
+                "xmax": -13137546.468628917,
+
+                "ymax": 4043400.4467407265
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13139094.835137412,
+
+                    "ymin": 4041741.7647592304,
+
+                    "xmax": -13137546.468628917,
+
+                    "ymax": 4043400.4467407265
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "North Pomona",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13107707.416601349,
+
+                "ymin": 4042697.14323765,
+
+                "xmax": -13106388.664576376,
+
+                "ymax": 4043694.2143986123
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13107707.416601349,
+
+                    "ymin": 4042697.14323765,
+
+                    "xmax": -13106388.664576376,
+
+                    "ymax": 4043694.2143986123
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "North Whittier",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13142936.164636089,
+
+                "ymin": 4026436.868622338,
+
+                "xmax": -13134963.666197503,
+
+                "ymax": 4032749.719499548
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13142936.164636089,
+
+                    "ymin": 4026436.868622338,
+
+                    "xmax": -13134963.666197503,
+
+                    "ymax": 4032749.719499548
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Northeast La Verne",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13108511.119502507,
+
+                "ymin": 4047952.0706997435,
+
+                "xmax": -13105030.199768336,
+
+                "ymax": 4051041.26086225
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13108511.119502507,
+
+                    "ymin": 4047952.0706997435,
+
+                    "xmax": -13105030.199768336,
+
+                    "ymax": 4051041.26086225
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Northeast San Dimas",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13111319.50064062,
+
+                "ymin": 4048543.4597233613,
+
+                "xmax": -13110581.381172186,
+
+                "ymax": 4049059.4839632246
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13111319.50064062,
+
+                    "ymin": 4048543.4597233613,
+
+                    "xmax": -13110581.381172186,
+
+                    "ymax": 4049059.4839632246
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Oat Mountain",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13209862.603006694,
+
+                "ymin": 4065052.155017363,
+
+                "xmax": -13192451.949112132,
+
+                "ymax": 4076237.256260593
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13209862.603006694,
+
+                    "ymin": 4065052.155017363,
+
+                    "xmax": -13192451.949112132,
+
+                    "ymax": 4076237.256260593
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Paradise",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13114435.71223079,
+
+                "ymin": 4081586.9868771443,
+
+                "xmax": -13113439.325309826,
+
+                "ymax": 4082536.1408432247
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13114435.71223079,
+
+                    "ymin": 4081586.9868771443,
+
+                    "xmax": -13113439.325309826,
+
+                    "ymax": 4082536.1408432247
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Pearblossom",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13126150.46504201,
+
+                "ymin": 4093081.2443831745,
+
+                "xmax": -13123206.192193983,
+
+                "ymax": 4097001.1305437456
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13126150.46504201,
+
+                    "ymin": 4093081.2443831745,
+
+                    "xmax": -13123206.192193983,
+
+                    "ymax": 4097001.1305437456
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Pepperdine",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13215826.783617571,
+
+                "ymin": 4033411.2409230103,
+
+                "xmax": -13213372.799210347,
+
+                "ymax": 4037861.747581888
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13215826.783617571,
+
+                    "ymin": 4033411.2409230103,
+
+                    "xmax": -13213372.799210347,
+
+                    "ymax": 4037861.747581888
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Quartz Hill",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13162005.355156194,
+
+                "ymin": 4113825.178609969,
+
+                "xmax": -13158097.752266591,
+
+                "ymax": 4120332.176806751
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13162005.355156194,
+
+                    "ymin": 4113825.178609969,
+
+                    "xmax": -13158097.752266591,
+
+                    "ymax": 4120332.176806751
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Rancho Dominguez",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13161931.256227706,
+
+                "ymin": 4008205.9510684777,
+
+                "xmax": -13158085.014311219,
+
+                "ymax": 4011859.545515806
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13161931.256227706,
+
+                    "ymin": 4008205.9510684777,
+
+                    "xmax": -13158085.014311219,
+
+                    "ymax": 4011859.545515806
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Redman",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13142299.440637162,
+
+                "ymin": 4127769.0299302,
+
+                "xmax": -13122407.618227044,
+
+                "ymax": 4133816.5781899407
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13142299.440637162,
+
+                    "ymin": 4127769.0299302,
+
+                    "xmax": -13122407.618227044,
+
+                    "ymax": 4133816.5781899407
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Roosevelt",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13151700.149774907,
+
+                "ymin": 4115863.2373941336,
+
+                "xmax": -13116452.61646478,
+
+                "ymax": 4129698.783236493
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13151700.149774907,
+
+                    "ymin": 4115863.2373941336,
+
+                    "xmax": -13116452.61646478,
+
+                    "ymax": 4129698.783236493
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Rowland Heights",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13128249.306766434,
+
+                "ymin": 4021514.804529112,
+
+                "xmax": -13119543.36617046,
+
+                "ymax": 4029038.460172166
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13128249.306766434,
+
+                    "ymin": 4021514.804529112,
+
+                    "xmax": -13119543.36617046,
+
+                    "ymax": 4029038.460172166
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "San Clemente Island",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13202936.137532938,
+
+                "ymin": 3868045.9672626364,
+
+                "xmax": -13172845.46182269,
+
+                "ymax": 3899576.002948473
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13202936.137532938,
+
+                    "ymin": 3868045.9672626364,
+
+                    "xmax": -13172845.46182269,
+
+                    "ymax": 3899576.002948473
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "San Pasqual",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13147999.32161494,
+
+                "ymin": 4047191.0697521386,
+
+                "xmax": -13146293.448602322,
+
+                "ymax": 4047835.7269273414
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13147999.32161494,
+
+                    "ymin": 4047191.0697521386,
+
+                    "xmax": -13146293.448602322,
+
+                    "ymax": 4047835.7269273414
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Santa Catalina Island",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13203179.476373838,
+
+                "ymin": 3934927.1083101025,
+
+                "xmax": -13169460.118220327,
+
+                "ymax": 3959211.0643209377
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13203179.476373838,
+
+                    "ymin": 3934927.1083101025,
+
+                    "xmax": -13169460.118220327,
+
+                    "ymax": 3959211.0643209377
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Santa Clarita Valley",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13225931.951324806,
+
+                "ymin": 4072903.0263052178,
+
+                "xmax": -13163972.927378604,
+
+                "ymax": 4116058.829750958
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13225931.951324806,
+
+                    "ymin": 4072903.0263052178,
+
+                    "xmax": -13163972.927378604,
+
+                    "ymax": 4116058.829750958
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Santa Monica Mountains Coastal Zone",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13240946.808289217,
+
+                "ymin": 4033445.957508431,
+
+                "xmax": -13198828.544502705,
+
+                "ymax": 4044182.9759564246
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13240946.808289217,
+
+                    "ymin": 4033445.957508431,
+
+                    "xmax": -13198828.544502705,
+
+                    "ymax": 4044182.9759564246
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Santa Monica Mountains North Area",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13234774.90127838,
+
+                "ymin": 4040346.2566707158,
+
+                "xmax": -13198538.784877548,
+
+                "ymax": 4051547.954397741
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13234774.90127838,
+
+                    "ymin": 4040346.2566707158,
+
+                    "xmax": -13198538.784877548,
+
+                    "ymax": 4051547.954397741
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Seminole Hot Springs",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13224502.242042657,
+
+                "ymin": 4042754.636500976,
+
+                "xmax": -13222563.710403727,
+
+                "ymax": 4043707.643478131
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13224502.242042657,
+
+                    "ymin": 4042754.636500976,
+
+                    "xmax": -13222563.710403727,
+
+                    "ymax": 4043707.643478131
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Soledad - Sulphur Springs",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13176677.185117228,
+
+                "ymin": 4085839.065808942,
+
+                "xmax": -13174798.568856511,
+
+                "ymax": 4087799.2077022283
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13176677.185117228,
+
+                    "ymin": 4085839.065808942,
+
+                    "xmax": -13174798.568856511,
+
+                    "ymax": 4087799.2077022283
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "South Diamond Bar",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13121086.28804266,
+
+                "ymin": 4021526.0929620666,
+
+                "xmax": -13111544.004446317,
+
+                "ymax": 4025531.7067840663
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13121086.28804266,
+
+                    "ymin": 4021526.0929620666,
+
+                    "xmax": -13111544.004446317,
+
+                    "ymax": 4025531.7067840663
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "South El Monte Island",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13142488.88960125,
+
+                "ymin": 4037243.3569607357,
+
+                "xmax": -13142382.770400468,
+
+                "ymax": 4037440.2793746516
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13142488.88960125,
+
+                    "ymin": 4037243.3569607357,
+
+                    "xmax": -13142382.770400468,
+
+                    "ymax": 4037440.2793746516
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "South Monrovia Islands",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13139096.426338213,
+
+                "ymin": 4041741.6611016644,
+
+                "xmax": -13131978.585293943,
+
+                "ymax": 4048667.478903786
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13139096.426338213,
+
+                    "ymin": 4041741.6611016644,
+
+                    "xmax": -13131978.585293943,
+
+                    "ymax": 4048667.478903786
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "South San Gabriel",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13147728.742115408,
+
+                "ymin": 4033223.655002409,
+
+                "xmax": -13143862.224578189,
+
+                "ymax": 4036258.353641341
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13147728.742115408,
+
+                    "ymin": 4033223.655002409,
+
+                    "xmax": -13143862.224578189,
+
+                    "ymax": 4036258.353641341
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "South San Jose Hills",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13127181.060776453,
+
+                "ymin": 4029259.37449049,
+
+                "xmax": -13122345.252372885,
+
+                "ymax": 4032343.2830266147
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13127181.060776453,
+
+                    "ymin": 4029259.37449049,
+
+                    "xmax": -13122345.252372885,
+
+                    "ymax": 4032343.2830266147
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "South Walnut",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13121544.086331604,
+
+                "ymin": 4029152.8655924224,
+
+                "xmax": -13116171.04461081,
+
+                "ymax": 4033376.8928956175
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13121544.086331604,
+
+                    "ymin": 4029152.8655924224,
+
+                    "xmax": -13116171.04461081,
+
+                    "ymax": 4033376.8928956175
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "South Whittier - Sunshine Acres",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13141849.732714854,
+
+                "ymin": 4017638.3722062614,
+
+                "xmax": -13133086.08899291,
+
+                "ymax": 4022813.8000697554
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13141849.732714854,
+
+                    "ymin": 4017638.3722062614,
+
+                    "xmax": -13133086.08899291,
+
+                    "ymax": 4022813.8000697554
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Stevenson Ranch",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13203140.723721385,
+
+                "ymin": 4078641.691590843,
+
+                "xmax": -13198273.504519738,
+
+                "ymax": 4085047.1124796243
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13203140.723721385,
+
+                    "ymin": 4078641.691590843,
+
+                    "xmax": -13198273.504519738,
+
+                    "ymax": 4085047.1124796243
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Sun Village",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13135357.222119626,
+
+                "ymin": 4099968.8910002285,
+
+                "xmax": -13126376.475223053,
+
+                "ymax": 4107917.2637072913
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13135357.222119626,
+
+                    "ymin": 4099968.8910002285,
+
+                    "xmax": -13126376.475223053,
+
+                    "ymax": 4107917.2637072913
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Sunset Mesa",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13201011.928626921,
+
+                "ymin": 4033614.356068313,
+
+                "xmax": -13197548.375782657,
+
+                "ymax": 4036215.603687212
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 9027.977411,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13201011.928626921,
+
+                    "ymin": 4033614.356068313,
+
+                    "xmax": -13197548.375782657,
+
+                    "ymax": 4036215.603687212
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Sylmar Island",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13189158.721943121,
+
+                "ymin": 4072417.81633197,
+
+                "xmax": -13181586.258777622,
+
+                "ymax": 4074215.9395984057
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13189158.721943121,
+
+                    "ymin": 4072417.81633197,
+
+                    "xmax": -13181586.258777622,
+
+                    "ymax": 4074215.9395984057
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Sylvia Park",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13204258.113671917,
+
+                "ymin": 4041715.4867380406,
+
+                "xmax": -13197331.007983584,
+
+                "ymax": 4046917.9819756937
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 18055.9548215,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13204258.113671917,
+
+                    "ymin": 4041715.4867380406,
+
+                    "xmax": -13197331.007983584,
+
+                    "ymax": 4046917.9819756937
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Three Points",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13206301.101542164,
+
+                "ymin": 4126474.6252527037,
+
+                "xmax": -13201325.649739206,
+
+                "ymax": 4131328.5536400746
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13206301.101542164,
+
+                    "ymin": 4126474.6252527037,
+
+                    "xmax": -13201325.649739206,
+
+                    "ymax": 4131328.5536400746
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Topanga",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13208286.683477074,
+
+                "ymin": 4033833.847852751,
+
+                "xmax": -13198498.501359459,
+
+                "ymax": 4048620.723886825
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13208286.683477074,
+
+                    "ymin": 4033833.847852751,
+
+                    "xmax": -13198498.501359459,
+
+                    "ymax": 4048620.723886825
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Twin Lakes",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13202986.825972518,
+
+                "ymin": 4065774.759890249,
+
+                "xmax": -13201958.53855903,
+
+                "ymax": 4066359.0526981847
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13202986.825972518,
+
+                    "ymin": 4065774.759890249,
+
+                    "xmax": -13201958.53855903,
+
+                    "ymax": 4066359.0526981847
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Two Harbors",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13192520.43486662,
+
+                "ymin": 3952227.044477776,
+
+                "xmax": -13190779.854217885,
+
+                "ymax": 3954262.378176737
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13192520.43486662,
+
+                    "ymin": 3952227.044477776,
+
+                    "xmax": -13190779.854217885,
+
+                    "ymax": 3954262.378176737
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Universal City",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13176004.291857272,
+
+                "ymin": 4046452.4280243916,
+
+                "xmax": -13173905.004632246,
+
+                "ymax": 4048046.723337279
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13176004.291857272,
+
+                    "ymin": 4046452.4280243916,
+
+                    "xmax": -13173905.004632246,
+
+                    "ymax": 4048046.723337279
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Val Verde",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13211702.779422728,
+
+                "ymin": 4087778.622093657,
+
+                "xmax": -13207894.726882074,
+
+                "ymax": 4089810.369424492
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13211702.779422728,
+
+                    "ymin": 4087778.622093657,
+
+                    "xmax": -13207894.726882074,
+
+                    "ymax": 4089810.369424492
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Valinda",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13130041.712872025,
+
+                "ymin": 4032111.0319482624,
+
+                "xmax": -13125954.732537944,
+
+                "ymax": 4035832.9905457804
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13130041.712872025,
+
+                    "ymin": 4032111.0319482624,
+
+                    "xmax": -13125954.732537944,
+
+                    "ymax": 4035832.9905457804
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Valyermo",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13119291.426563064,
+
+                "ymin": 4085941.0359316035,
+
+                "xmax": -13109521.185139861,
+
+                "ymax": 4093027.903057752
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13119291.426563064,
+
+                    "ymin": 4085941.0359316035,
+
+                    "xmax": -13109521.185139861,
+
+                    "ymax": 4093027.903057752
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Vincent",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13129247.649125576,
+
+                "ymin": 4040181.4630282894,
+
+                "xmax": -13125439.043994969,
+
+                "ymax": 4044171.990782121
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13129247.649125576,
+
+                    "ymin": 4040181.4630282894,
+
+                    "xmax": -13125439.043994969,
+
+                    "ymax": 4044171.990782121
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Walnut Islands",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13121973.25380411,
+
+                "ymin": 4034376.076856417,
+
+                "xmax": -13114035.003140828,
+
+                "ymax": 4040069.911175022
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13121973.25380411,
+
+                    "ymin": 4034376.076856417,
+
+                    "xmax": -13114035.003140828,
+
+                    "ymax": 4040069.911175022
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Walnut Park",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13161332.02196161,
+
+                "ymin": 4023308.348286369,
+
+                "xmax": -13159155.920057794,
+
+                "ymax": 4025413.514165512
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13161332.02196161,
+
+                    "ymin": 4023308.348286369,
+
+                    "xmax": -13159155.920057794,
+
+                    "ymax": 4025413.514165512
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "West Athens - Westmont",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13171102.05165514,
+
+                "ymin": 4017575.9216891197,
+
+                "xmax": -13168143.358702917,
+
+                "ymax": 4023367.298998534
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13171102.05165514,
+
+                    "ymin": 4017575.9216891197,
+
+                    "xmax": -13168143.358702917,
+
+                    "ymax": 4023367.298998534
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "West Carson",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13169078.637791287,
+
+                "ymin": 4001658.380502051,
+
+                "xmax": -13167339.311156616,
+
+                "ymax": 4010185.360334787
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13169078.637791287,
+
+                    "ymin": 4001658.380502051,
+
+                    "xmax": -13167339.311156616,
+
+                    "ymax": 4010185.360334787
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "West Chatsworth",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13210066.636159908,
+
+                "ymin": 4056942.7035143217,
+
+                "xmax": -13205797.996220471,
+
+                "ymax": 4061147.97533453
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13210066.636159908,
+
+                    "ymin": 4056942.7035143217,
+
+                    "xmax": -13205797.996220471,
+
+                    "ymax": 4061147.97533453
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "West Claremont",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13108919.970945306,
+
+                "ymin": 4044906.565656584,
+
+                "xmax": -13105278.667209497,
+
+                "ymax": 4048103.4546344993
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13108919.970945306,
+
+                    "ymin": 4044906.565656584,
+
+                    "xmax": -13105278.667209497,
+
+                    "ymax": 4048103.4546344993
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "West Fox Hills",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13181883.25249989,
+
+                "ymin": 4026155.5878607915,
+
+                "xmax": -13181233.263002524,
+
+                "ymax": 4026803.592470566
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13181883.25249989,
+
+                    "ymin": 4026155.5878607915,
+
+                    "xmax": -13181233.263002524,
+
+                    "ymax": 4026803.592470566
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "West Los Angeles (Sawtelle Va)",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13187897.996649876,
+
+                "ymin": 4035123.464829707,
+
+                "xmax": -13185318.637775589,
+
+                "ymax": 4037907.7236555014
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13187897.996649876,
+
+                    "ymin": 4035123.464829707,
+
+                    "xmax": -13185318.637775589,
+
+                    "ymax": 4037907.7236555014
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "West Puente Valley",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13134641.17886469,
+
+                "ymin": 4033329.23796725,
+
+                "xmax": -13130060.733922098,
+
+                "ymax": 4037681.494628147
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13134641.17886469,
+
+                    "ymin": 4033329.23796725,
+
+                    "xmax": -13130060.733922098,
+
+                    "ymax": 4037681.494628147
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "West Rancho Dominguez - Victoria",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13167224.874274803,
+
+                "ymin": 4013433.300873657,
+
+                "xmax": -13163023.320135936,
+
+                "ymax": 4018566.9643368
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13167224.874274803,
+
+                    "ymin": 4013433.300873657,
+
+                    "xmax": -13163023.320135936,
+
+                    "ymax": 4018566.9643368
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "West San Dimas",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13118950.724244613,
+
+                "ymin": 4039912.3596746437,
+
+                "xmax": -13115685.813303158,
+
+                "ymax": 4041189.5235684193
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13118950.724244613,
+
+                    "ymin": 4039912.3596746437,
+
+                    "xmax": -13115685.813303158,
+
+                    "ymax": 4041189.5235684193
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "West Whittier - Los Nietos",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13145594.44813879,
+
+                "ymin": 4023438.7863527653,
+
+                "xmax": -13141380.721102286,
+
+                "ymax": 4029396.5549369534
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13145594.44813879,
+
+                    "ymin": 4023438.7863527653,
+
+                    "xmax": -13141380.721102286,
+
+                    "ymax": 4029396.5549369534
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Westfield / Academy Hills",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13176190.261530675,
+
+                "ymin": 3997680.0297266203,
+
+                "xmax": -13173614.84837574,
+
+                "ymax": 4000325.5886739087
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13176190.261530675,
+
+                    "ymin": 3997680.0297266203,
+
+                    "xmax": -13173614.84837574,
+
+                    "ymax": 4000325.5886739087
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Westhills",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13210081.705813335,
+
+                "ymin": 4054234.907669845,
+
+                "xmax": -13208786.040337553,
+
+                "ymax": 4055253.7833036217
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13210081.705813335,
+
+                    "ymin": 4054234.907669845,
+
+                    "xmax": -13208786.040337553,
+
+                    "ymax": 4055253.7833036217
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "White Fence Farms - El Dorado",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13159082.369489115,
+
+                "ymin": 4110373.086743183,
+
+                "xmax": -13152262.074979706,
+
+                "ymax": 4115850.556473231
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13159082.369489115,
+
+                    "ymin": 4110373.086743183,
+
+                    "xmax": -13152262.074979706,
+
+                    "ymax": 4115850.556473231
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Whittier Narrows",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13145254.164381625,
+
+                "ymin": 4031082.084200466,
+
+                "xmax": -13137197.815427154,
+
+                "ymax": 4036493.458951099
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13145254.164381625,
+
+                    "ymin": 4031082.084200466,
+
+                    "xmax": -13137197.815427154,
+
+                    "ymax": 4036493.458951099
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Willowbrook",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13164001.772596378,
+
+                "ymin": 4016178.4832828147,
+
+                "xmax": -13160440.833851878,
+
+                "ymax": 4020395.48448076
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13164001.772596378,
+
+                    "ymin": 4016178.4832828147,
+
+                    "xmax": -13160440.833851878,
+
+                    "ymax": 4020395.48448076
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Wiseburn",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13177936.24003344,
+
+                "ymin": 4015315.9153425316,
+
+                "xmax": -13174408.193446558,
+
+                "ymax": 4017969.713418377
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 9027.977411,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13177936.24003344,
+
+                    "ymin": 4015315.9153425316,
+
+                    "xmax": -13174408.193446558,
+
+                    "ymax": 4017969.713418377
+
+                }
+
+            }
+
+        },
+
+        {
+
+            "name": "Wrightwood",
+
+            "extent": {
+
+                "spatialReference": {
+
+                    "latestWkid": 3857,
+
+                    "wkid": 102100
+
+                },
+
+                "xmin": -13099745.48939557,
+
+                "ymin": 4076402.938613223,
+
+                "xmax": -13096916.350289369,
+
+                "ymax": 4080437.261769933
+
+            },
+
+            "viewpoint": {
+
+                "rotation": 0,
+
+                "scale": 0,
+
+                "targetGeometry":{ "type": "extent", "spatialReference": {
+
+                        "latestWkid": 3857,
+
+                        "wkid": 102100
+
+                    },
+
+                    "xmin": -13099745.48939557,
+
+                    "ymin": 4076402.938613223,
+
+                    "xmax": -13096916.350289369,
+
+                    "ymax": 4080437.261769933
+
+                }
+
+            }
+
+        }
+
+    ]

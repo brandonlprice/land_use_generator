@@ -1,0 +1,1560 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <title>Clustering - query clusters | Sample | ArcGIS Maps SDK for JavaScript</title>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.34/esri/themes/light/main.css" />
+    <script src="https://js.arcgis.com/4.34/"></script>
+
+    <style>
+      html, body, .page-container {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+        }
+        .page-container {
+            display: flex;
+            flex-direction: column;
+        }
+		
+		#header {
+    display: flex; /* Enables flexbox layout */
+    justify-content: space-between; /* Pushes content to opposite ends */
+    align-items: center; /* Vertically centers all items */
+    padding: 10px;
+	background-color: #F7F7F7; /* ArcGIS blue */
+            color: #333333;
+			font-size: 1.25em;
+			font-weight: 500;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            z-index: 10; /* Ensure header is above map elements if needed */
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Adds space between logo and text */
+}
+
+.header-right {
+    display: flex;
+    gap: 10px; /* Adds space between the buttons */
+}
+        
+        #viewDiv {
+            flex-grow: 1; /* Allows the map to fill remaining space */
+        }
+	  /* Target the custom action button by its unique class name */
+	 .my-custom-style-action {
+		background-color: black; /* Example: change background color */
+		color: #ffffff;             /* Example: change text/icon color */
+		border: none;  /* Example: add a border */
+		padding: 5px 10px;          /* Example: adjust padding */
+		border-radius: 4px;         /* Example: add rounded corners */
+	  }
+
+	 /* Change style on hover */
+	 .my-custom-style-action:hover {
+		background-color: #aa0000;
+	  }
+	 .my-custom-style-action_2 {
+		background-color: rgba(223, 115, 255, 255); /* Example: change background color */
+		color: #ffffff;             /* Example: change text/icon color */
+		border: 1px solid rgba(52, 52, 52, 255);  /* Example: add a border */
+		padding: 5px 10px;          /* Example: adjust padding */
+		border-radius: 4px;         /* Example: add rounded corners */
+	  }
+	 /* Target the legend action button in the LayerList and hide it */
+	  calcite-action[icon="legend"] {
+		display: none !important;
+	}
+	#ui-container {
+    display: flex; /* Aligns input and button horizontally */
+    align-items: center;
+}
+
+#layerUrlInput {
+    display: none; /* Hidden by default */
+    margin-right: 5px; /* Spacing between input and button */
+}
+.esri-search {
+    width: 260px !important; /* Adjust the width as needed */
+    </style>
+
+    <script>
+require([
+  "esri/Map",
+  "esri/views/MapView",
+  "esri/layers/FeatureLayer", // Keep FeatureLayer
+  "esri/Graphic",
+  "esri/geometry/geometryEngine",
+  "esri/core/reactiveUtils",
+  "esri/rest/support/Query",
+  "esri/renderers/UniqueValueRenderer",
+  "esri/symbols/CIMSymbol",
+  "esri/widgets/BasemapToggle",
+  "esri/geometry/Extent",
+    "esri/geometry/SpatialReference",
+	 "esri/widgets/Search",
+	"esri/widgets/Home",
+  "esri/Viewpoint",
+   "esri/widgets/Editor",
+    "esri/layers/GraphicsLayer",
+    "esri/widgets/LayerList",
+	"esri/Basemap",
+	"esri/layers/WMTSLayer",
+	"esri/widgets/DistanceMeasurement2D",
+  "esri/widgets/Expand",
+  "esri/widgets/BasemapGallery","esri/widgets/Bookmarks",
+  "esri/webmap/Bookmark",
+  "esri/geometry/Point",
+  "esri/widgets/Print"
+], function(Map, MapView, FeatureLayer, Graphic, geometryEngine, reactiveUtils, Query, UniqueValueRenderer, CIMSymbol, BasemapToggle, Extent, SpatialReference, Search, Home, Viewpoint, Editor, GraphicsLayer, LayerList, Basemap, WMTSLayer, DistanceMeasurement2D, Expand, BasemapGallery, Bookmarks, Bookmark, Point, Print) {
+
+	const addLayerButton = document.getElementById('addLayerButton');
+const layerUrlInput = document.getElementById('layerUrlInput');
+
+addLayerButton.addEventListener('click', () => {
+    if (layerUrlInput.style.display === 'none' || layerUrlInput.style.display === '') {
+        layerUrlInput.style.display = 'inline-block'; // Show it
+        layerUrlInput.focus(); // Optional: focus the input
+    } else {
+        layerUrlInput.style.display = 'none'; // Hide it
+    }
+}); 
+
+    function addLayerFromUrl() {
+        const urlInput = document.getElementById("layerUrlInput");
+        const url = urlInput.value.trim();
+
+        /*if (!url) {
+            alert("Please enter a valid URL.");
+            return;
+        }*/
+
+        // Determine layer type based on URL keywords (simple approach)
+        let layer;
+        if (url.includes("FeatureServer")) {
+            layer = new FeatureLayer({
+                url: url
+            });
+            console.log("Adding FeatureLayer");
+        } else if (url.includes("MapServer")) {
+            // Note: If the user provides a specific layer index, e.g., MapServer/0, 
+            // it will be treated as a FeatureLayer above. A plain MapServer URL 
+            // typically adds all sublayers as a single image.
+            layer = new MapImageLayer({
+                url: url
+            });
+            console.log("Adding MapImageLayer");
+        } else if (url.toLowerCase().includes(".geojson")) {
+            layer = new GeoJSONLayer({
+                url: url
+            });
+            console.log("Adding GeoJSONLayer");
+        } else if (url.includes("WMS")) {
+            layer = new WMSLayer({
+                url: url
+            });
+            console.log("Adding WMSLayer");
+        } /*else {
+            alert("Unsupported layer type or URL format.");
+            return;
+        }*/
+
+        
+        map.add(layer);
+        
+        // Optional: Zoom to the layer's extent once loaded
+        layer.when(function() {
+            view.goTo(layer.fullExtent);
+        }, function(error) {
+            console.error("Error loading layer: ", error);
+            alert("Failed to load layer. Check the console for details, ensure the URL is correct, and consider potential CORS issues.");
+            map.remove(layer); // Remove the problematic layer
+        });
+
+        // Clear the input box
+        urlInput.value = "";
+    }
+
+    // Attach event listener to the button
+    document.getElementById("addLayerButton").addEventListener("click", addLayerFromUrl);
+	
+
+  // 1. Define the schema for the new client-side feature layer
+  const bufferFeatureLayer = new FeatureLayer({
+  source: [], // initially empty
+  title: "500-ft buffer",
+  listMode: "hide", // Initially hide the layer from the LayerList
+  objectIdField: "ObjectID", // required
+  geometryType: "polygon", // must match the geometry of the buffer graphics
+  spatialReference: { wkid: 102100 }, // set the appropriate WKID for your map/data
+  fields: [
+    { name: "ObjectID", alias: "ObjectID", type: "oid" },
+    { name: "buffer_distance", alias: "Buffer Distance (ft)", type: "integer" }
+  ],
+  minScale: 20000,
+  renderer: {
+    type: "simple",
+    symbol: {
+      type: "cim",
+      data: {
+        type: "CIMSymbolReference",
+        symbol: {
+          type: "CIMPolygonSymbol",
+          symbolLayers: [
+            // 1. THE TOP OUTLINE (Dashed Black)
+            {
+              type: "CIMSolidStroke",
+              enable: true,
+              capStyle: "Butt",
+              joinStyle: "Round",
+              width: 4, // Wider than the top stroke to create the double effect
+              color: [52, 52, 52, 255], // White
+			  effects: [
+    {
+      type: "CIMGeometricEffectDashes",
+      dashTemplate: [7, 6], // Dashing logic goes here
+      lineDashAlgorithm: "EsriDefault",
+    }
+	]
+            },
+            // 3. THE FILL (Transparent)
+            {
+              type: "CIMSolidFill",
+              enable: true,
+              color: [0, 0, 0, 0] // Fully transparent
+            }
+          ]
+        }
+      }
+    }
+  }
+});
+  
+  const bufferFeatureLayer2 = new FeatureLayer({
+  source: [],
+  title: "600-ft Sensitive Land Use Buffer",
+  listMode: "hide", // Initially hide the layer from the LayerList
+  objectIdField: "ObjectID",
+  geometryType: "polygon",
+  spatialReference: { wkid: 102100 },
+  fields: [
+    { name: "ObjectID", alias: "ObjectID", type: "oid" },
+    { name: "buffer_distance", alias: "Buffer Distance (ft)", type: "integer" }
+  ],
+  minScale: 20000,
+  renderer: {
+    type: "simple",
+    symbol: {
+      type: "cim",
+      data: {
+        type: "CIMSymbolReference",
+        symbol: {
+          type: "CIMPolygonSymbol",
+          symbolLayers: [
+            // 1. THE TOP OUTLINE (Dashed Black)
+            {
+              type: "CIMSolidStroke",
+              enable: true,
+              capStyle: "Butt",
+              joinStyle: "Round",
+              width: 2,
+              color: [223, 115, 255, 255], // Black
+               effects: [
+    {
+      type: "CIMGeometricEffectDashes",
+      dashTemplate: [7, 6], // Dashing logic goes here
+      lineDashAlgorithm: "EsriDefault",
+    }
+	]
+            },
+            // 2. THE BOTTOM OUTLINE (Solid White/Casing)
+            {
+              type: "CIMSolidStroke",
+              enable: true,
+              capStyle: "Butt",
+              joinStyle: "Round",
+              width: 5, // Wider than the top stroke to create the double effect
+              color: [52, 52, 52, 255], // White
+			  effects: [
+    {
+      type: "CIMGeometricEffectDashes",
+      dashTemplate: [7, 6], // Dashing logic goes here
+      lineDashAlgorithm: "EsriDefault",
+    }
+	]
+            },
+            // 3. THE FILL (Transparent)
+            {
+              type: "CIMSolidFill",
+              enable: true,
+              color: [0, 0, 0, 0] // Fully transparent
+            }
+          ]
+        }
+      }
+    }
+  }
+});
+
+
+
+const abcLayer = new FeatureLayer({
+  source: [], // Start empty
+  title: "Alcohol Consumption",
+  listMode: "hide",
+  fields: [
+    { name: "ObjectID", alias: "ObjectID", type: "oid" },
+    { name: "Name", alias: "Name", type: "string" },
+    { name: "Type", alias: "Type (Onsite,Offsite)", type: "string" }
+  ],
+  objectIdField: "ObjectID",
+  geometryType: "point",
+  spatialReference: { wkid: 102100 },
+  renderer: {
+    type: "unique-value",
+    field: "Type",
+	defaultLabel: "unspecified",
+    // 1. ADD THIS: Helps the editor pick a symbol if matching fails
+    defaultSymbol: {
+      type: "simple-marker",
+      path: "M 10 0 L 0 20 L 20 20 Z",
+      color: "gray",
+      size: 11
+    },
+    uniqueValueInfos: [
+      {
+        value: "Onsite",
+        label: "Onsite",
+        symbol: {
+          type: "simple-marker",
+          path: "M 10 0 L 0 20 L 20 20 Z", // SVG triangle path
+          color: "black",
+          size: 11
+        }
+      },
+      {
+        value: "Offsite",
+        label: "Offsite",
+        symbol: {
+          type: "simple-marker",
+          path: "M 10 0 L 0 20 L 20 20 Z",
+          color: "white",
+          outline: { color: "black", width: 1 },
+          size: 11
+        }
+      }
+    ]
+  },
+  featureTemplates: [
+    {
+      name: "Onsite",
+      description: "Create Onsite Alcohol",
+      prototype: {
+        attributes: { Type: "Onsite" }
+      }
+    },
+    {
+      name: "Offsite",
+      description: "Create Offsite Alcohol",
+      prototype: {
+        attributes: { Type: "Offsite" }
+      }
+    }
+  ],
+  editingEnabled: true
+});
+  
+  //const uniqueValueRenderer = ;
+
+  const intersectingLayer = new FeatureLayer({
+    source: [], // Start with an empty source
+	title: "Land Use Type",
+	listMode: "hide", // Initially hide the layer from the LayerList
+    objectIdField: "ObjectID", // Required field for client-side layers
+    geometryType: "polygon", // Or whatever your parcelLayer uses
+    spatialReference: { wkid: 102100 }, // Ensure consistent spatial reference
+    fields: [
+        // Include ALL fields present in the parcelLayer features you are adding
+        {
+            name: "ObjectID",
+            alias: "ObjectID",
+            type: "oid"
+        },
+        {
+            name: "AIN", // Use actual field names from parcelLayer
+            alias: "Parcel",
+            type: "string"
+        },
+		{
+            name: "UseDescription", // Use actual field names from parcelLayer
+            alias: "Use Description",
+            type: "string"
+        },
+		{
+            name: "Units1", // Use actual field names from parcelLayer
+            alias: "Units",
+            type: "integer"
+        },
+		{
+            name: "Place_Name", // Use actual field names from parcelLayer
+            alias: "Place Name (Optional)",
+            type: "string"
+        },
+        // Add more fields as necessary
+    ],
+	// 1. Define the labeling configuration
+   labelingInfo: [
+    // --- Label Class 1: Place Name (Existing) ---
+    {
+      labelExpressionInfo: {
+        // Updated to use Arcade concatenation to ensure it works properly
+        expression: '$feature.Place_Name'
+      },
+      symbol: {
+        type: "text",
+        color: "black",
+        haloSize: 1,
+        haloColor: "white",
+        font: { size: 10, weight: "bold" }
+      },
+      labelPlacement: "always-horizontal"
+    },
+    // --- Label Class 2: Units1 (New Additional Label) ---
+    {
+      labelExpressionInfo: {
+  expression: `
+    var use = $feature.UseDescription;
+    
+    // Check for Two Units specifically
+    if (use == 'Two Units') {
+      return "2";
+    }                
+    // NEW: Check for Three Units
+    else if (use == 'Three Units (Any Combination)') {
+      return "3";
+    }
+	else if (use == 'Four Units (Any Combination)') {
+      return "4";
+    }
+    // Existing logic for other values
+    var allowedValues = ['Five or more apartments'];
+    if (Includes(allowedValues, use)) {
+      return Text($feature.Units1);
+    }
+    
+    return "";
+  `
+},
+      symbol: {
+  type: "text",
+  color: "white", // Text color
+  haloColor: "black",
+  haloSize: "1px",
+  //backgroundColor: "white", // Circle background
+  borderLineColor: "black",
+  verticalAlignment: "middle",
+  horizontalAlignment: "center",
+  font: {
+    size: 8.5,
+    family: "sans-serif",
+	weight: "bold"
+  }
+},
+      // Place it below the primary label
+      labelPlacement: "always-horizontal"
+      // yoffset moves it down so it doesn't overlap the place name
+      //yoffset: -12 
+    }
+  ],
+    renderer: {
+    type: "unique-value", // Specifies the unique value renderer
+    field: "UseDescription", // The field used to determine the color
+	 defaultLabel: "Vacant",
+	valueExpression: 
+  `var state = $feature.UseDescription;
+  var group0 = ['Cemeteries, Mausoleums, Mortuaries'];
+  var group1 = ["Commercial", "Animal Kennels", "Auto, Recreation EQPT, Construction EQPT, Sales & Service", "Banks Savings & Loan", "Department Stores", "Hotel & Motels", "Nurseries or Greenhouses", "Office Buildings", "Parking Lots (Commercial Use Properties)", "Professional Buildings", "Restaurants, Cocktail Lounges", "Service Stations", "Shopping Centers (Neighborhood, community)", "Shopping Centers (Regional)", "Srvc Shps:Radio, TV, Refrig, Pnt Shp", "Store Combination", "Stores", "Supermarkets", "Wholesale & Manufacturing Outlets"];
+  var group2 = ['Government Parcel'];
+  var group3 = ["Industrial", "Food Processing Plants", "Heavy Manufacturing", "Lgt Manf.Sm. EQPT. Manuf Sm.Shps Instr.Manuf. Prnt Plnts", "Lumber Yards", "Mineral Processing", "Motion Picture, Radio & Television", "Open Storage", "Parking Lots (Industrial Use Properties)", "Warehousing, Distribution, Storage"];
+  var group4 = ["Institutional", "Churches", "Colleges, Universities (Private)", "Homes For Aged & Others", "Hospitals", "Open", "Schools (Private)"];
+  var group5 = ["Dairies", "Desert", "Feed Lots", "Field Crops", "Fruit & Nuts", "Irrigated Farm", "Pasture", "Poultry", "Timber-Pine", "Truck Crops", "Vineyards", "Waste"];
+  var group6 = ["Miscellaneous", "Petroleum & Gas", "Pipelines, Canals", "Rights of Way", "Rivers & Lakes", "Utility Commercial & Mutual: Pumping Plants State Assessed Pr", "Water Rights"];
+  var group7 = ["Athletic & Amusement Facilities", "Bowling Alleys", "Camps", "Clubs., Lodge Halls, Fraternal Organizations", "Golf Courses", "Race Tracks", "Recreational", "Skating Rinks", "Theaters", "Water Recreation"];
+  var group8 = ["Five or more apartments", "Four Units (Any Combination)", "Rooming Houses", "Three Units (Any Combination)"];
+  var group9 = ["Mobile Home Parks", "Mobile Homes"];
+  var group10 = ["Single"];
+  var group11 = ["Two Units"];
+
+  When(
+    Includes(group0, state), 0,
+    Includes(group1, state), 1,
+    Includes(group2, state), 2,
+	Includes(group3, state), 3,
+	Includes(group4, state), 4,
+	Includes(group5, state), 5,
+    Includes(group6, state), 6,
+	Includes(group7, state), 7,
+	Includes(group8, state), 8,
+	Includes(group9, state), 9,
+	Includes(group10, state), 10,
+	Includes(group11, state), 11,
+	12 // Default value
+  )`,
+    defaultSymbol: { // Fallback for values not defined below
+        type: "simple-fill",
+        color: [230, 230, 230, 0.5], // Light gray for unknown values
+        outline: { color: "#CCCCCC", width: .4 }
+    },
+    uniqueValueInfos: [
+        {
+            // The `value` property can accept an array of values to use the same symbol
+            value: 0,
+            label: "Cemeteries", // Label for the legend
+            symbol: {
+                type: "simple-fill",
+                color: [205, 245, 122, 0.8], // Use CSS colors, HEX, or RGBA
+                outline: { color: "#CCCCCC", width: .4 }
+            }
+        },
+        {
+            value: 1,
+            label: "Commercial",
+            symbol: {
+                type: "simple-fill",
+                color: [255, 0, 0, 0.8], // Semi-transparent orange
+                outline: { color: "#CCCCCC", width: .4 }
+            }
+        },
+		{
+            value: 2,
+            label: "Government",
+            symbol: {
+                type: "simple-fill",
+                color: [255, 190, 190, 0.8], // Semi-transparent orange
+                outline: { color: "#CCCCCC", width: .4 }
+            }
+        },
+		{
+            value: 3,
+            label: "Industrial",
+            symbol: {
+                type: "simple-fill",
+                color: [215, 194, 158, 0.8], // Semi-transparent orange
+                outline: { color: "#CCCCCC", width: .4 }
+            }
+        },
+		{
+            value: 4,
+            label: "Institutional",
+            symbol: {
+                type: "simple-fill",
+                color: [168, 112, 0, 0.8], // Semi-transparent orange
+                outline: { color: "#CCCCCC", width: .4 }
+            }
+        },
+		{
+            value: 5,
+            label: "Irrigated Farms",
+            symbol: {
+                type: "simple-fill",
+                color: [168, 168, 0, 0.8], // Semi-transparent orange
+                outline: { color: "#CCCCCC", width: .4 }
+            }
+        },
+		{
+            value: 6,
+            label: "Miscellaneous",
+            symbol: {
+                type: "simple-fill",
+                color: [232, 190, 255, 0.8], // Semi-transparent orange
+                outline: { color: "#CCCCCC", width: .4 }
+            }
+        },
+		{
+            value: 7,
+            label: "Recreational",
+            symbol: {
+                type: "simple-fill",
+                color: [152, 230, 0, 0.8], // Semi-transparent orange
+                outline: { color: "#CCCCCC", width: .4 }
+            }
+        },
+		{
+            value: 8,
+            label: "Residential - Multi-Unit*",
+            symbol: {
+                type: "simple-fill",
+                color: [205, 137, 102, 0.8], // Semi-transparent orange
+                outline: { color: "#CCCCCC", width: .4 }
+            }
+        },
+		{
+            value: 9,
+            label: "Residential - Mobile Home Parks",
+            symbol: {
+                type: "simple-fill",
+                color: [181, 195, 254, 0.8], // Semi-transparent orange
+                outline: { color: "#CCCCCC", width: .4 }
+            }
+        },
+		{
+            value: 10,
+            label: "Residential - Single Unit*",
+            symbol: {
+                type: "simple-fill",
+                color: [255, 255, 115, 0.8], // Semi-transparent orange
+                outline: { color: "#CCCCCC", width: .4 }
+            }
+        },
+		{
+            value: 11,
+            label: "Residential - Two Units*",
+            symbol: {
+                type: "simple-fill",
+                color: [255, 140, 0, 0.8], // Semi-transparent orange
+                outline: { color: "#CCCCCC", width: .4 }
+            }
+        }
+    ]
+	},
+	 popupTemplate: { // Optional: add a popup template
+        title: "{UseDescription}",
+        content: "This is a newly created feature."
+    }
+});
+
+const newFeatureLayer = new FeatureLayer({
+    source: [], // The source is an array of graphics
+	title: "Parcel of Interest",
+	listMode: "hide", // Initially hide the layer from the LayerList
+    fields: [{name: "ObjectID",alias: "ObjectID",type: "oid"},{name: "AIN", alias: "Name",type: "integer"}],
+    objectIdField: "ObjectID", // Specify the objectID field name
+    geometryType: "polygon", // e.g., "point", "polygon"
+	spatialReference: { wkid: 102100 }, // set the appropriate WKID for your map/data
+    renderer: { // Optional: add a simple renderer to style the new layer
+      type: "simple",
+      symbol: {
+            type: "simple-fill",
+            color: [0, 0, 0, 0], // Semi-transparent red fill
+            outline: {
+                color: [0, 0, 0, 1],
+                width: 2.75
+            }
+        }
+    },
+    popupTemplate: { // Optional: add a popup template
+        title: "{AIN}",
+        content: "This is the newly created feature."
+    }
+  });
+
+
+  const bufferAction = {
+    id: "create-buffer",
+    title: "Create 500 ft Buffer",
+    className: "esri-icon-buffer my-custom-style-action"
+  };
+  
+  const bufferAction_2 = {
+    id: "create-buffer-2",
+    title: "Create 600 ft Buffer",
+    className: "esri-icon-buffer my-custom-style-action_2"
+  };
+
+  var boundaryLayer = new FeatureLayer({
+        url: "https://dpw.gis.lacounty.gov/dpw/rest/services/PW_Open_Data/MapServer/13", // Replace with your boundary layer URL
+		title: "County Boundary",
+        opacity: 0.7, // Adjust transparency as needed
+        outFields: ["OBJECTID"], // Include all fields for popups/queries
+		renderer: { // Optional: add a simple renderer to style the new layer
+		type: "simple",
+		symbol: {
+            type: "simple-fill",
+            color: [0, 0, 0, 0], // Semi-transparent red fill
+            outline: {
+                color: [0, 0, 0, 1],
+                width: 1.75
+				}
+			}
+		},
+		effect: "drop-shadow(1px 1px 2px black)"
+    });
+	
+  const city_communityLayer = new FeatureLayer({
+    url: "https://services.arcgis.com/RmCCgQtiZLDCtblq/arcgis/rest/services/admin_dist_SDE_DIST_DRP_CITY_COMM_BDY/FeatureServer", // Example URL, replace with your actual URL
+    outFields: ["OBJECTID"],
+	title: "City/Community Boundary"
+  });
+
+  const parcelLayer = new FeatureLayer({
+    url: "https://public.gis.lacounty.gov/public/rest/services/LACounty_Cache/LACounty_Parcel/MapServer/0", // Example URL, replace with your actual URL
+    outFields: ["AIN", "UseDescription"],
+	title: "Parcels Layer",
+    popupTemplate: {
+      title: "Parcel: {AIN}", // Adjust field name to match example data
+      content: "Click an action above to buffer and show surrounding land uses",
+      actions: [bufferAction, bufferAction_2]
+    },
+	minScale: 6000
+  });
+  
+  const wmtsLayer = new WMTSLayer({
+    url: "https://svc.pictometry.com/Image/BCC27E3E-766E-CE0B-7D11-AA4760AC43ED/wmts", // Example: "https://svc.pictometry.com/Image/**********/wmts"
+    // Optional: specify which layer in the service to use if not using the default
+	visible: false,
+    activeLayer: {
+       id: "PICT-LARIAC7--eXbT2Tih9t" 
+    }
+  });
+  
+  const customBasemap = new Basemap({
+    baseLayers: [wmtsLayer],
+    title: "My Custom WMTS Basemap",
+    id: "my-wmts-basemap"
+});
+   const targetExtent = new Extent({
+      xmin: -13241449.62, // West of Malibu
+	  ymin: 3982042.87,  // South of Palos Verdes
+	  xmax: -13096734.50, // East of Pomona
+	  ymax: 4143846.80,  // North of Santa Clarita
+      spatialReference: { wkid: 102100 }
+    });
+	   // 2. Create a custom viewpoint using the extent
+  const customViewpoint = new Viewpoint({
+    targetGeometry: targetExtent
+  });
+
+  const map = new Map({
+    basemap: "streets-navigation-vector",
+    layers: [wmtsLayer, boundaryLayer, city_communityLayer, parcelLayer, intersectingLayer, bufferFeatureLayer, bufferFeatureLayer2, newFeatureLayer, abcLayer] // Add the FeatureLayer to the map
+  });
+
+  const view = new MapView({
+    container: "viewDiv",
+    map: map,
+	popup: {
+    // Configuration for the docking behavior
+    dockOptions: {
+      position: "bottom-right",
+      // Disables the responsive breakpoint, so it always docks
+      breakpoint: false
+    }
+  },
+  viewpoint: customViewpoint
+  });
+  
+  
+  
+   // Create the Search widget
+  const searchWidget = new Search({
+    view: view,
+	popupEnabled: false,
+	allPlaceholder: "Search address or parcel",
+	sources: [
+      {
+        layer: parcelLayer, 
+        searchFields: ["AIN"], 
+        displayField: "AIN", 
+        exactMatch: false,
+        outFields: ["AIN"],
+        name: "Parcel", // Label for the source in the UI
+        placeholder: "Search by parcel",
+        maxResults: 2,
+        maxSuggestions: 5,
+        enableSuggestions: true,
+        minSuggestCharacters: 1,
+		searchExtent: {
+      xmin: -118.95, // West of Malibu
+	  ymin: 33.65,  // South of Palos Verdes
+	  xmax: -117.65, // East of Pomona
+	  ymax: 34.85,  // North of Santa Clarita
+      spatialReference: { wkid: 4326 }
+    },
+	filter: { geometry: targetExtent }
+      },
+      // You can add other sources like the default ArcGIS World Geocoding Service here
+      // but you need to explicitly define it if you set the 'sources' property
+    ]
+  });
+
+ 
+
+
+  var homeWidget = new Home({
+    view: view,
+	 viewpoint: customViewpoint
+  });
+
+  
+  view.ui.add(homeWidget, "top-left");
+  
+  const measurementWidget = new DistanceMeasurement2D({
+  view: view,
+  unit: "imperial"
+});
+ 
+  const expand = new Expand({
+    expandTooltip: "Measure distance", // Optional tooltip for the expand button
+    content: measurementWidget,
+    view: view 
+  });
+
+  
+  view.ui.add(expand, "top-left");
+  
+  
+expand.watch("expanded", (isExpanded) => {
+  if (!isExpanded) {
+    // 1. Clear measurements
+  measurementWidget.viewModel.clear();
+
+  // 2. Deactivate active tool/reset cursor
+  measurementWidget.activeTool = null;
+  view.focus();
+  }
+
+});
+
+const print = new Print({
+    view: view,
+    // Use the default ArcGIS Online print service, or your own custom service URL
+    printServiceUrl: "https://utility.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
+});
+
+const printExpand = new Expand({
+  view: view,
+  content: print,
+  expandIcon: "print", // Optional: Custom icon
+  group: "top-left", // Optional: Group with other expands
+  expanded: false // Set true to start open
+});
+
+// 3. Add the Expand widget to the UI
+view.ui.add(printExpand, "top-left");
+
+ // 3. Create the BasemapGallery widget
+var wrapperDiv = document.createElement("div");
+wrapperDiv.style.marginTop = "1px";
+
+// 2. Create the title div and apply styling
+var titleDiv = document.createElement("div");
+titleDiv.innerHTML = "Basemap Gallery"; // Set the title text
+titleDiv.style.padding = "10px"; // Add some padding
+titleDiv.style.backgroundColor = "#ffffff"; // Set the white background
+titleDiv.style.fontWeight = "bold"; // Optional: make the text bold
+titleDiv.style.borderBottom = "1px solid #ccc"; // Optional: Add a subtle border
+titleDiv.style.display = "none";
+
+// 3. Create a div for the BasemapGallery widget itself
+var widgetContainerDiv = document.createElement("div");
+widgetContainerDiv.style.maxHeight = "400px"; // Set a specific height limit
+widgetContainerDiv.style.overflowY = "auto";
+
+// 4. Append both divs to the wrapper
+wrapperDiv.appendChild(titleDiv);
+wrapperDiv.appendChild(widgetContainerDiv);
+
+// 5. Initialize the BasemapGallery, assigning its container to the *inner* div
+var basemapGallery = new BasemapGallery({
+    view: view,
+    container: widgetContainerDiv, // Use the inner div as the widget's container
+    visible: false // Your original visible property
+});
+
+// 6. Add the *wrapper* div to the top-right corner of the view
+view.ui.add(wrapperDiv, "top-right");
+  
+  const basemapToggle = new BasemapToggle({
+  view: view,  // The view that provides access to the map's "streets-vector" basemap
+  nextBasemap: "hybrid"  // Allows for toggling to the "hybrid" basemap
+	});
+	
+	view.ui.add(basemapToggle, "bottom-left");
+	
+	var bookmarksDiv = document.createElement("div");
+	bookmarksDiv.style.marginTop = "-10px";
+
+// 2. Create the title div and apply styling
+var bookmarksTitle = document.createElement("div");
+bookmarksTitle.innerHTML = "Bookmarks"; // Set the title text
+bookmarksTitle.style.padding = "10px"; // Add some padding
+bookmarksTitle.style.backgroundColor = "#ffffff"; // Set the white background
+bookmarksTitle.style.fontWeight = "bold"; // Optional: make the text bold
+bookmarksTitle.style.borderBottom = "1px solid #ccc"; // Optional: Add a subtle border
+bookmarksTitle.style.display = "none";
+
+
+// 3. Create a div for the BasemapGallery widget itself
+var bookmarksContainerDiv = document.createElement("div");
+bookmarksContainerDiv.style.maxHeight = "400px"; // Set a specific height limit
+bookmarksContainerDiv.style.overflowY = "auto";
+
+// 4. Append both divs to the wrapper
+bookmarksDiv.appendChild(bookmarksTitle);
+bookmarksDiv.appendChild(bookmarksContainerDiv);
+	
+	// 1. Declare widget variable globally
+let bookmarksWidget;
+let bookmarksCollection = []; // Empty initial collection
+
+// 2. Initialize widget immediately (with empty data)
+bookmarksWidget = new Bookmarks({
+  view: view,
+  container:bookmarksContainerDiv,
+  bookmarks: bookmarksCollection,
+  visible: false
+});
+view.ui.add(bookmarksDiv, "top-right");
+
+// 3. Fetch data and update the widget's data source
+fetch('./bookmarks.json')
+  .then(response => response.json())
+  .then(bookmarkData => {
+    // Map JSON to ArcGIS Bookmark class instances
+    const loadedBookmarks = bookmarkData.map(bookmarkJson => {
+      return new Bookmark(bookmarkJson);
+    });
+
+    // Update the existing widget's collection
+    bookmarksWidget.bookmarks.addMany(loadedBookmarks);
+  })
+  .catch(error => {
+    console.error("Error loading bookmarks:", error);
+  });
+	
+const formTemplate = {
+  elements: [
+    {
+      type: "field",
+      fieldName: "AIN",
+      label: "Parcel",
+      editable: false // **This disables editing for the field**
+    },
+    // Add other fields as necessary
+	{
+      type: "field",
+      fieldName: "UseDescription",
+      label: "Use Description",
+      editable: true // **This disables editing for the field**
+    },
+	{
+      type: "field",
+      fieldName: "Place_Name",
+      label: "Place Name (Optional)",
+      editable: true // **This disables editing for the field**
+    }
+  ]
+};
+
+// 2. Assign the form template to your layer
+intersectingLayer.formTemplate = formTemplate;
+	
+	// 3. Initialize the Editor widget
+    const editor = new Editor({
+        view: view,
+        visible: false, // Set to hidden by default
+        layerInfos: [{ // Specify layers available in the editor
+            layer: intersectingLayer,
+			addEnabled: false, // Disables the ability to add new features
+			updateEnabled: true, // Allows updating existing features
+			deleteEnabled: false, // Allows deleting existing features
+			geometryUpdatesEnabled: false
+			},
+		   { layer: bufferFeatureLayer,
+			enabled: false // Disables the ability to add new features
+			},
+			{ layer: bufferFeatureLayer2,
+			enabled: false // Disables the ability to add new features
+			},
+			{ layer: newFeatureLayer,
+			enabled: false // Disables the ability to add new features
+			},
+			{ layer: abcLayer,
+			enabled: false // Disables the ability to add new features
+			}
+		]
+    });
+    view.ui.add(editor, "top-right");
+
+var layersDiv = document.createElement("div");
+layersDiv.style.marginTop = "-10px";
+
+// 2. Create the title div and apply styling
+var layersTitle = document.createElement("div");
+layersTitle.innerHTML = "Layers"; // Set the title text
+layersTitle.style.padding = "10px"; // Add some padding
+layersTitle.style.backgroundColor = "#ffffff"; // Set the white background
+layersTitle.style.fontWeight = "bold"; // Optional: make the text bold
+layersTitle.style.borderBottom = "1px solid #ccc"; // Optional: Add a subtle border
+layersTitle.style.display = "none";
+
+
+// 3. Create a div for the BasemapGallery widget itself
+var layersContainerDiv = document.createElement("div");
+layersContainerDiv.style.maxHeight = "400px"; // Set a specific height limit
+layersContainerDiv.style.overflowY = "auto";
+
+// 4. Append both divs to the wrapper
+layersDiv.appendChild(layersTitle);
+layersDiv.appendChild(layersContainerDiv);	
+	
+const layerList = new LayerList({
+  view: view,
+  container: layersContainerDiv,
+  visibilityAppearance: "checkbox",
+  listItemCreatedFunction: async function(event) { // Add async here
+    const item = event.item;
+    const layer = item.layer;
+
+    // Filter by name and ensure it's a feature layer
+    if (layer.type === "feature" && layer.title === "Land Use Type") {
+      
+      const updateCount = async () => {
+        try {
+          // It's often safer to wait for the layer to load before querying
+          await layer.when(); 
+          const count = await layer.queryFeatureCount();
+          item.title = `${layer.title} (${count})`;
+        } catch (error) {
+          console.error("Count query failed", error);
+        }
+      };
+
+      // Initial count update
+      updateCount();
+
+      // Refresh count on edits
+      layer.on("edits", () => {
+        updateCount();
+      });
+    }
+
+    // Default behavior for all layers (including the target one)
+    item.panel = {
+      content: "legend",
+      open: true
+    };
+  },
+  visible: false
+});
+
+	view.ui.add(layersDiv, "top-right"); 
+	
+	// 1. Create the custom HTML element (the panel)
+  const customPanel = document.createElement("div");
+  customPanel.className = "custom-panel"; 
+  customPanel.innerHTML = "<h4 style='border-bottom:1px solid #ccc;margin-block-start:.3em;padding-bottom:.5em;'>Information</h4><p>Use this app to create 500-ft and 600-ft existing land use radius maps</p>";
+
+  
+  customPanel.style.backgroundColor = "white";
+  customPanel.style.padding = "10px";
+  customPanel.style.boxShadow = "0 1px 2px rgba(0, 0, 0, 0.3)";
+  customPanel.style.width = "200px"; 
+  customPanel.style.marginTop = "-10px";
+  //customPanel.style.display = "none";
+  view.ui.add(customPanel, "top-right");
+
+
+    
+    const toggleEditorBtn = document.getElementById("toggleEditorBtn");
+    toggleEditorBtn.addEventListener("click", function() {
+        editor.visible = !editor.visible;
+        // Optional: Ensure the other widget is hidden when this one opens
+		layerList.visible = false;
+		basemapGallery.visible = false;
+		titleDiv.style.display = "none";
+		bookmarksWidget.visible = false;
+		bookmarksTitle.style.display = "none";
+		customPanel.style.display = "none";
+		layersTitle.style.display = "none";
+        //toggleEditorBtn.textContent = editor.visible ? "Hide Editor" : "Show Editor";
+		//document.getElementById("toggleLegendBtn").textContent = "Show Legend";
+    });
+	
+	const toggleLegendBtn = document.getElementById("toggleLegendBtn");
+    toggleLegendBtn.addEventListener("click", function() {
+        layerList.visible = !layerList.visible;
+		layersTitle.style.display = layerList.visible ? "block" : "none";
+        // Optional: Ensure the other widget is hidden when this one opens
+        editor.visible = false;
+		basemapGallery.visible = false;
+		titleDiv.style.display = "none";
+		bookmarksWidget.visible = false;
+		bookmarksTitle.style.display = "none";
+		customPanel.style.display = "none";
+        //toggleLegendBtn.textContent = layerList.visible ? "Hide Legend" : "Show Legend";
+        //document.getElementById("toggleEditorBtn").textContent = "Show Editor";
+    });
+	
+	const basemapGalleryBtn = document.getElementById("basemapGalleryBtn");
+    basemapGalleryBtn.addEventListener("click", function() {
+        basemapGallery.visible = !basemapGallery.visible;
+		titleDiv.style.display = basemapGallery.visible ? "block" : "none";
+        // Optional: Ensure the other widget is hidden when this one opens
+        editor.visible = false;
+		bookmarksWidget.visible = false;
+		bookmarksTitle.style.display = "none";
+		layerList.visible = false;
+		layersTitle.style.display = "none";
+		customPanel.style.display = "none";
+        //toggleLegendBtn.textContent = layerList.visible ? "Hide Legend" : "Show Legend";
+        //document.getElementById("toggleEditorBtn").textContent = "Show Editor";
+    });
+	
+	const bookmarksBtn = document.getElementById("bookmarksBtn");
+    bookmarksBtn.addEventListener("click", function() {
+        bookmarksWidget.visible = !bookmarksWidget.visible;
+		bookmarksTitle.style.display = bookmarksWidget.visible ? "block" : "none";
+        // Optional: Ensure the other widget is hidden when this one opens
+        editor.visible = false;
+		basemapGallery.visible = false;
+		layerList.visible = false;
+		layersTitle.style.display = "none";
+		titleDiv.style.display = "none";
+		customPanel.style.display = "none";
+        //toggleLegendBtn.textContent = layerList.visible ? "Hide Legend" : "Show Legend";
+        //document.getElementById("toggleEditorBtn").textContent = "Show Editor";
+    });
+	
+	const customPanelBtn = document.getElementById("customPanelBtn");
+    customPanelBtn.addEventListener("click", function() {
+const isHidden = customPanel.style.display === "none" || customPanel.style.display === "";
+    customPanel.style.display = isHidden ? "block" : "none";
+        // Optional: Ensure the other widget is hidden when this one opens
+		basemapGallery.visible = false;
+		bookmarksWidget.visible = false;
+		bookmarksTitle.style.display = "none";
+		editor.visible = false; 
+		layerList.visible = false;
+		layersTitle.style.display = "none";
+        //customPanelBtn.textContent = customPanel.visible ? "Hide Panel" : "Show Panel";
+    });
+	
+	let highlightHandle = null;
+let selectedFeatureIds = [];
+let parcelLayerView = null; // Store the LayerView here
+
+// 1. Get the LayerView when it's ready
+view.whenLayerView(parcelLayer).then((layerView) => {
+    parcelLayerView = layerView;
+});
+
+
+let isInternalClick = false; // Flag to track source of closure
+
+ // Add the search widget to the top-right corner of the UI
+  view.ui.add(searchWidget, {
+    position: "top-left",
+    index: 0 // Optional: places it at index 0 in that position
+  });
+  
+ // Function to handle the clearing logic
+function clearSelectionAndHighlight() {
+  // Clear the highlight if it exists
+  if (highlightHandle) {
+    highlightHandle.remove();
+    highlightHandle = null;
+  }
+  // Clear the feature selection
+  parcelLayerView.selectedFeatureIds = [];
+  console.log("Highlights and selection cleared.");
+} 
+// To this (using a small delay to check if a new selection happens):
+let closeTimeout;
+reactiveUtils.watch( () => view.popup.visible, (visible) => {
+  if (!visible) {
+    closeTimeout = setTimeout(() => {
+      if (!isInternalClick) {
+        clearSelectionAndHighlight();
+        selectedFeatureIds = [];
+      }
+    }, 50); // Delay ensures click handler runs first
+  } else {
+    clearTimeout(closeTimeout);
+  }
+}); 
+
+// 1. Define a function that handles your click logic
+async function openPopupForFeature(geocodedLocation) {
+
+const isPoint = geocodedLocation.type === "point";
+// Use positive buffer for points to find the parcel "containing" it
+// Use negative buffer for polygons to ensure you select the "same" parcel
+const bufferDistance = isPoint ? 1 : -7; 
+const spatialRel = isPoint ? "intersects" : "within";
+
+const negativeBuffer = geometryEngine.buffer(geocodedLocation, bufferDistance, "meters");
+
+const query = {
+    returnGeometry: true,
+    outFields: ["OBJECTID", "AIN"], // Consider limiting fields if possible for performance
+    spatialRelationship: spatialRel,
+    geometry: negativeBuffer,
+	num: 1
+  };
+
+  try {
+    const results = await parcelLayer.queryFeatures(query);
+
+    if (results.features.length > 0) {
+      const foundFeature = results.features[0];
+
+      // 1. Set internal flag to manage interaction logic
+      isInternalClick = true;
+
+      // 2. Clear previous and highlight found feature
+      clearSelectionAndHighlight(); // Assuming this is defined elsewhere
+      selectedFeatureIds = [foundFeature.attributes[parcelLayer.objectIdField]]; // Assuming this is defined elsewhere
+      if (parcelLayerView) {
+        highlightHandle = parcelLayerView.highlight(foundFeature);
+      }
+
+      // 3. Navigate and Open Popup
+      await view.goTo(foundFeature.geometry);
+      view.openPopup({
+        features: [foundFeature],
+        location: foundFeature.geometry.centroid || foundFeature.geometry.extent.center,
+        // The popup template should ideally be set on the layer itself for simplicity
+      });
+
+      // Reset internal click flag after a short delay
+      setTimeout(() => {
+        isInternalClick = false;
+      }, 100);
+    } else {
+      console.log("No feature found at geocoded location.");
+      clearSelectionAndHighlight();
+    }
+  } catch (error) {
+    console.error("Error during feature query: ", error);
+    isInternalClick = false;
+  }
+}
+
+// 2. Attach the function to the view's click event (optional/commented out as in original)
+//view.on("click", clickHandler);
+
+// 3. Call the function in the search-complete event
+searchWidget.on('search-complete', function(event) {
+    const geocodedLocation = event.results[0].results[0].feature.geometry;
+    
+    // Call the shared click handler function with the map point
+    openPopupForFeature(geocodedLocation);
+	
+	setTimeout(function() {
+        // Calling clear() removes the result graphic and clears the search box
+        searchWidget.clear(); 
+    }, 1000);
+});
+
+
+
+view.on("click", async (event) => {
+
+	/*// 1. CHECK: Skip if Measurement Expand is open AND a tool is active
+  if (measurementExpand.expanded && measurementWidget.activeTool) {
+    return; 
+  }*/
+  
+  if (!parcelLayerView) return;
+  
+  // IMMEDIATELY set this before async operations
+  isInternalClick = true; 
+
+  const response = await view.hitTest(event);
+  const graphic = response.results.find((res) => res.graphic.layer === parcelLayer)?.graphic;
+
+  if (!graphic) {
+    clearSelectionAndHighlight(); // Clicked empty space
+    isInternalClick = false;
+    return;
+  }
+
+  const featureId = graphic.attributes[parcelLayer.objectIdField];
+  const isSelected = selectedFeatureIds.includes(featureId);
+
+  // Update logic (ensure selectedFeatureIds is maintained in higher scope)
+  if (event.native.shiftKey) {
+    if (!isSelected) selectedFeatureIds.push(featureId);
+  } else if (event.native.ctrlKey) {
+    if (isSelected) selectedFeatureIds = selectedFeatureIds.filter((id) => id !== featureId);
+  } else {
+    selectedFeatureIds = [featureId]; // New selection
+  }
+
+  // Highlight
+  if (highlightHandle) highlightHandle.remove();
+  highlightHandle = parcelLayerView.highlight(selectedFeatureIds);
+
+  // Popup Management
+  view.popup.open({ features: [graphic], location: event.mapPoint });
+
+  // Reset flag
+  setTimeout(() => { isInternalClick = false; }, 150);
+});
+
+
+	
+
+  
+  
+
+ reactiveUtils.on(() => view.popup, "trigger-action", (event) => {
+  if (event.action.id === "create-buffer") {
+    // --- 1. Clear previous edits before running the action again ---
+    
+   
+    const layersToClear = [newFeatureLayer, bufferFeatureLayer, bufferFeatureLayer2, intersectingLayer, abcLayer];
+    const deletePromises = layersToClear.map(layer => {
+      // Create a query to select all features in the layer for deletion
+      const query = layer.createQuery();
+      query.where = "1=1"; // Selects all features
+      return layer.queryFeatures(query).then(results => {
+        const featuresToDelete = results.features;
+        if (featuresToDelete.length > 0) {
+          //console.log(`Clearing ${featuresToDelete.length} features from ${layer.title}...`);
+          // Use applyEdits to delete the found features
+           return layer.applyEdits({ deleteFeatures: featuresToDelete })
+        .then(() => {
+          // 2. Disable layer in Editor AFTER deletion is successful
+          if (editor && editor.layerInfos) {
+            const layerInfo = editor.layerInfos.find(info => info.layer === abcLayer);
+            if (layerInfo) {
+              layerInfo.enabled = false;
+              layerInfo.addEnabled = false;
+              layerInfo.updateEnabled = false;
+              layerInfo.deleteEnabled = false;
+              // 3. Trigger reactivity to update widget configuration
+              editor.layerInfos = [...editor.layerInfos];
+              console.log(`Editing disabled for ${layer.title}`);
+            }
+          }
+        }).catch(error => console.error(`Error clearing ${layer.title}:`, error));
+        }
+      });
+    });
+
+    // Wait for all previous edits to be undone/cleared before proceeding with new logic
+    Promise.all(deletePromises).then(() => {
+      console.log("Previous edits cleared. Starting new action logic...");
+
+      //const query = parcelLayer.createQuery();
+	  const query = new Query();
+query.objectIds = selectedFeatureIds;
+query.returnGeometry = true;
+
+parcelLayer.queryFeatures(query).then((featureSet) => {
+  if (featureSet.features.length > 0) {
+    // 2. Union (merge) all selected geometries
+    const geometries = featureSet.features.map(f => f.geometry);
+    const mergedGeometry = geometryEngine.union(geometries);
+
+    // 3. Create a new graphic for the merged geometry
+    const mergedGraphic = new Graphic({
+      geometry: mergedGeometry
+    });
+newFeatureLayer.applyEdits({
+          addFeatures: [mergedGraphic]
+        });
+		newFeatureLayer.listMode = "show";
+		
+		const bufferDistance = 500;
+        const bufferGeometry = geometryEngine.geodesicBuffer(mergedGraphic.geometry, bufferDistance, "feet");
+    
+	const bufferGraphic = new Graphic({
+          geometry: bufferGeometry,
+          attributes: { buffer_distance: bufferDistance }
+        });
+
+        bufferFeatureLayer.applyEdits({
+          addFeatures: [bufferGraphic]
+        }).then(() => {
+          const query = new Query();
+          query.geometry = bufferGeometry;
+          query.spatialRelationship = "intersects";
+          query.outFields = ["AIN", "UseDescription", "Units1"];
+          query.returnGeometry = true;
+          parcelLayer.queryFeatures(query).then((results) => {
+            const intersectingFeatures = results.features;
+            //console.log("Intersecting features:", intersectingFeatures);
+            intersectingLayer.applyEdits({
+              addFeatures: intersectingFeatures
+            }).then((editsResult) => {
+			bufferFeatureLayer.listMode = "show";
+			intersectingLayer.listMode = "show";
+              view.goTo(bufferGraphic);
+			  intersectingLayer.refresh();
+              console.log("Successfully updated intersectingLayer with applyEdits"); //, editsResult);
+            }).catch(error => {
+              console.error("Error applying edits to intersectingLayer:", error);
+            });
+          }).catch(error => {
+            console.error("Error querying intersecting features:", error);
+          });
+        }).catch(error => {
+          console.error("Error adding features to buffer layer:", error);
+        });
+  } 
+});
+    });
+  }
+  else if (event.action.id === "create-buffer-2") {
+	
+    const layersToClear = [newFeatureLayer, bufferFeatureLayer, bufferFeatureLayer2, intersectingLayer, abcLayer];
+    const deletePromises = layersToClear.map(layer => {
+      const query = layer.createQuery();
+      query.where = "1=1"; 
+      return layer.queryFeatures(query).then(results => {
+        const featuresToDelete = results.features;
+        if (featuresToDelete.length > 0) {
+          console.log(`Clearing features from ${layer.title}...`); //(`Clearing ${featuresToDelete.length} features from ${layer.title}...`);
+          return layer.applyEdits({ deleteFeatures: featuresToDelete })
+        .then(() => {
+          // 2. Disable layer in Editor AFTER deletion is successful
+          if (editor && editor.layerInfos) {
+            const layerInfo = editor.layerInfos.find(info => info.layer === abcLayer);
+            if (layerInfo) {
+              layerInfo.enabled = false;
+              layerInfo.addEnabled = false;
+              layerInfo.updateEnabled = false;
+              layerInfo.deleteEnabled = false;
+              // 3. Trigger reactivity to update widget configuration
+              editor.layerInfos = [...editor.layerInfos];
+              console.log(`Editing disabled for ${layer.title}`);
+            }
+          }
+        }).catch(error => console.error(`Error clearing ${layer.title}:`, error));
+        }
+      });
+    });
+    Promise.all(deletePromises).then(() => {
+      console.log("Previous edits cleared. Starting new action logic...");
+	  //abcLayer.listMode = "show";
+	  
+	 
+
+	  const abcLayerInfo = editor.layerInfos.find(info => info.layer === abcLayer);
+
+  if (abcLayerInfo) {
+    // 2. Dynamically change the 'enabled' property
+    abcLayerInfo.enabled = true;
+    
+    // You can also change other properties like addEnabled, updateEnabled, deleteEnabled:
+    abcLayerInfo.addEnabled = true; 
+    abcLayerInfo.updateEnabled = true;
+    abcLayerInfo.deleteEnabled = true;
+
+    // 3. (Optional) If changes don't reflect automatically, you can reset the layerInfos array
+    // This forces the widget to re-evaluate its configuration.
+    editor.layerInfos = [...editor.layerInfos]; 
+  }
+
+
+	  
+	  const query = new Query();
+query.objectIds = selectedFeatureIds;
+query.returnGeometry = true;
+parcelLayer.queryFeatures(query).then((featureSet) => {
+  if (featureSet.features.length > 0) {
+    const geometries = featureSet.features.map(f => f.geometry);
+    const mergedGeometry = geometryEngine.union(geometries);
+    const mergedGraphic = new Graphic({
+      geometry: mergedGeometry
+    });
+newFeatureLayer.applyEdits({
+          addFeatures: [mergedGraphic]
+        });
+		newFeatureLayer.listMode = "show";
+		
+		const bufferDistance1 = 500;
+        const bufferGeometry1 = geometryEngine.geodesicBuffer(mergedGraphic.geometry, bufferDistance1, "feet");
+		const bufferDistance2 = 600;
+        const bufferGeometry2 = geometryEngine.geodesicBuffer(mergedGraphic.geometry, bufferDistance2, "feet");
+	const bufferGraphic1 = new Graphic({
+          geometry: bufferGeometry1,
+          attributes: { buffer_distance: bufferDistance1 }
+        });
+		
+		bufferFeatureLayer.applyEdits({
+          addFeatures: [bufferGraphic1]
+        })
+		bufferFeatureLayer.listMode = "show";
+		
+		const bufferGraphic2 = new Graphic({
+          geometry: bufferGeometry2,
+          attributes: { buffer_distance: bufferDistance2 }
+        });
+        bufferFeatureLayer2.applyEdits({
+          addFeatures: [bufferGraphic2]
+        }).then(() => {
+          const query = new Query();
+          query.geometry = bufferGeometry2;
+          query.spatialRelationship = "intersects";
+          query.outFields = ["AIN", "UseDescription", "Units1"];
+          query.returnGeometry = true;
+          parcelLayer.queryFeatures(query).then((results) => {
+            const intersectingFeatures = results.features;
+            //console.log("Intersecting features:", intersectingFeatures);
+            intersectingLayer.applyEdits({
+              addFeatures: intersectingFeatures
+            }).then((editsResult) => {
+			bufferFeatureLayer2.listMode = "show";
+			intersectingLayer.listMode = "show";
+              view.goTo(bufferGraphic2);
+			  intersectingLayer.refresh();
+              console.log("Successfully updated intersectingLayer with applyEdits"); //, editsResult);
+            }).catch(error => {
+              console.error("Error applying edits to intersectingLayer:", error);
+            });
+          }).catch(error => {
+            console.error("Error querying intersecting features:", error);
+          });
+        }).catch(error => {
+          console.error("Error adding features to buffer layer:", error);
+        });
+  } 
+});
+    });
+  }
+});
+});
+
+
+
+     
+
+
+
+    </script>
+  </head>
+
+  <body>
+	<div class="page-container">
+        <div id="header">
+    <div class="header-left">
+        <img src="https://planning.lacounty.gov/wp-content/uploads/2022/03/LA-County-Planning-Logo-Blue-RGB-768x230.png" width="75" height="25">
+        <span>Existing Land Use Map Generator</span>
+    </div>
+    <div class="header-right">
+		<button id="toggleLegendBtn" class="esri-icon-layers esri-widget--button esri-interactive"></button>
+        <button id="toggleEditorBtn" class="esri-icon-edit esri-widget--button esri-interactive"></button>
+		<button id="basemapGalleryBtn" class="esri-icon-basemap esri-widget--button esri-interactive"></button>
+		<div id="ui-container" class="esri-widget">
+        <input type="text" id="layerUrlInput" placeholder="Enter Layer URL" />
+        <button id="addLayerButton" class="esri-icon-upload esri-widget--button esri-interactive"></button>
+		</div>
+		<button id="bookmarksBtn" class="esri-icon-bookmark esri-widget--button esri-interactive"></button>
+		<button id="customPanelBtn" class="esri-icon-announcement esri-widget--button esri-interactive"></button>
+    </div>
+</div>
+
+        <div id="viewDiv"></div>
+    </div>
+  </body>
+</html>
