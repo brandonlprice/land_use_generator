@@ -842,7 +842,9 @@ const print = new Print({
     title: "EXISTING LAND USE",
     format: "pdf",
     layout: "Landscape_8.5x11_LU_Map", // Ensure you use a layout template, not MAP_ONLY
-	attributionVisible: false, 
+	attributionEnabled: false, 
+	dynamicLegendEnabled: true,
+	legendEnabled: true,
     layoutOptions: {
       legendLayers: legendLayers, // An empty array typically includes all visible layers
       includeLegend: true 
