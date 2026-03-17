@@ -828,38 +828,18 @@ expand.watch("expanded", (isExpanded) => {
     printServiceUrl: "https://rpgis.isd.lacounty.gov/arcgis/rest/services/ExportWebMap/GPServer/Export%20Web%20Map",
 });*/
 
-function getVisibleLegendLayers(map) {
-  const legendLayers = [];
-  map.layers.forEach((layer) => {
-    // Check if the layer is visible and a type that can be in a legend
-    // (e.g., FeatureLayer, MapImageLayer, etc., and not the basemap)
-    if (layer.visible && layer.id !== "basemap_layer_id") { 
-      const legendLayer = new LegendLayer({
-        layerId: layer.id,
-        // For MapImageLayer, you might need to determine visible sublayers:
-        // subLayerIds: layer.visibleLayers 
-      });
-      legendLayers.push(legendLayer);
-    }
-  });
-  return legendLayers;
-}
-
-// Update your Print widget instantiation
 const print = new Print({
-    view: view,
-    printServiceUrl: "https://rpgis.isd.lacounty.gov/arcgis/rest/services/ExportWebMap/GPServer/Export%20Web%20Map",
-    templates: [{
-        label: "My Custom Report",
-        format: "pdf",
-        layout: "My_Custom_Layout_Name",
-        layoutOptions: {
-            titleText: "Operational Report",
-            authorText: "GIS Department",
-            // Dynamically set the legendLayers
-            legendLayers: getVisibleLegendLayers(view.map) 
-        }
-    }]
+  view: view,
+  printServiceUrl: "https://rpgis.isd.lacounty.gov/arcgis/rest/services/ExportWebMap/GPServer/Export%20Web%20Map",
+  templateOptions: {
+    title: "My Printed Map",
+    format: "pdf",
+    layout: "Landscape_8.5x11_LU_Map", // Ensure you use a layout template, not MAP_ONLY
+    layoutOptions: {
+      legendLayers: [], // An empty array typically includes all visible layers
+      includeLegend: true 
+    }
+  }
 });
 
 
