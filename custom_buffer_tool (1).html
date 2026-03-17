@@ -828,15 +828,22 @@ expand.watch("expanded", (isExpanded) => {
     printServiceUrl: "https://rpgis.isd.lacounty.gov/arcgis/rest/services/ExportWebMap/GPServer/Export%20Web%20Map",
 });*/
 
+const legendLayers = view.map.layers.map(layer => {
+  return {
+    layerId: layer.id,
+    subLayerIds: layer.sublayers ? layer.sublayers.map(s => s.id) : null
+  };
+}).toArray();
+
 const print = new Print({
   view: view,
   printServiceUrl: "https://rpgis.isd.lacounty.gov/arcgis/rest/services/ExportWebMap/GPServer/Export%20Web%20Map",
   templateOptions: {
-    title: "My Printed Map",
+    title: "EXISTING LAND USE",
     format: "pdf",
     layout: "Landscape_8.5x11_LU_Map", // Ensure you use a layout template, not MAP_ONLY
     layoutOptions: {
-      legendLayers: [], // An empty array typically includes all visible layers
+      legendLayers: legendLayers, // An empty array typically includes all visible layers
       includeLegend: true 
     }
   }
