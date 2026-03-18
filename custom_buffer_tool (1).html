@@ -844,11 +844,11 @@ const print = new Print({
     layout: "Landscape_8.5x11_LU_Map", // Ensure you use a layout template, not MAP_ONLY
 	attributionEnabled: false, 
 	legendEnabled: true,
-    customTextElements: {
-      "Case_Type_and_Case_Number": "PM RPPL2023001511",
-      "Project": "PROJECT NO. 87-150",
-      "Radius": "500-FOOT RADIUS MAP"
-    }
+    customTextElements: [
+      { "Case_Type_and_Case_Number": "PM RPPL2023001511" },
+      { "Project": "PROJECT NO. 87-150" },
+      { "Radius": "500-FOOT RADIUS MAP" }
+    ]
   }
 });
 
