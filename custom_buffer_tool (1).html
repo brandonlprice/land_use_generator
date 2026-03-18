@@ -690,7 +690,8 @@ const newFeatureLayer = new FeatureLayer({
   const city_communityLayer = new FeatureLayer({
     url: "https://services.arcgis.com/RmCCgQtiZLDCtblq/arcgis/rest/services/admin_dist_SDE_DIST_DRP_CITY_COMM_BDY/FeatureServer", // Example URL, replace with your actual URL
     outFields: ["OBJECTID"],
-	title: "City/Community Boundary"
+	title: "City/Community Boundary",
+	maxScale: 5000
   });
 
   const parcelLayer = new FeatureLayer({
@@ -702,7 +703,7 @@ const newFeatureLayer = new FeatureLayer({
       content: "Click an action above to buffer and show surrounding land uses",
       actions: [bufferAction, bufferAction_2]
     },
-	maxScale: 5000
+	minScale: 6000
   });
   
   const wmtsLayer = new WMTSLayer({
