@@ -368,7 +368,26 @@ const abcLayer = new FeatureLayer({
       }
     }
   ],
-  editingEnabled: true
+  editingEnabled: true,
+  labelingInfo: [
+        {
+            labelExpressionInfo: {
+                expression: "$feature.Name"
+            },
+            symbol: {
+                type: "text",
+                color: "black",
+                haloColor: "white",
+                haloSize: "1px",
+                font: {
+                    size: 10,
+                    weight: "bold"
+                }
+            },
+            minScale: 0,
+            maxScale: 0
+        }
+    ]
 });
   
   //const uniqueValueRenderer = ;
