@@ -798,11 +798,11 @@ function zoomInHalf() {
     });
 }
 
-function zoomOutHalf() {
+/*function zoomOutHalf() {
     view.goTo({
         zoom: view.zoom - 0.5
     });
-}
+}*/
 
 // 2. Create button elements
 const zoomInBtn = document.createElement("div");
@@ -810,17 +810,17 @@ zoomInBtn.className = "esri-widget--button esri-widget esri-interactive";
 zoomInBtn.innerHTML = '<span class="esri-icon-plus"></span>.5';
 zoomInBtn.title = "Zoom in 0.5";
 
-const zoomOutBtn = document.createElement("div");
+/*const zoomOutBtn = document.createElement("div");
 zoomOutBtn.className = "esri-widget--button esri-widget esri-interactive";
 zoomOutBtn.innerHTML = '<span class="esri-icon-minus"></span>.5';
-zoomOutBtn.title = "Zoom out 0.5";
+zoomOutBtn.title = "Zoom out 0.5";*/
 
 // 3. Attach functions
 zoomInBtn.onclick = zoomInHalf;
-zoomOutBtn.onclick = zoomOutHalf;
+//zoomOutBtn.onclick = zoomOutHalf;
 
 // 4. Add to the default UI location (top-left)
-view.ui.add([zoomInBtn, zoomOutBtn], "top-left");
+view.ui.add([zoomInBtn], "top-left");
 
 
   var homeWidget = new Home({
