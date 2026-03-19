@@ -308,7 +308,7 @@ addLayerButton.addEventListener('click', () => {
 const abcLayer = new FeatureLayer({
   source: [], // Start empty
   title: "Alcohol Consumption",
-  listMode: "show",
+  listMode: "hide",
   fields: [
     { name: "ObjectID", alias: "ObjectID", type: "oid" },
     { name: "Name", alias: "Name", type: "string" },
@@ -1518,7 +1518,7 @@ newFeatureLayer.applyEdits({
     });
     Promise.all(deletePromises).then(() => {
       console.log("Previous edits cleared. Starting new action logic...");
-	  //abcLayer.listMode = "show";
+	  abcLayer.listMode = "show";
 	  
 	 
 
