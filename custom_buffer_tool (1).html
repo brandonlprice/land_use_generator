@@ -789,13 +789,19 @@ const newFeatureLayer = new FeatureLayer({
     ]
   });
 
- // 1. Updated Functions for 0.5 Zoom
+// Ensure this runs after the view is loaded (view.when())
 function zoomInHalf() {
-    view.animateTo({ zoom: view.zoom + 0.5 });
+    // 1. Use goTo instead of animateTo for better stability
+    // 2. Use target.zoom to force the specific value
+    view.goTo({
+        zoom: view.zoom + 0.5
+    });
 }
 
 function zoomOutHalf() {
-    view.animateTo({ zoom: view.zoom - 0.5 });
+    view.goTo({
+        zoom: view.zoom - 0.5
+    });
 }
 
 // 2. Create button elements
