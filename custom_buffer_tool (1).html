@@ -795,7 +795,35 @@ const newFeatureLayer = new FeatureLayer({
 
   
   view.ui.add(homeWidget, "top-left");
-  
+
+  function zoomInHalf() {
+    const newZoom = Math.floor(view.zoom) + 0.5;
+    view.goTo({ zoom: newZoom });
+}
+
+function zoomOutHalf() {
+    const newZoom = Math.floor(view.zoom) - 0.5;
+    view.goTo({ zoom: newZoom });
+}
+
+// 2. Create button elements
+const zoomInBtn = document.createElement("div");
+zoomInBtn.className = "esri-widget--button esri-widget esri-interactive";
+zoomInBtn.innerHTML = '<span class="esri-icon-plus"></span>.5';
+zoomInBtn.title = "Zoom in 0.5";
+
+const zoomOutBtn = document.createElement("div");
+zoomOutBtn.className = "esri-widget--button esri-widget esri-interactive";
+zoomOutBtn.innerHTML = '<span class="esri-icon-minus"></span>.5';
+zoomOutBtn.title = "Zoom out 0.5";
+
+// 3. Attach functions
+zoomInBtn.onclick = zoomInHalf;
+zoomOutBtn.onclick = zoomOutHalf;
+
+// 4. Add to the default UI location (top-left)
+view.ui.add([zoomInBtn, zoomOutBtn], "top-left");
+	
   const measurementWidget = new DistanceMeasurement2D({
   view: view,
   unit: "imperial"
