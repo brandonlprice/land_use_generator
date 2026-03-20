@@ -436,7 +436,7 @@ const abcLayer = new FeatureLayer({
     {
       labelExpressionInfo: {
         // Updated to use Arcade concatenation to ensure it works properly
-        "expression": "'<BOL>' + Replace($feature.Place_Name, " ", TextFormatting.NewLine) + '</BOL>'"//"Replace($feature.Place_Name, ' ', TextFormatting.NewLine)"//expression: '$feature.Place_Name'
+        "expression": "'<BOL>' + Replace($feature.Place_Name, ' ', TextFormatting.NewLine) + '</BOL>'"//"Replace($feature.Place_Name, ' ', TextFormatting.NewLine)"//expression: '$feature.Place_Name'
       },
       symbol: {
         type: "text",
