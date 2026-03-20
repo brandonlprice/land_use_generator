@@ -881,19 +881,6 @@ expand.watch("expanded", (isExpanded) => {
 
 });
 
-/*const print = new Print({
-    view: view,
-    // Use the default ArcGIS Online print service, or your own custom service URL
-    printServiceUrl: "https://rpgis.isd.lacounty.gov/arcgis/rest/services/ExportWebMap/GPServer/Export%20Web%20Map",
-});
-
-const legendLayers = view.map.layers.map(layer => {
-  return {
-    layerId: layer.id,
-    subLayerIds: layer.sublayers ? layer.sublayers.map(s => s.id) : null
-  };
-}).toArray();*/
-
 const print = new Print({
   view: view,
   printServiceUrl: "https://rpgis.isd.lacounty.gov/arcgis/rest/services/ExportWebMap/GPServer/Export%20Web%20Map",
