@@ -713,7 +713,31 @@ const newFeatureLayer = new FeatureLayer({
     url: "https://services.arcgis.com/RmCCgQtiZLDCtblq/arcgis/rest/services/admin_dist_SDE_DIST_DRP_CITY_COMM_BDY/FeatureServer", // Example URL, replace with your actual URL
     outFields: ["OBJECTID"],
 	title: "City/Community Boundary",
-	maxScale: 5000
+	maxScale: 5000,
+	labelingInfo: [
+		{
+  // SQL where clause to target specific values
+  where: "JURISDICTION = 'INCORPORATED CITY'", 
+  labelExpressionInfo: { expression: "$feature.CITY_COMM_NAME" }, // Field to display
+  symbol: {
+    type: "text", 
+    color: "blue",
+    haloSize: 1,
+    haloColor: "white",
+    font: { size: 12, weight: "bold" }
+  }
+},
+
+ {
+  where: "JURISDICTION = 'UNINCORPORATED AREA'",
+  labelExpressionInfo: { expression: "$feature.CITY_COMM_NAME" },
+  symbol: {
+    type: "text",
+    color: "darkgreen",
+    font: { size: 10, style: "italic" }
+  }
+}
+]
   });
 
   const parcelLayer = new FeatureLayer({
