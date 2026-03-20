@@ -721,10 +721,10 @@ const newFeatureLayer = new FeatureLayer({
   labelExpressionInfo: { expression: "$feature.CITY_COMM_NAME" }, // Field to display
   symbol: {
     type: "text", 
-    color: "blue",
+    color: "white",
     haloSize: 1,
-    haloColor: "white",
-    font: { size: 12, weight: "bold" }
+    haloColor: "#d20000",
+    font: { size: 10, weight: "bold", style: "italic" }
   }
 },
 
@@ -733,8 +733,10 @@ const newFeatureLayer = new FeatureLayer({
   labelExpressionInfo: { expression: "$feature.CITY_COMM_NAME" },
   symbol: {
     type: "text",
-    color: "darkgreen",
-    font: { size: 10, style: "italic" }
+    color: "white",
+	haloSize: 1,
+	haloColor: "#0055c8",
+    font: { size: 10, weight: "bold", style: "italic" }
   }
 }
 ]
