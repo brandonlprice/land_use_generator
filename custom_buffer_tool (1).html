@@ -189,7 +189,7 @@ addLayerButton.addEventListener('click', () => {
   // 1. Define the schema for the new client-side feature layer
   const bufferFeatureLayer = new FeatureLayer({
   source: [], // initially empty
-  title: "500-ft buffer",
+  title: "500-ft Buffer",
   listMode: "hide", // Initially hide the layer from the LayerList
   objectIdField: "ObjectID", // required
   geometryType: "polygon", // must match the geometry of the buffer graphics
@@ -396,7 +396,7 @@ const abcLayer = new FeatureLayer({
 
   const intersectingLayer = new FeatureLayer({
     source: [], // Start with an empty source
-	title: "Land Use Type",
+	title: "Land Use Type (Assessor Use Codes)",
 	listMode: "hide", // Initially hide the layer from the LayerList
     objectIdField: "ObjectID", // Required field for client-side layers
     geometryType: "polygon", // Or whatever your parcelLayer uses
