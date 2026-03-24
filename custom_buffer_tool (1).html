@@ -753,6 +753,7 @@ const newFeatureLayer = new FeatureLayer({
     url: "https://public.gis.lacounty.gov/public/rest/services/LACounty_Cache/LACounty_Parcel/MapServer/0", // Example URL, replace with your actual URL
     outFields: ["AIN", "UseDescription"],
 	title: "Parcels",
+	legendEnabled: false,
     popupTemplate: {
       title: "Parcel: {AIN}", // Adjust field name to match example data
       content: "Click an action above to buffer and show surrounding land uses",
