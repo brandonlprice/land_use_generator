@@ -189,7 +189,7 @@ addLayerButton.addEventListener('click', () => {
   // 1. Define the schema for the new client-side feature layer
   const bufferFeatureLayer = new FeatureLayer({
   source: [], // initially empty
-  title: "500-ft Buffer",
+  title: "500-ft Radius",
   listMode: "hide", // Initially hide the layer from the LayerList
   objectIdField: "ObjectID", // required
   geometryType: "polygon", // must match the geometry of the buffer graphics
@@ -239,7 +239,7 @@ addLayerButton.addEventListener('click', () => {
   
   const bufferFeatureLayer2 = new FeatureLayer({
   source: [],
-  title: "600-ft Sensitive Land Use Buffer",
+  title: "600-ft Sensitive Land Use Radius",
   listMode: "hide", // Initially hide the layer from the LayerList
   objectIdField: "ObjectID",
   geometryType: "polygon",
@@ -299,10 +299,7 @@ addLayerButton.addEventListener('click', () => {
           ]
         }
       }
-    },
-	legendOptions: {
-    patch: "circle" 
-  }
+    }
   }
 });
 
