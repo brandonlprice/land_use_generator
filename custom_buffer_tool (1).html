@@ -113,8 +113,9 @@ require([
   "esri/geometry/Point",
   "esri/widgets/Print",
   "esri/rest/support/LegendLayer",
-	"esri/layers/VectorTileLayer"
-], function(Map, MapView, FeatureLayer, Graphic, geometryEngine, reactiveUtils, Query, UniqueValueRenderer, CIMSymbol, BasemapToggle, Extent, SpatialReference, Search, Home, Viewpoint, Editor, GraphicsLayer, LayerList, Basemap, WMTSLayer, DistanceMeasurement2D, Expand, BasemapGallery, Bookmarks, Bookmark, Point, Print, LegendLayer, VectorTileLayer) {
+	"esri/layers/VectorTileLayer",
+	"esri/layers/MapImageLayer"
+], function(Map, MapView, FeatureLayer, Graphic, geometryEngine, reactiveUtils, Query, UniqueValueRenderer, CIMSymbol, BasemapToggle, Extent, SpatialReference, Search, Home, Viewpoint, Editor, GraphicsLayer, LayerList, Basemap, WMTSLayer, DistanceMeasurement2D, Expand, BasemapGallery, Bookmarks, Bookmark, Point, Print, LegendLayer, VectorTileLayer, MapImageLayer) {
 
 	const addLayerButton = document.getElementById('addLayerButton');
 const layerUrlInput = document.getElementById('layerUrlInput');
@@ -785,11 +786,16 @@ const blankWhiteLayer = new VectorTileLayer({
   }
 });
 
-// 2. Load a label layer (e.g., ArcGIS Streets Reference)
-const labelsLayer = new VectorTileLayer({
-  portalItem: {
-    id: "27387cc0bf8449c2a6ac3a7631165a2d" // Example: Streets Reference
-  }
+// 2. Load the LA County CAMS Labels layer
+// Use MapImageLayer for MapServer endpoints
+const labelsLayer = new MapImageLayer({
+  url: "https://arcgis.gis.lacounty.gov/arcgis/rest/services/LACounty_Dynamic/CAMS/MapServer",
+  sublayers: [
+    {
+      id: 5,
+      visible: true
+    }
+  ]
 });
 
 // 3. Create Custom Basemap
