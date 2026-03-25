@@ -793,16 +793,14 @@ const labelsLayer = new MapImageLayer({
   sublayers: [
     {
       id: 5,
-      visible: true,
-		labelsVisible: true
+      visible: false
     }
   ]
 });
 
 // 3. Create Custom Basemap
 const plainBasemap = new Basemap({
-  baseLayers: [blankWhiteLayer],
-  referenceLayers: [labelsLayer]
+  baseLayers: [blankWhiteLayer]
 });
 
   
@@ -834,7 +832,7 @@ const plainBasemap = new Basemap({
 
   const map = new Map({
     basemap: "topo-vector",
-    layers: [wmtsLayer, boundaryLayer, city_communityLayer, intersectingLayer, parcelLayer, bufferFeatureLayer, bufferFeatureLayer2, newFeatureLayer, abcLayer] // Add the FeatureLayer to the map
+    layers: [wmtsLayer, boundaryLayer, city_communityLayer, intersectingLayer, parcelLayer, bufferFeatureLayer, bufferFeatureLayer2, newFeatureLayer, abcLayer, labelsLayer] // Add the FeatureLayer to the map
   });
 
   const view = new MapView({
