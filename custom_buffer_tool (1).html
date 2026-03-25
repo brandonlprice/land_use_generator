@@ -439,13 +439,10 @@ const abcLayer = new FeatureLayer({
         // Updated to use Arcade concatenation to ensure it works properly
        expression: `
     var use = $feature.UseDescription;
-
-    // If 'use' matches any of the specific strings OR is in the allowedValues list
-    if ( use == 'Single') {
-        return "◯";
+    if (use == 'Single') {
+      return "◯";
     }
-
-    return ""; 
+    return "";
   `//expression: '$feature.Place_Name'
        },
   symbol: {
