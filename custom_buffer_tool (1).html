@@ -791,7 +791,7 @@ const blankWhiteLayer = new VectorTileLayer({
 const labelsLayer = new FeatureLayer({
   url: "https://arcgis.gis.lacounty.gov/arcgis/rest/services/LACounty_Dynamic/CAMS/MapServer/8",
   title: "CAMS Road Centerlines",
-  visible: false
+  visible: false,
   legendEnabled: false,
   labelingInfo: [{
     labelExpressionInfo: { expression: "$feature.FullName" }, // Required
