@@ -512,17 +512,22 @@ const abcLayer = new FeatureLayer({
 
     return ""; 
   `//expression: '$feature.Place_Name'
-      },
-      symbol: {
-        type: "text",
-        color: "#222222",
-        //haloSize: "1.25px",
-        //haloColor: "#ffffff",
-        font: { size: 10, family: "sans-serif"}
-		//lineWidth: 50 
-      },
-      labelPlacement: "always-horizontal"
+       },
+  symbol: {
+    type: "text",
+    // 1. Set main text color to transparent
+    color: "rgba(0, 0, 0, 0)", 
+    // 2. Set halo color to black
+    haloColor: "#000000",
+    // 3. Set small halo size
+    haloSize: "1px", 
+    font: {
+      size: 10,
+      family: "sans-serif"
     }
+  },
+  labelPlacement: "always-horizontal"
+}
   ],
     renderer: {
     type: "unique-value", // Specifies the unique value renderer
