@@ -1022,7 +1022,7 @@ view.ui.add(wrapperDiv, "top-right");
   
   const basemapToggle = new BasemapToggle({
   view: view,  // The view that provides access to the map's "streets-vector" basemap
-  nextBasemap: "plainBasemap"  // Allows for toggling to the "hybrid" basemap
+  nextBasemap: plainBasemap  // Allows for toggling to the "hybrid" basemap
 	});
 	
 	view.ui.add(basemapToggle, "bottom-left");
