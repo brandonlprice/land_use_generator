@@ -770,7 +770,28 @@ const newFeatureLayer = new FeatureLayer({
 ]
   });
 
-  const parcelLayer = new FeatureLayer({
+  const parcelLayer = new MapImageLayer({
+  // Point to the MapServer, not the specific layer index
+  url: "https://public.gis.lacounty.gov/public/rest/services/LACounty_Cache/LACounty_Parcel/MapServer/",
+  title: "Parcels",
+  sublayers: [
+    {
+      id: 0, // The specific layer ID from the service
+      title: "Parcels",
+      visible: true,
+      popupTemplate: {
+        title: "Parcel: {AIN}",
+        content: "Click an action above to buffer and show surrounding land uses",
+        actions: [bufferAction, bufferAction_2]
+      },
+      minScale: 6000,
+      // Note: MapImageLayer sublayers use 'outFields' within the sublayer definition
+      outFields: ["AIN", "UseDescription"]
+    }
+  ]
+});
+	
+	/*const parcelLayer = new FeatureLayer({
     url: "https://public.gis.lacounty.gov/public/rest/services/LACounty_Cache/LACounty_Parcel/MapServer/0", // Example URL, replace with your actual URL
     outFields: ["AIN", "UseDescription"],
 	title: "Parcels",
@@ -781,7 +802,7 @@ const newFeatureLayer = new FeatureLayer({
       actions: [bufferAction, bufferAction_2]
     },
 	minScale: 6000
-  });
+  });*/
 
   // 1. Load the blank white canvas
 const blankWhiteLayer = new VectorTileLayer({
