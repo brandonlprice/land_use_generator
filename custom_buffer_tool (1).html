@@ -839,6 +839,7 @@ const labelsLayer = new FeatureLayer({
 // 3. Create Custom Basemap
 const plainBasemap = new Basemap({
   baseLayers: [blankWhiteLayer],
+  referenceLayers: [labelsLayer],
   title: "Plain White",
   thumbnailUrl: "https://js.arcgis.com/4.34/esri/themes/base/images/basemap-toggle-64.svg"
 });
