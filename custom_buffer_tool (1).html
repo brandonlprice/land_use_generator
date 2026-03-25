@@ -799,8 +799,8 @@ const labelsLayer = new FeatureLayer({
     labelExpressionInfo: { expression: "$feature.FullName" }, // Required
     labelPlacement: "center-along",
     deconflictionStrategy: "static",
-    repeatLabel: true,
-    repeatLabelDistance: 3500,
+    repeatLabel: false,
+    //repeatLabelDistance: 3500,
     symbol: {
       type: "text",  // Required for labels to be visible
       color: "black",
