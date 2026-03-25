@@ -777,6 +777,27 @@ const newFeatureLayer = new FeatureLayer({
     },
 	minScale: 6000
   });
+
+  // 1. Load the blank white canvas
+const blankWhiteLayer = new VectorTileLayer({
+  portalItem: {
+    id: "e9cacfd187904614884c16aa52a21cac" // Blank White Base
+  }
+});
+
+// 2. Load a label layer (e.g., ArcGIS Streets Reference)
+const labelsLayer = new VectorTileLayer({
+  portalItem: {
+    id: "27387cc0bf8449c2a6ac3a7631165a2d" // Example: Streets Reference
+  }
+});
+
+// 3. Create Custom Basemap
+const plainBasemap = new Basemap({
+  baseLayers: [blankWhiteLayer],
+  referenceLayers: [labelsLayer]
+});
+
   
   const wmtsLayer = new WMTSLayer({
     url: "https://svc.pictometry.com/Image/BCC27E3E-766E-CE0B-7D11-AA4760AC43ED/wmts", // Example: "https://svc.pictometry.com/Image/**********/wmts"
@@ -994,7 +1015,7 @@ view.ui.add(wrapperDiv, "top-right");
   
   const basemapToggle = new BasemapToggle({
   view: view,  // The view that provides access to the map's "streets-vector" basemap
-  nextBasemap: "hybrid"  // Allows for toggling to the "hybrid" basemap
+  nextBasemap: "plainBasemap"  // Allows for toggling to the "hybrid" basemap
 	});
 	
 	view.ui.add(basemapToggle, "bottom-left");
