@@ -439,14 +439,9 @@ const abcLayer = new FeatureLayer({
         // Updated to use Arcade concatenation to ensure it works properly
        expression: `
     var use = $feature.UseDescription;
-    var allowedValues = ['Five or more apartments'];
 
     // If 'use' matches any of the specific strings OR is in the allowedValues list
-    if ( use == 'Single' ||
-		use == 'Two Units' || 
-        use == 'Three Units (Any Combination)' || 
-        use == 'Four Units (Any Combination)' || 
-        Includes(allowedValues, use)) {
+    if ( use == 'Single') {
         return "◯";
     }
 
@@ -460,7 +455,7 @@ const abcLayer = new FeatureLayer({
     // 2. Set halo color to black
     haloColor: "#000000",
     // 3. Set small halo size
-    haloSize: "1px", 
+    haloSize: ".25px", 
     font: {
       size: 10,
       family: "sans-serif"
