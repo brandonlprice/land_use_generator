@@ -793,6 +793,8 @@ const labelsLayer = new FeatureLayer({
   title: "CAMS Road Centerlines",
   visible: false,
   legendEnabled: false,
+  outFields: ["FullName"], // Ensure field data is fetched
+  labelsVisible: true,     // Force labels to be active
   labelingInfo: [{
     labelExpressionInfo: { expression: "$feature.FullName" }, // Required
     labelPlacement: "center-along",
