@@ -791,11 +791,14 @@ const blankWhiteLayer = new VectorTileLayer({
 const labelsLayer = new MapImageLayer({
   url: "https://arcgis.gis.lacounty.gov/arcgis/rest/services/LACounty_Dynamic/CAMS/MapServer",
   title: "CAMS",
+  visible: false,
+  legendEnabled: false,
   sublayers: [
     {
       id: 5,
 	  title: "CAMS Road Centerlines",
-      visible: false
+      visible: true.
+	  legendEnabled: false
     }
   ]
 });
