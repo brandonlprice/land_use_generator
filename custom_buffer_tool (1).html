@@ -792,7 +792,18 @@ const labelsLayer = new FeatureLayer({
   url: "https://arcgis.gis.lacounty.gov/arcgis/rest/services/LACounty_Dynamic/CAMS/MapServer/8",
   title: "CAMS Road Centerlines",
   visible: false
-  legendEnabled: false
+  legendEnabled: false,
+   labelingInfo: [{
+    // Define which field to use for the label
+    //labelExpressionInfo: { expression: "$feature.StreetName" }, 
+    labelPlacement: "center-along",
+    // Use 'static' to allow the engine to remove overlapping/nearby duplicates
+    deconflictionStrategy: "static", 
+    // Controls the minimum distance between repeated labels for the same feature
+    // Note: This value is in points. 200 feet will vary by map scale.
+    repeatLabel: true,
+    repeatLabelDistance: 150 
+  }]
 });
 
 // 3. Create Custom Basemap
