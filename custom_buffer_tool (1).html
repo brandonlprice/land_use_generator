@@ -793,16 +793,19 @@ const labelsLayer = new FeatureLayer({
   title: "CAMS Road Centerlines",
   visible: false
   legendEnabled: false,
-   labelingInfo: [{
-    // Define which field to use for the label
-    //labelExpressionInfo: { expression: "$feature.StreetName" }, 
+  labelingInfo: [{
+    labelExpressionInfo: { expression: "$feature.FullName" }, // Required
     labelPlacement: "center-along",
-    // Use 'static' to allow the engine to remove overlapping/nearby duplicates
-    deconflictionStrategy: "static", 
-    // Controls the minimum distance between repeated labels for the same feature
-    // Note: This value is in points. 200 feet will vary by map scale.
+    deconflictionStrategy: "static",
     repeatLabel: true,
-    repeatLabelDistance: 150 
+    repeatLabelDistance: 150,
+    symbol: {
+      type: "text",  // Required for labels to be visible
+      color: "black",
+      haloColor: "white",
+      haloSize: "1px",
+      font: { size: 10, family: "sans-serif" }
+    }
   }]
 });
 
