@@ -714,7 +714,28 @@ const newFeatureLayer = new FeatureLayer({
     className: "esri-icon-buffer my-custom-style-action_2"
   };
 
-  var boundaryLayer = new FeatureLayer({
+  var boundaryLayer = new MapImageLayer({
+  url: "https://dpw.gis.lacounty.gov/dpw/rest/services/PW_Open_Data/MapServer/", 
+  title: "County Boundary",
+  opacity: 0.7,
+  sublayers: [
+    {
+      id: 13,
+      visible: true,
+      renderer: {
+        type: "simple", 
+        symbol: {
+          type: "simple-fill", 
+          color: [0, 0, 0, 0], 
+          outline: { color: [0, 0, 0, 1], width: 1.75 }
+        }
+      },
+    }
+  ],
+  effect: "drop-shadow(1px 1px 2px black)" 
+});
+
+  /*var boundaryLayer = new FeatureLayer({
         url: "https://dpw.gis.lacounty.gov/dpw/rest/services/PW_Open_Data/MapServer/13", // Replace with your boundary layer URL
 		title: "County Boundary",
         opacity: 0.7, // Adjust transparency as needed
@@ -731,7 +752,7 @@ const newFeatureLayer = new FeatureLayer({
 			}
 		},
 		effect: "drop-shadow(1px 1px 2px black)"
-    });
+    });*/
 	
   const city_communityLayer = new FeatureLayer({
     url: "https://services.arcgis.com/RmCCgQtiZLDCtblq/arcgis/rest/services/admin_dist_SDE_DIST_DRP_CITY_COMM_BDY/FeatureServer", // Example URL, replace with your actual URL
