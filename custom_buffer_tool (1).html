@@ -1323,8 +1323,9 @@ const layerList = new LayerList({
 	
 	const customPanelBtn = document.getElementById("customPanelBtn");
     customPanelBtn.addEventListener("click", function() {
-const isHidden = customPanel.style.display === "none" || customPanel.style.display === "";
-    customPanel.style.display = isHidden ? "block" : "none";
+		customPanel.visible = !customPanel.visible;
+//const isHidden = customPanel.style.display === "none" || customPanel.style.display === "";
+    //customPanel.style.display = isHidden ? "block" : "none";
         // Optional: Ensure the other widget is hidden when this one opens
 		basemapGallery.visible = false;
 		bookmarksWidget.visible = false;
