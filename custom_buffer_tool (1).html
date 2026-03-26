@@ -1258,7 +1258,7 @@ const layerList = new LayerList({
 		bookmarksWidget.visible = false;
 		bookmarksTitle.style.display = "none";
 		customPanel.style.display = "none";
-        toggleLegendBtn.style.backgroundColor = editor.visible ? "#d1d1d1" : "";
+        toggleLegendBtn.style.backgroundColor = layerList.visible ? "#d1d1d1" : "";
         //document.getElementById("toggleEditorBtn").textContent = "Show Editor";
     });
 	
@@ -1273,7 +1273,7 @@ const layerList = new LayerList({
 		layerList.visible = false;
 		layersTitle.style.display = "none";
 		customPanel.style.display = "none";
-        basemapGalleryBtn.style.backgroundColor = editor.visible ? "#d1d1d1" : "";
+        basemapGalleryBtn.style.backgroundColor = basemapGallery.visible ? "#d1d1d1" : "";
         //document.getElementById("toggleEditorBtn").textContent = "Show Editor";
     });
 	
@@ -1288,7 +1288,7 @@ const layerList = new LayerList({
 		layersTitle.style.display = "none";
 		titleDiv.style.display = "none";
 		customPanel.style.display = "none";
-        bookmarksBtn.style.backgroundColor = editor.visible ? "#d1d1d1" : "";
+        bookmarksBtn.style.backgroundColor = bookmarksWidget.visible ? "#d1d1d1" : "";
         //document.getElementById("toggleEditorBtn").textContent = "Show Editor";
     });
 	
@@ -1303,7 +1303,7 @@ const isHidden = customPanel.style.display === "none" || customPanel.style.displ
 		editor.visible = false; 
 		layerList.visible = false;
 		layersTitle.style.display = "none";
-        customPanelBtn.style.backgroundColor = editor.visible ? "#d1d1d1" : "";
+        customPanelBtn.style.backgroundColor = customPanel.visible ? "#d1d1d1" : "";
     });
 	
 	let highlightHandle = null;
