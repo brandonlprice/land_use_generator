@@ -1260,10 +1260,13 @@ const layerList = new LayerList({
     });
 
 	reactiveUtils.watch(
-  () => editor.visible, layerList.visible,
-  (visible) => {
-    toggleEditorBtn.style.backgroundColor = visible ? "#d1d1d1" : "";
-	toggleLegendBtn.style.backgroundColor = visible ? "#d1d1d1" : "";
+  // Wrap multiple sources in an array
+  () => [editor.visible, layerList.visible], 
+  // The callback receives the array of values
+  ([editorVisible, layerListVisible]) => {
+    const isVisible = editorVisible || layerListVisible; // Logical check
+    toggleEditorBtn.style.backgroundColor = isVisible ? "#d1d1d1" : "";
+    toggleLegendBtn.style.backgroundColor = isVisible ? "#d1d1d1" : "";
   }
 );
 	
