@@ -1323,9 +1323,8 @@ const layerList = new LayerList({
 	
 	const customPanelBtn = document.getElementById("customPanelBtn");
     customPanelBtn.addEventListener("click", function() {
-		customPanel.visible = !customPanel.visible;
-//const isHidden = customPanel.style.display === "none" || customPanel.style.display === "";
-    //customPanel.style.display = isHidden ? "block" : "none";
+const isHidden = customPanel.style.display === "none" || customPanel.style.display === "";
+    customPanel.style.display = isHidden ? "block" : "none";
         // Optional: Ensure the other widget is hidden when this one opens
 		basemapGallery.visible = false;
 		bookmarksWidget.visible = false;
@@ -1335,13 +1334,7 @@ const layerList = new LayerList({
 		layersTitle.style.display = "none";
     });
 
-	reactiveUtils.watch(
-  () => customPanel.visible,
-  (visible) => {
-    // Combined logic: ternary operators setting styles and text
-    customPanelBtn.style.backgroundColor = visible ? "#d1d1d1" : "";
-  }
-);
+
 	
 	let highlightHandle = null;
 let selectedFeatureIds = [];
