@@ -746,7 +746,7 @@ const newFeatureLayer = new FeatureLayer({
 		{
   // SQL where clause to target specific values
   where: "JURISDICTION = 'INCORPORATED CITY'", 
-  labelExpressionInfo: { expression: "$feature.CITY_COMM_NAME" }, // Field to display
+  labelExpressionInfo: {expression: "Replace($feature.CITY_COMM_NAME, ' ', TextFormatting.NewLine)"}, // Field to display
   symbol: {
     type: "text", 
     color: "white",
@@ -758,7 +758,7 @@ const newFeatureLayer = new FeatureLayer({
 
  {
   where: "JURISDICTION = 'UNINCORPORATED AREA'",
-  labelExpressionInfo: { expression: "$feature.CITY_COMM_NAME" },
+  labelExpressionInfo: { expression: "Replace($feature.CITY_COMM_NAME, ' ', TextFormatting.NewLine)" },
   symbol: {
     type: "text",
     color: "white",
