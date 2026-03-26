@@ -1244,6 +1244,14 @@ const layerList = new LayerList({
         //toggleEditorBtn.textContent = editor.visible ? "Hide Editor" : "Show Editor";
 		//document.getElementById("toggleLegendBtn").textContent = "Show Legend";
     });
+
+	reactiveUtils.watch(
+  () => editor.visible,
+  (visible) => {
+    // Combined logic: ternary operators setting styles and text
+    toggleEditorBtn.style.backgroundColor = visible ? "#d1d1d1" : "";
+  }
+);
 	
 	const toggleLegendBtn = document.getElementById("toggleLegendBtn");
     toggleLegendBtn.addEventListener("click", function() {
@@ -1260,13 +1268,10 @@ const layerList = new LayerList({
     });
 
 	reactiveUtils.watch(
-  // Wrap multiple sources in an array
-  () => [editor.visible, layerList.visible], 
-  // The callback receives the array of values
-  ([editorVisible, layerListVisible]) => {
-    const isVisible = editorVisible || layerListVisible; // Logical check
-    toggleEditorBtn.style.backgroundColor = isVisible ? "#d1d1d1" : "";
-    toggleLegendBtn.style.backgroundColor = isVisible ? "#d1d1d1" : "";
+  () => layerList.visible,
+  (visible) => {
+    // Combined logic: ternary operators setting styles and text
+    toggleLegendBtn.style.backgroundColor = visible ? "#d1d1d1" : "";
   }
 );
 	
@@ -1284,6 +1289,14 @@ const layerList = new LayerList({
         basemapGalleryBtn.style.backgroundColor = basemapGallery.visible ? "#d1d1d1" : "";
         //document.getElementById("toggleEditorBtn").textContent = "Show Editor";
     });
+
+	reactiveUtils.watch(
+  () => basemapGallery.visible,
+  (visible) => {
+    // Combined logic: ternary operators setting styles and text
+    basemapGalleryBtn.style.backgroundColor = visible ? "#d1d1d1" : "";
+  }
+);
 	
 	const bookmarksBtn = document.getElementById("bookmarksBtn");
     bookmarksBtn.addEventListener("click", function() {
@@ -1299,6 +1312,14 @@ const layerList = new LayerList({
         bookmarksBtn.style.backgroundColor = bookmarksWidget.visible ? "#d1d1d1" : "";
         //document.getElementById("toggleEditorBtn").textContent = "Show Editor";
     });
+
+	reactiveUtils.watch(
+  () => bookmarksWidget.visible,
+  (visible) => {
+    // Combined logic: ternary operators setting styles and text
+    bookmarksBtn.style.backgroundColor = visible ? "#d1d1d1" : "";
+  }
+);
 	
 	const customPanelBtn = document.getElementById("customPanelBtn");
     customPanelBtn.addEventListener("click", function() {
@@ -1313,6 +1334,14 @@ const isHidden = customPanel.style.display === "none" || customPanel.style.displ
 		layersTitle.style.display = "none";
         customPanelBtn.style.backgroundColor = customPanel.visible ? "#d1d1d1" : "";
     });
+
+	reactiveUtils.watch(
+  () => customPanel.visible,
+  (visible) => {
+    // Combined logic: ternary operators setting styles and text
+    customPanelBtn.style.backgroundColor = visible ? "#d1d1d1" : "";
+  }
+);
 	
 	let highlightHandle = null;
 let selectedFeatureIds = [];
