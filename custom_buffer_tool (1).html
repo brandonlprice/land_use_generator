@@ -1229,7 +1229,6 @@ const layerList = new LayerList({
   //customPanel.style.display = "none";
   view.ui.add(customPanel, "top-right");
 
-
     
     const toggleEditorBtn = document.getElementById("toggleEditorBtn");
     toggleEditorBtn.addEventListener("click", function() {
@@ -1242,10 +1241,18 @@ const layerList = new LayerList({
 		bookmarksTitle.style.display = "none";
 		customPanel.style.display = "none";
 		layersTitle.style.display = "none";
-		toggleEditorBtn.style.backgroundColor = editor.visible ? "#d1d1d1" : "blue";
+		//toggleEditorBtn.style.backgroundColor = editor.visible ? "#d1d1d1" : "blue";
         //toggleEditorBtn.textContent = editor.visible ? "Hide Editor" : "Show Editor";
 		//document.getElementById("toggleLegendBtn").textContent = "Show Legend";
     });
+
+	reactiveUtils.watch(
+  () => editor.visible,
+  (visible) => {
+    toggleEditorBtn.style.backgroundColor = visible ? "#d1d1d1" : "blue";
+    // Optional: toggleEditorBtn.textContent = visible ? "Hide Editor" : "Show Editor";
+  }
+);
 	
 	const toggleLegendBtn = document.getElementById("toggleLegendBtn");
     toggleLegendBtn.addEventListener("click", function() {
