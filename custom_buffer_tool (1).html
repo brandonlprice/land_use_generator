@@ -678,7 +678,7 @@ const abcLayer = new FeatureLayer({
 
 const newFeatureLayer = new FeatureLayer({
     source: [], // The source is an array of graphics
-	title: "Parcel of Interest",
+	title: "Parcel(s) of Interest",
 	listMode: "hide", // Initially hide the layer from the LayerList
     fields: [{name: "ObjectID",alias: "ObjectID",type: "oid"},{name: "AIN", alias: "Name",type: "integer"}],
     objectIdField: "ObjectID", // Specify the objectID field name
@@ -1218,7 +1218,7 @@ const layerList = new LayerList({
 	// 1. Create the custom HTML element (the panel)
   const customPanel = document.createElement("div");
   customPanel.className = "custom-panel"; 
-  customPanel.innerHTML = "<h4 style='border-bottom:1px solid #ccc;margin-block-start:.3em;padding-bottom:.5em;'>Information</h4><p>Use this app to create 500-ft and 600-ft existing land use radius maps</p>";
+  customPanel.innerHTML = "<h4 style='border-bottom:1px solid #ccc;margin-block-start:.3em;padding-bottom:.5em;'>Information</h4><p>Use this app to create 500-ft and 600-ft existing land use radius maps. Search an address or parcel, or select a parcel directly on the map to get started.</p>";
 
   
   customPanel.style.backgroundColor = "white";
