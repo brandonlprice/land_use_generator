@@ -1263,7 +1263,7 @@ const layerList = new LayerList({
   () => editor.visible, layerList.visible,
   (visible) => {
     toggleEditorBtn.style.backgroundColor = visible ? "#d1d1d1" : "";
-	toggleLegendBtn.style.backgroundColor = layerList.visible ? "#d1d1d1" : "";
+	toggleLegendBtn.style.backgroundColor = visible ? "#d1d1d1" : "";
   }
 );
 	
