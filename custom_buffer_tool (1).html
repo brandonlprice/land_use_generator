@@ -1249,7 +1249,7 @@ const layerList = new LayerList({
 	reactiveUtils.watch(
   () => editor.visible,
   (visible) => {
-    toggleEditorBtn.style.backgroundColor = visible ? "#d1d1d1" : "blue";
+    toggleEditorBtn.style.backgroundColor = visible ? "#d1d1d1" : "";
     // Optional: toggleEditorBtn.textContent = visible ? "Hide Editor" : "Show Editor";
   }
 );
