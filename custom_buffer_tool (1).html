@@ -1241,18 +1241,9 @@ const layerList = new LayerList({
 		bookmarksTitle.style.display = "none";
 		customPanel.style.display = "none";
 		layersTitle.style.display = "none";
-		//toggleEditorBtn.style.backgroundColor = editor.visible ? "#d1d1d1" : "blue";
         //toggleEditorBtn.textContent = editor.visible ? "Hide Editor" : "Show Editor";
 		//document.getElementById("toggleLegendBtn").textContent = "Show Legend";
     });
-
-	reactiveUtils.watch(
-  () => editor.visible,
-  (visible) => {
-    toggleEditorBtn.style.backgroundColor = visible ? "#d1d1d1" : "";
-    // Optional: toggleEditorBtn.textContent = visible ? "Hide Editor" : "Show Editor";
-  }
-);
 	
 	const toggleLegendBtn = document.getElementById("toggleLegendBtn");
     toggleLegendBtn.addEventListener("click", function() {
@@ -1265,9 +1256,16 @@ const layerList = new LayerList({
 		bookmarksWidget.visible = false;
 		bookmarksTitle.style.display = "none";
 		customPanel.style.display = "none";
-        toggleLegendBtn.style.backgroundColor = layerList.visible ? "#d1d1d1" : "";
         //document.getElementById("toggleEditorBtn").textContent = "Show Editor";
     });
+
+	reactiveUtils.watch(
+  () => editor.visible, layerList.visible,
+  (visible) => {
+    toggleEditorBtn.style.backgroundColor = visible ? "#d1d1d1" : "";
+	toggleLegendBtn.style.backgroundColor = layerList.visible ? "#d1d1d1" : "";
+  }
+);
 	
 	const basemapGalleryBtn = document.getElementById("basemapGalleryBtn");
     basemapGalleryBtn.addEventListener("click", function() {
