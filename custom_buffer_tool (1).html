@@ -1051,7 +1051,7 @@ view.ui.add(wrapperDiv, "top-right");
 
 // 2. Create the title div and apply styling
 var bookmarksTitle = document.createElement("div");
-bookmarksTitle.innerHTML = "Bookmarks"; // Set the title text
+bookmarksTitle.innerHTML = "Unincorporated Communities"; // Set the title text
 bookmarksTitle.style.padding = "10px"; // Add some padding
 bookmarksTitle.style.backgroundColor = "#ffffff"; // Set the white background
 bookmarksTitle.style.fontWeight = "bold"; // Optional: make the text bold
@@ -1242,7 +1242,7 @@ const layerList = new LayerList({
 		bookmarksTitle.style.display = "none";
 		customPanel.style.display = "none";
 		layersTitle.style.display = "none";
-		toggleEditorBtn.style.backgroundColor = editor.visible ? "#f0f0f0" : "";
+		toggleEditorBtn.style.backgroundColor = editor.visible ? "#d1d1d1" : "";
         //toggleEditorBtn.textContent = editor.visible ? "Hide Editor" : "Show Editor";
 		//document.getElementById("toggleLegendBtn").textContent = "Show Legend";
     });
@@ -1258,7 +1258,7 @@ const layerList = new LayerList({
 		bookmarksWidget.visible = false;
 		bookmarksTitle.style.display = "none";
 		customPanel.style.display = "none";
-        //toggleLegendBtn.textContent = layerList.visible ? "Hide Legend" : "Show Legend";
+        toggleLegendBtn.style.backgroundColor = editor.visible ? "#d1d1d1" : "";
         //document.getElementById("toggleEditorBtn").textContent = "Show Editor";
     });
 	
@@ -1273,7 +1273,7 @@ const layerList = new LayerList({
 		layerList.visible = false;
 		layersTitle.style.display = "none";
 		customPanel.style.display = "none";
-        //toggleLegendBtn.textContent = layerList.visible ? "Hide Legend" : "Show Legend";
+        basemapGalleryBtn.style.backgroundColor = editor.visible ? "#d1d1d1" : "";
         //document.getElementById("toggleEditorBtn").textContent = "Show Editor";
     });
 	
@@ -1288,7 +1288,7 @@ const layerList = new LayerList({
 		layersTitle.style.display = "none";
 		titleDiv.style.display = "none";
 		customPanel.style.display = "none";
-        //toggleLegendBtn.textContent = layerList.visible ? "Hide Legend" : "Show Legend";
+        bookmarksBtn.style.backgroundColor = editor.visible ? "#d1d1d1" : "";
         //document.getElementById("toggleEditorBtn").textContent = "Show Editor";
     });
 	
@@ -1303,7 +1303,7 @@ const isHidden = customPanel.style.display === "none" || customPanel.style.displ
 		editor.visible = false; 
 		layerList.visible = false;
 		layersTitle.style.display = "none";
-        //customPanelBtn.textContent = customPanel.visible ? "Hide Panel" : "Show Panel";
+        customPanelBtn.style.backgroundColor = editor.visible ? "#d1d1d1" : "";
     });
 	
 	let highlightHandle = null;
