@@ -795,7 +795,7 @@ const blankWhiteLayer = new VectorTileLayer({
 const labelsLayer = new FeatureLayer({
   url: "https://arcgis.gis.lacounty.gov/arcgis/rest/services/LACounty_Dynamic/CAMS/MapServer/8",
   title: "CAMS Road Centerlines",
-  visible: false,
+  visible: true,
   legendEnabled: false,
   outFields: ["FullName"], // Ensure field data is fetched
   labelsVisible: true,     // Force labels to be active
@@ -852,7 +852,7 @@ const plainBasemap = new Basemap({
 
   const map = new Map({
     basemap: "topo-vector",
-    layers: [wmtsLayer, boundaryLayer, city_communityLayer, intersectingLayer, parcelLayer, bufferFeatureLayer, bufferFeatureLayer2, newFeatureLayer, abcLayer, labelsLayer] // Add the FeatureLayer to the map
+    layers: [wmtsLayer, boundaryLayer, city_communityLayer, intersectingLayer, parcelLayer, bufferFeatureLayer, bufferFeatureLayer2, newFeatureLayer, abcLayer] // Add the FeatureLayer to the map
   });
 
   const view = new MapView({
