@@ -1327,6 +1327,7 @@ const isHidden = customPanel.style.display === "none" || customPanel.style.displ
     customPanel.style.display = isHidden ? "block" : "none";
         // Optional: Ensure the other widget is hidden when this one opens
 		basemapGallery.visible = false;
+		titleDiv.style.display = "none";
 		bookmarksWidget.visible = false;
 		bookmarksTitle.style.display = "none";
 		editor.visible = false; 
@@ -1339,7 +1340,7 @@ const isHidden = customPanel.style.display === "none" || customPanel.style.displ
   const isVisible = customPanel.style.display !== "none" && customPanel.style.display !== "";
   
   // Toggle background color based on visibility
-  customPanelBtn.style.backgroundColor = isVisible ? "green" : "gray";
+  customPanelBtn.style.backgroundColor = isVisible ? "#d1d1d1" : "";
 });
 
 // Start watching the 'style' attribute of customPanel
