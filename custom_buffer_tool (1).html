@@ -738,11 +738,11 @@ const newFeatureLayer = new FeatureLayer({
 
   const city_communityLayer = new MapImageLayer({
   // Use the MapServer endpoint instead of FeatureServer
-  url: "https://services.arcgis.com",
+  url: "https://arcgis.gis.lacounty.gov/arcgis/rest/services/DRP/GISNET_Public/MapServer/",
   title: "City/Community Boundary",
   sublayers: [
     {
-      id: 0, // Replace with the actual layer ID from your MapServer
+      id: 41, // Replace with the actual layer ID from your MapServer
       visible: true,
       maxScale: 5000,
       labelingInfo: [
