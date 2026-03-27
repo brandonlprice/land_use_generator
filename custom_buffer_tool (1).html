@@ -1775,14 +1775,14 @@ newFeatureLayer.applyEdits({
     </div>
   </body>
 	<script>
-		const triggerLink = document.getElementById("open-dialog-link");
-  const dialog = document.getElementById("my-dialog");
+		
 
-  triggerLink.addEventListener("click", (event) => {
-    // Prevent the link from navigating/refreshing the page
-    event.preventDefault(); 
-    // Open the dialog
-    dialog.open = true; 
-  });
+  const dialogBtn = document.getElementById("open-dialog-link");
+const myDialog = document.getElementById("my-dialog");
+
+dialogBtn.addEventListener("click", () => {
+  // Opening the dialog
+  myDialog.open = true;
+});
 	</script>
 </html>
