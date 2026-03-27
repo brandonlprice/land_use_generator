@@ -1320,7 +1320,7 @@ const layerList = new LayerList({
     bookmarksBtn.style.backgroundColor = visible ? "#d1d1d1" : "";
   }
 );
-	
+		
 	const customPanelBtn = document.getElementById("customPanelBtn");
     customPanelBtn.addEventListener("click", function() {
 const isHidden = customPanel.style.display === "none" || customPanel.style.display === "";
@@ -1333,6 +1333,20 @@ const isHidden = customPanel.style.display === "none" || customPanel.style.displ
 		layerList.visible = false;
 		layersTitle.style.display = "none";
     });
+
+	const observer = new MutationObserver(() => {
+  // Check if panel is visible
+  const isVisible = customPanel.style.display !== "none" && customPanel.style.display !== "";
+  
+  // Toggle background color based on visibility
+  customPanelBtn.style.backgroundColor = isVisible ? "green" : "gray";
+});
+
+// Start watching the 'style' attribute of customPanel
+observer.observe(customPanel, { 
+  attributes: true, 
+  attributeFilter: ['style'] 
+});
 
 
 	
