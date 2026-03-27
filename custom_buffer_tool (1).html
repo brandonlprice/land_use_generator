@@ -1229,6 +1229,16 @@ const layerList = new LayerList({
   //customPanel.style.display = "none";
   view.ui.add(customPanel, "top-right");
 
+	document.body.appendChild(customPanel);
+
+// 2. Then set up the trigger
+const trigger = document.getElementById('open-dialog-link');
+const dialog = document.getElementById('my-dialog');
+
+trigger.addEventListener('click', () => {
+    dialog.open = true; // Opens the Calcite Dialog
+});
+
     
     const toggleEditorBtn = document.getElementById("toggleEditorBtn");
     toggleEditorBtn.addEventListener("click", function() {
@@ -1806,12 +1816,4 @@ newFeatureLayer.applyEdits({
         <div id="viewDiv"></div>
     </div>
   </body>
-	<script type="module">
-    const button = document.getElementById("open-dialog-link");
-    const dialog = document.getElementById("my-dialog");
-
-    button?.addEventListener("click", function() {
-        dialog.open = true;
-    });
-</script>
 </html>
