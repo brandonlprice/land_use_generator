@@ -750,6 +750,7 @@ const newFeatureLayer = new FeatureLayer({
         {
           // Incorporated City Label Class
           where: "JURISDICTION = 'INCORPORATED CITY'",
+		  labelPlacement: "always-horizontal",
           labelExpressionInfo: {
             expression: "Replace($feature.CITYNAME_ALF, ' ', TextFormatting.NewLine)"
           },
@@ -764,6 +765,7 @@ const newFeatureLayer = new FeatureLayer({
         {
           // Unincorporated Area Label Class
           where: "JURISDICTION = 'UNINCORPORATED AREA'",
+			labelPlacement: "always-horizontal",
           labelExpressionInfo: {
             expression: "Replace($feature.NAME, ' ', TextFormatting.NewLine)"
           },
