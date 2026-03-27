@@ -1350,15 +1350,7 @@ observer.observe(customPanel, {
 
 customPanelBtn.style.backgroundColor = (customPanel.style.display !== "none") ? "#d1d1d1" : "";
 
-	const triggerLink = document.getElementById("open-dialog-link");
-  const dialog = document.getElementById("my-dialog");
-
-  triggerLink.addEventListener("click", (event) => {
-    // Prevent the link from navigating/refreshing the page
-    event.preventDefault(); 
-    // Open the dialog
-    dialog.open = true; 
-  });
+	
 	
 	let highlightHandle = null;
 let selectedFeatureIds = [];
@@ -1783,4 +1775,15 @@ newFeatureLayer.applyEdits({
     </div>
 	  <calcite-dialog id='my-dialog' heading='Example Dialog'><div slot='content'>This dialog was triggered by an anchor tag click.</div></calcite-dialog>
   </body>
+	<script>
+		const triggerLink = document.getElementById("open-dialog-link");
+  const dialog = document.getElementById("my-dialog");
+
+  triggerLink.addEventListener("click", (event) => {
+    // Prevent the link from navigating/refreshing the page
+    event.preventDefault(); 
+    // Open the dialog
+    dialog.open = true; 
+  });
+	</script>
 </html>
