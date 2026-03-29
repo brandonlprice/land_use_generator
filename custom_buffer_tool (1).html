@@ -83,6 +83,68 @@
 }
 .esri-search {
     width: 260px !important; /* Adjust the width as needed */
+}
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.grid-container {
+    display: grid;
+    /* Creates 3 columns of equal width (fractional units) */
+    grid-template-columns: repeat(3, 1fr); 
+    /* Creates space between the grid items */
+    gap: 20px; 
+    max-width: 1000px;
+    margin: 0 auto; /* Centers the grid on the page */
+}
+
+.grid-item {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 15px;
+    text-align: center;
+    border-radius: 5px;
+    /* Ensures the items stretch to equal height within their row */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.grid-item img {
+    /* Ensures images do not exceed the width of their container */
+    width: 100%; 
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+figcaption {
+    font-size: 0.9em;
+    color: #333;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.8em;
+    color: #777;
+}
+
+/* Optional: Add media queries for responsiveness */
+@media (max-width: 768px) {
+    .grid-container {
+        /* Changes to 2 columns on smaller screens */
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-container {
+        /* Stacks items into a single column on very small screens */
+        grid-template-columns: 1fr; 
+    }
+}
     </style>
 
     <script>
