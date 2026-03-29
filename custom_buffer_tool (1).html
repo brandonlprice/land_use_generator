@@ -1334,8 +1334,36 @@ trigger.addEventListener('click', () => {
     bookmarksBtn.style.backgroundColor = visible ? "#d1d1d1" : "";
   }
 );
-		
+
 	const customPanelBtn = document.getElementById("customPanelBtn");
+//const customPanel = document.getElementById("customPanel"); // Make sure you have this line
+
+// Set the initial state of the panel to 'block' (visible) on page load
+// You should also ensure this is reflected in your CSS for consistency
+customPanel.style.display = "block";
+
+// Set initial background color for the button
+customPanelBtn.style.backgroundColor = "#d1d1d1";
+
+// Add click event listener
+customPanelBtn.addEventListener("click", function() {
+  // Toggle the display property
+  if (customPanel.style.display === "none") {
+    customPanel.style.display = "block";
+    customPanelBtn.style.backgroundColor = "#d1d1d1";
+  } else {
+    customPanel.style.display = "none";
+    customPanelBtn.style.backgroundColor = "";
+  }
+
+  // Optional: Ensure other widgets are hidden
+  // Assuming these are defined elsewhere in your script
+  // basemapGallery.visible = false;
+  // titleDiv.style.display = "none";
+  // ... and so on for other widgets
+});
+	
+	/*const customPanelBtn = document.getElementById("customPanelBtn");
     customPanelBtn.addEventListener("click", function() {
 const isHidden = customPanel.style.display === "none" || customPanel.style.display === "";
     customPanel.style.display = isHidden ? "block" : "none";
@@ -1363,7 +1391,7 @@ observer.observe(customPanel, {
   attributeFilter: ['style'] 
 });
 
-customPanelBtn.style.backgroundColor = (customPanel.style.display !== "none") ? "#d1d1d1" : "";
+customPanelBtn.style.backgroundColor = (customPanel.style.display !== "none") ? "#d1d1d1" : "";*/
 
 	
 	
