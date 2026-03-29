@@ -1083,12 +1083,8 @@ bookmarksWidget = new Bookmarks({
   bookmarks: bookmarksCollection,
   visible: false,
 	view: view,
-  viewModel: {
-    view: view
-  },
-  // Enable the search box within the widget
   visibleElements: {
-    search: true
+    search: true // Correct way to enable search
   }
 });
 view.ui.add(bookmarksDiv, "top-right");
