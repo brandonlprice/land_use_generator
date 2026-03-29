@@ -1336,28 +1336,37 @@ trigger.addEventListener('click', () => {
 );
 
 	const customPanelBtn = document.getElementById("customPanelBtn");
-//const customPanel = document.getElementById("customPanel"); // Make sure you have this line
+const customPanel = document.getElementById("customPanel"); // Make sure this is defined
 
-// Set the initial state of the panel to 'block' (visible) on page load
-// You should also ensure this is reflected in your CSS for consistency
-customPanel.style.display = "block";
+// --- ADD THIS OBSERVER LOGIC ---
+// This function watches for changes in the 'style' attribute of the panel
+const observer = new MutationObserver(function(mutations) {
+  mutations.forEach(function(mutation) {
+    if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+      // Check if panel is visible or hidden and update button accordingly
+      if (customPanel.style.display === "block") {
+        customPanelBtn.style.backgroundColor = "#d1d1d1";
+      } else {
+        customPanelBtn.style.backgroundColor = ""; // Default
+      }
+    }
+  });
+});
 
-// Set initial background color for the button
-customPanelBtn.style.backgroundColor = "#d1d1d1";
+// Configure and start the observer
+observer.observe(customPanel, { attributes: true });
+// ---------------------------------
 
-// Add click event listener
+// Keep your click event for toggling, but it doesn't need to update
+// the button background anymore, only the panel display.
 customPanelBtn.addEventListener("click", function() {
-  // Toggle the display property
   if (customPanel.style.display === "none") {
     customPanel.style.display = "block";
-    customPanelBtn.style.backgroundColor = "#d1d1d1";
   } else {
     customPanel.style.display = "none";
-    customPanelBtn.style.backgroundColor = "";
   }
-
-  // Optional: Ensure other widgets are hidden
-  // Assuming these are defined elsewhere in your script
+  
+  // Your other logic
   basemapGallery.visible = false;
   titleDiv.style.display = "none";
   layerList.visible = false;
@@ -1365,8 +1374,12 @@ customPanelBtn.addEventListener("click", function() {
   editor.visible = false;
   bookmarksWidget.visible = false;
   bookmarksTitle.style.display = "none";
-  // ... and so on for other widgets
 });
+
+// Set initial state
+if (customPanel.style.display === "block") {
+    customPanelBtn.style.backgroundColor = "#d1d1d1";
+}
 	
 	/*const customPanelBtn = document.getElementById("customPanelBtn");
     customPanelBtn.addEventListener("click", function() {
