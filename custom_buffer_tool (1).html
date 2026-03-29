@@ -839,10 +839,14 @@ const plainBasemap = new Basemap({
     id: "my-wmts-basemap"
 });
    const targetExtent = new Extent({
-      xmin: -13241449.62, // West of Malibu
-	  ymin: 3982042.87,  // South of Palos Verdes
-	  xmax: -13096734.50, // East of Pomona
-	  ymax: 4143846.80,  // North of Santa Clarita
+	   xmin: -13221449.62, //(Increased by 20,000)
+ymin: 3982042.87, //(Unchanged)
+xmax: -13076734.50, //(Increased by 20,000)
+ymax: 4143846.80, //(Unchanged)
+     // xmin: -13241449.62, // West of Malibu
+	 // ymin: 3982042.87,  // South of Palos Verdes
+	  //xmax: -13096734.50, // East of Pomona
+	  //ymax: 4143846.80,  // North of Santa Clarita
       spatialReference: { wkid: 102100 }
     });
 	   // 2. Create a custom viewpoint using the extent
