@@ -1337,48 +1337,48 @@ trigger.addEventListener('click', () => {
 
 	const customPanelBtn = document.getElementById("customPanelBtn");
 
-// --- ADD THIS OBSERVER LOGIC ---
-// This function watches for changes in the 'style' attribute of the panel
-const observer = new MutationObserver(function(mutations) {
-  mutations.forEach(function(mutation) {
-    if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
-      // Check if panel is visible or hidden and update button accordingly
-      if (customPanel.style.display === "block") {
-        customPanelBtn.style.backgroundColor = "#d1d1d1";
-      } else {
-        customPanelBtn.style.backgroundColor = ""; // Default
-      }
-    }
-  });
-});
-
-// Configure and start the observer
-observer.observe(customPanel, { attributes: true });
-// ---------------------------------
-
-// Keep your click event for toggling, but it doesn't need to update
-// the button background anymore, only the panel display.
-customPanelBtn.addEventListener("click", function() {
-  if (customPanel.style.display === "none") {
-    customPanel.style.display = "block";
-  } else {
-    customPanel.style.display = "none";
-  }
-  
-  // Your other logic
-  basemapGallery.visible = false;
-  titleDiv.style.display = "none";
-  layerList.visible = false;
-  layersTitle.style.display = "none";
-  editor.visible = false;
-  bookmarksWidget.visible = false;
-  bookmarksTitle.style.display = "none";
-});
-
-// Set initial state
-if (customPanel.style.display === "block") {
+// 1. Force an initial check/style application
+// This ensures the button matches the panel state immediately on script load
+if (window.getComputedStyle(customPanel).display === "block") {
     customPanelBtn.style.backgroundColor = "#d1d1d1";
 }
+
+const observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+            if (customPanel.style.display === "block") {
+                customPanelBtn.style.backgroundColor = "#d1d1d1";
+            } else {
+                customPanelBtn.style.backgroundColor = "";
+            }
+        }
+    });
+});
+
+observer.observe(customPanel, { attributes: true });
+
+customPanelBtn.addEventListener("click", function() {
+    // 2. Use ComputedStyle for the toggle check
+    // If .display is set via CSS class, customPanel.style.display starts as an empty string ""
+    // window.getComputedStyle detects the actual rendered state (block vs none)
+    const isVisible = window.getComputedStyle(customPanel).display === "block";
+
+    if (!isVisible) {
+        customPanel.style.display = "block";
+    } else {
+        customPanel.style.display = "none";
+    }
+
+    // Your other UI resets
+    basemapGallery.visible = false;
+    titleDiv.style.display = "none";
+    layerList.visible = false;
+    layersTitle.style.display = "none";
+    editor.visible = false;
+    bookmarksWidget.visible = false;
+    bookmarksTitle.style.display = "none";
+});
+	
 	
 	/*const customPanelBtn = document.getElementById("customPanelBtn");
     customPanelBtn.addEventListener("click", function() {
