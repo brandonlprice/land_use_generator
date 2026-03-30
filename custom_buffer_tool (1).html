@@ -95,7 +95,7 @@ header {
     grid-template-columns: repeat(4, 1fr); 
     /* Creates space between the grid items */
     gap: 20px; 
-    max-width: 1000px;
+    min-width: 1000px;
     margin: 0 auto; /* Centers the grid on the page */
 }
 
@@ -129,6 +129,13 @@ footer {
     margin-top: 40px;
     font-size: 0.8em;
     color: #777;
+}
+
+@media (max-width: 999px) {
+    .grid-container {
+        /* Changes to 2 columns on smaller screens */
+        grid-template-columns: repeat(3, 1fr); 
+    }
 }
 
 /* Optional: Add media queries for responsiveness */
