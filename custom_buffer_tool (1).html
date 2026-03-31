@@ -680,7 +680,7 @@ const abcLayer = new FeatureLayer({
 	'Two Units': 11
 	};
 
-return Default(landUseMap[state], 12);`,
+return DefaultValue(landUseMap[state], 12);`,
     defaultSymbol: { // Fallback for values not defined below
         type: "simple-fill",
         color: [142, 142, 142, 0.5], // Light gray for unknown values
