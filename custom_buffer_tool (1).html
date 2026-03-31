@@ -600,35 +600,87 @@ const abcLayer = new FeatureLayer({
     field: "UseDescription", // The field used to determine the color
 	 defaultLabel: "Vacant",
 	valueExpression: 
-  `var state = $feature.UseDescription;
-  var group0 = ['Cemeteries, Mausoleums, Mortuaries'];
-  var group1 = ["Commercial", "Animal Kennels", "Auto, Recreation EQPT, Construction EQPT, Sales & Service", "Banks Savings & Loan", "Department Stores", "Hotel & Motels", "Nurseries or Greenhouses", "Office Buildings", "Parking Lots (Commercial Use Properties)", "Professional Buildings", "Restaurants, Cocktail Lounges", "Service Stations", "Shopping Centers (Neighborhood, community)", "Shopping Centers (Regional)", "Srvc Shps:Radio, TV, Refrig, Pnt Shp", "Store Combination", "Stores", "Supermarkets", "Wholesale & Manufacturing Outlets"];
-  var group2 = ['Government Parcel'];
-  var group3 = ["Industrial", "Food Processing Plants", "Heavy Manufacturing", "Lgt Manf.Sm. EQPT. Manuf Sm.Shps Instr.Manuf. Prnt Plnts", "Lumber Yards", "Mineral Processing", "Motion Picture, Radio & Television", "Open Storage", "Parking Lots (Industrial Use Properties)", "Warehousing, Distribution, Storage"];
-  var group4 = ["Institutional", "Churches", "Colleges, Universities (Private)", "Homes For Aged & Others", "Hospitals", "Open", "Schools (Private)"];
-  var group5 = ["Dairies", "Desert", "Feed Lots", "Field Crops", "Fruit & Nuts", "Irrigated Farm", "Pasture", "Poultry", "Timber-Pine", "Truck Crops", "Vineyards", "Waste"];
-  var group6 = ["Miscellaneous", "Petroleum & Gas", "Pipelines, Canals", "Rights of Way", "Rivers & Lakes", "Utility Commercial & Mutual: Pumping Plants State Assessed Pr", "Water Rights"];
-  var group7 = ["Athletic & Amusement Facilities", "Bowling Alleys", "Camps", "Clubs., Lodge Halls, Fraternal Organizations", "Golf Courses", "Race Tracks", "Recreational", "Skating Rinks", "Theaters", "Water Recreation"];
-  var group8 = ["Five or more apartments", "Four Units (Any Combination)", "Rooming Houses", "Three Units (Any Combination)"];
-  var group9 = ["Mobile Home Parks", "Mobile Homes"];
-  var group10 = ["Single"];
-  var group11 = ["Two Units"];
+  `var landUseMap = {
+    'Cemeteries, Mausoleums, Mortuaries': 0,
+    'Commercial': 1,
+    'Animal Kennels': 1,
+    'Auto, Recreation EQPT, Construction EQPT, Sales & Service': 1,
+    'Banks Savings & Loan': 1,
+    'Department Stores': 1,
+    'Hotel & Motels': 1,
+    'Nurseries or Greenhouses': 1,
+    'Office Buildings': 1,
+    'Parking Lots (Commercial Use Properties)': 1,
+    'Professional Buildings': 1,
+    'Restaurants, Cocktail Lounges': 1,
+    'Service Stations': 1,
+    'Shopping Centers (Neighborhood, community)': 1,
+    'Shopping Centers (Regional)': 1,
+    'Srvc Shps:Radio, TV, Refrig, Pnt Shp': 1,
+    'Store Combination': 1,
+    'Stores': 1,
+    'Supermarkets': 1,
+    'Wholesale & Manufacturing Outlets': 1,
+    'Government Parcel': 2,
+	'Industrial': 3,
+	'Food Processing Plants': 3,
+	'Heavy Manufacturing': 3,
+	'Lgt Manf.Sm. EQPT. Manuf Sm.Shps Instr.Manuf. Prnt Plnts': 3,
+	'Lumber Yards': 3,
+	'Mineral Processing': 3,
+	'Motion Picture, Radio & Television': 3,
+	'Open Storage': 3,
+	'Parking Lots (Industrial Use Properties)': 3,
+	'Warehousing, Distribution, Storage': 3,
+	'Institutional': 4,
+	'Churches': 4,
+	'Colleges, Universities (Private)': 4,
+	'Homes For Aged & Others': 4,
+	'Hospitals': 4,
+	'Open': 4,
+	'Schools (Private)': 4,
+	'Dairies': 5,
+	'Desert': 5,
+	'Feed Lots': 5,
+	'Field Crops': 5,
+	'Fruit & Nuts': 5,
+	'Irrigated Farm': 5,
+	'Pasture': 5,
+	'Poultry': 5,
+	'Timber-Pine': 5,
+	'Truck Crops': 5,
+	'Vineyards': 5,
+	'Waste': 5,
+	'Miscellaneous': 6,
+	'Petroleum & Gas': 6,
+	'Pipelines, Canals': 6,
+	'Rights of Way': 6,
+	'Rivers & Lakes': 6,
+	'Utility Commercial & Mutual: Pumping Plants State Assessed Pr': 6,
+	'Water Rights': 6,
+	'Athletic & Amusement Facilities': 7,
+	'Bowling Alleys': 7,
+	'Camps': 7,
+	'Clubs., Lodge Halls, Fraternal Organizations': 7,
+	'Golf Courses': 7,
+	'Race Tracks': 7,
+	'Recreational': 7,
+	'Skating Rinks': 7,
+	'Theaters': 7,
+	'Water Parks': 7,
+	'Five or more apartments': 8,
+	'Four Units (Any Combination)': 8,
+	'Rooming Houses': 8,
+	'Three Units (Any Combination)': 8,
+	'Mobile Home Parks': 9,
+	'Mobile Homes': 9,
+	'Single': 10,
+	'Two Units': 11
+	};
 
-  When(
-    Includes(group0, state), 0,
-    Includes(group1, state), 1,
-    Includes(group2, state), 2,
-	Includes(group3, state), 3,
-	Includes(group4, state), 4,
-	Includes(group5, state), 5,
-    Includes(group6, state), 6,
-	Includes(group7, state), 7,
-	Includes(group8, state), 8,
-	Includes(group9, state), 9,
-	Includes(group10, state), 10,
-	Includes(group11, state), 11,
-	12 // Default value
-  )`,
+
+var state = $feature.UseDescription; 
+return Default(landUseMap[state], 12);`,
     defaultSymbol: { // Fallback for values not defined below
         type: "simple-fill",
         color: [142, 142, 142, 0.5], // Light gray for unknown values
