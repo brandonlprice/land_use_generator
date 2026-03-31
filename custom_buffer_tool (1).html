@@ -600,7 +600,9 @@ const abcLayer = new FeatureLayer({
     field: "UseDescription", // The field used to determine the color
 	 defaultLabel: "Vacant",
 	valueExpression: 
-  `var landUseMap = {
+  `var state = $feature.UseDescription; 
+  
+  var landUseMap = {
     'Cemeteries, Mausoleums, Mortuaries': 0,
     'Commercial': 1,
     'Animal Kennels': 1,
@@ -678,8 +680,6 @@ const abcLayer = new FeatureLayer({
 	'Two Units': 11
 	};
 
-
-var state = $feature.UseDescription; 
 return Default(landUseMap[state], 12);`,
     defaultSymbol: { // Fallback for values not defined below
         type: "simple-fill",
