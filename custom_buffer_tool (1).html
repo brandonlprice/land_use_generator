@@ -961,12 +961,8 @@ const plainBasemap = new Basemap({
        id: "PICT-LARIAC7--eXbT2Tih9t" 
     }
   });
-  
-  const customBasemap = new Basemap({
-    baseLayers: [wmtsLayer],
-    title: "My Custom WMTS Basemap",
-    id: "my-wmts-basemap"
-});
+
+	
    const targetExtent = new Extent({
 	   xmin: -13228449.62, //(Increased by 13,000)
 ymin: 3982042.87, //(Unchanged)
@@ -1607,37 +1603,6 @@ customPanelBtn.addEventListener("click", function() {
     bookmarksTitle.style.display = "none";
 });
 	
-	
-	/*const customPanelBtn = document.getElementById("customPanelBtn");
-    customPanelBtn.addEventListener("click", function() {
-const isHidden = customPanel.style.display === "none" || customPanel.style.display === "";
-    customPanel.style.display = isHidden ? "block" : "none";
-        // Optional: Ensure the other widget is hidden when this one opens
-		basemapGallery.visible = false;
-		titleDiv.style.display = "none";
-		bookmarksWidget.visible = false;
-		bookmarksTitle.style.display = "none";
-		editor.visible = false; 
-		layerList.visible = false;
-		layersTitle.style.display = "none";
-    });
-
-	const observer = new MutationObserver(() => {
-  // Check if panel is visible
-  const isVisible = customPanel.style.display !== "none" && customPanel.style.display !== "";
-  
-  // Toggle background color based on visibility
-  customPanelBtn.style.backgroundColor = isVisible ? "#d1d1d1" : "";
-});
-
-// Start watching the 'style' attribute of customPanel
-observer.observe(customPanel, { 
-  attributes: true, 
-  attributeFilter: ['style'] 
-});
-
-customPanelBtn.style.backgroundColor = (customPanel.style.display !== "none") ? "#d1d1d1" : "";*/
-
 	
 	
 	let highlightHandle = null;
