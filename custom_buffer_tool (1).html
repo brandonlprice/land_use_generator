@@ -1311,7 +1311,7 @@ const layerList = new LayerList({
     const layer = item.layer;
 
     // Filter by name and ensure it's a feature layer
-    if (layer.type === "feature" && layer.title === "Land Use Type") {
+    /*if (layer.type === "feature" && layer.title === "Land Use Type") {
       
       const updateCount = async () => {
         try {
@@ -1330,7 +1330,7 @@ const layerList = new LayerList({
       // Refresh count on edits
       layer.on("edits", () => {
         updateCount();
-      });
+      });*/
     }
 
     // Default behavior for all layers (including the target one)
