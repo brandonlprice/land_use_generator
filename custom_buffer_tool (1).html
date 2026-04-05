@@ -1136,6 +1136,13 @@ const printExpand = new Expand({
 // 3. Add the Expand widget to the UI
 view.ui.add(printExpand, "top-left");
 
+printExpand.watch("expanded", (isExpanded) => {
+  if (isExpanded) {
+    // Enable the print area on the print view model
+    print.viewModel.showPrintAreaEnabled = true;
+  }
+});
+
  // 3. Create the BasemapGallery widget
 var wrapperDiv = document.createElement("div");
 wrapperDiv.style.marginTop = "1px";
