@@ -1139,7 +1139,7 @@ const printExpand = new Expand({
 view.ui.add(printExpand, "top-left");
 
 // Wait for the 'expanded' property to become true
-reactiveUtils.when(
+/*reactiveUtils.when(
   () => printExpand.expanded === true,
   () => {
     // Small delay ensures the opening animation is 100% finished
@@ -1154,6 +1154,20 @@ reactiveUtils.when(
   () => printExpand.expanded === false,
   () => {
     print.viewModel.showPrintAreaEnabled = false;
+  }
+);*/
+
+reactiveUtils.watch(
+  () => printExpand.expanded,
+  (expanded) => {
+    if (expanded) {
+      // Small delay ensures the opening animation is 100% finished
+      setTimeout(() => {
+        print.viewModel.showPrintAreaEnabled = true;
+      }, 100);
+    } else {
+      print.viewModel.showPrintAreaEnabled = false;
+    }
   }
 );
 
