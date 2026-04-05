@@ -381,7 +381,63 @@ addLayerButton.addEventListener('click', () => {
   }
 });
 
-
+const sensitiveUseLayer = new FeatureLayer({
+  source: [], // Start empty for client-side editing
+  title: "Sensitive Use",
+  listMode: "show", // Changed to show in legend if desired
+  
+  // 1. Removed 'Type' field, kept only necessary fields
+  fields: [
+    { name: "ObjectID", alias: "ObjectID", type: "oid" },
+    { name: "Name", alias: "Name", type: "string" }
+  ],
+  objectIdField: "ObjectID",
+  geometryType: "point",
+  spatialReference: { wkid: 102100 },
+  
+  // 2. Simplified to a 'simple' renderer (no Type field needed)
+  renderer: {
+    type: "simple", // Changed from unique-value
+    symbol: {
+      type: "simple-marker",
+      style: "square", // Changed from triangle to square
+      color: "black",
+      size: 8, // Adjust size as needed
+      outline: {
+        color: "white",
+        width: 1
+      }
+    }
+  },
+  
+  // 3. Simplified editing templates (no Type attribute)
+  featureTemplates: [{
+    name: "Sensitive Use",
+    description: "Create new sensitive use",
+    prototype: {
+      attributes: {
+        Name: "New Area"
+      }
+    }
+  }],
+  
+  editingEnabled: true,
+  
+  // 4. Labeling
+  labelingInfo: [{
+    labelExpressionInfo: { expression: "$feature.Name" },
+    symbol: {
+      type: "text",
+      color: "black",
+      haloColor: "white",
+      haloSize: "1px",
+      font: { size: 10, family: "sans-serif", weight: "bold" }
+    },
+    minScale: 0,
+    maxScale: 0,
+    labelPlacement: "below-center"
+  }]
+});
 
 const abcLayer = new FeatureLayer({
   source: [], // Start empty
@@ -981,7 +1037,7 @@ ymax: 4143846.80, //(Unchanged)
 
   const map = new Map({
     basemap: "gray-vector",
-    layers: [wmtsLayer, city_communityLayer, boundaryLayer, intersectingLayer, parcelLayer, bufferFeatureLayer, bufferFeatureLayer2, newFeatureLayer, abcLayer] // Add the FeatureLayer to the map
+    layers: [wmtsLayer, city_communityLayer, boundaryLayer, intersectingLayer, parcelLayer, bufferFeatureLayer, bufferFeatureLayer2, newFeatureLayer, abcLayer, sensitiveUseLayer] // Add the FeatureLayer to the map
   });
 
   const view = new MapView({
@@ -1309,6 +1365,9 @@ intersectingLayer.formTemplate = formTemplate;
 			enabled: false // Disables the ability to add new features
 			},
 			{ layer: abcLayer,
+			enabled: false // Disables the ability to add new features
+			},
+			{ layer: sensitiveUseLayer,
 			enabled: false // Disables the ability to add new features
 			}
 		]
@@ -1814,7 +1873,7 @@ view.on("click", async (event) => {
     // --- 1. Clear previous edits before running the action again ---
     
    
-    const layersToClear = [newFeatureLayer, bufferFeatureLayer, bufferFeatureLayer2, intersectingLayer, abcLayer];
+    const layersToClear = [newFeatureLayer, bufferFeatureLayer, bufferFeatureLayer2, intersectingLayer, abcLayer, sensitiveUseLayer];
     const deletePromises = layersToClear.map(layer => {
       // Create a query to select all features in the layer for deletion
       const query = layer.createQuery();
@@ -1825,24 +1884,27 @@ view.on("click", async (event) => {
           //console.log(`Clearing ${featuresToDelete.length} features from ${layer.title}...`);
           // Use applyEdits to delete the found features
            return layer.applyEdits({ deleteFeatures: featuresToDelete })
-        .then(() => {
-          // 2. Disable layer in Editor AFTER deletion is successful
-          if (editor && editor.layerInfos) {
-            const layerInfo = editor.layerInfos.find(info => info.layer === abcLayer);
-            if (layerInfo) {
-              layerInfo.enabled = false;
-              layerInfo.addEnabled = false;
-              layerInfo.updateEnabled = false;
-              layerInfo.deleteEnabled = false;
-              // 3. Trigger reactivity to update widget configuration
-              editor.layerInfos = [...editor.layerInfos];
-              console.log(`Editing disabled for ${layer.title}`);
-            }
-          }
-        }).catch(error => console.error(`Error clearing ${layer.title}:`, error));
-        }
-      });
+       .then(() => {
+  // 2. Disable layer in Editor AFTER deletion is successful
+  if (editor && editor.layerInfos) {
+    // Define the layers to be disabled
+    const layersToDisable = [abcLayer, sensitiveUseLayer];
+
+    layersToDisable.forEach(layerToDisable => {
+      const layerInfo = editor.layerInfos.find(info => info.layer === layerToDisable);
+      if (layerInfo) {
+        layerInfo.enabled = false;
+        layerInfo.addEnabled = false;
+        layerInfo.updateEnabled = false;
+        layerInfo.deleteEnabled = false;
+        console.log(`Editing disabled for ${layerToDisable.title}`);
+      }
     });
+
+    // 3. Trigger reactivity to update widget configuration once after loop
+    editor.layerInfos = [...editor.layerInfos];
+  }
+}).catch(error => console.error(`Error clearing ${layer.title}:`, error));
 
     // Wait for all previous edits to be undone/cleared before proceeding with new logic
     Promise.all(deletePromises).then(() => {
@@ -1910,7 +1972,7 @@ newFeatureLayer.applyEdits({
   }
   else if (event.action.id === "create-buffer-2") {
 	
-    const layersToClear = [newFeatureLayer, bufferFeatureLayer, bufferFeatureLayer2, intersectingLayer, abcLayer];
+    const layersToClear = [newFeatureLayer, bufferFeatureLayer, bufferFeatureLayer2, intersectingLayer, abcLayer, sensitiveUseLayer];
     const deletePromises = layersToClear.map(layer => {
       const query = layer.createQuery();
       query.where = "1=1"; 
@@ -1919,46 +1981,52 @@ newFeatureLayer.applyEdits({
         if (featuresToDelete.length > 0) {
           console.log(`Clearing features from ${layer.title}...`); //(`Clearing ${featuresToDelete.length} features from ${layer.title}...`);
           return layer.applyEdits({ deleteFeatures: featuresToDelete })
-        .then(() => {
-          // 2. Disable layer in Editor AFTER deletion is successful
-          if (editor && editor.layerInfos) {
-            const layerInfo = editor.layerInfos.find(info => info.layer === abcLayer);
+     .then(() => {
+    // 2. Disable layers in Editor AFTER deletion is successful
+    if (editor && editor.layerInfos) {
+        // Define layers to manage
+        const layersToDisable = [abcLayer, sensitiveUseLayer];
+
+        layersToDisable.forEach(layer => {
+            const layerInfo = editor.layerInfos.find(info => info.layer === layer);
             if (layerInfo) {
-              layerInfo.enabled = false;
-              layerInfo.addEnabled = false;
-              layerInfo.updateEnabled = false;
-              layerInfo.deleteEnabled = false;
-              // 3. Trigger reactivity to update widget configuration
-              editor.layerInfos = [...editor.layerInfos];
-              console.log(`Editing disabled for ${layer.title}`);
+                layerInfo.enabled = false;
+                layerInfo.addEnabled = false;
+                layerInfo.updateEnabled = false;
+                layerInfo.deleteEnabled = false;
+                console.log(`Editing disabled for ${layer.title}`);
             }
-          }
-        }).catch(error => console.error(`Error clearing ${layer.title}:`, error));
-        }
-      });
-    });
-    Promise.all(deletePromises).then(() => {
-      console.log("Previous edits cleared. Starting new action logic...");
-	  abcLayer.listMode = "show";
-	  
-	 
+        });
 
-	  const abcLayerInfo = editor.layerInfos.find(info => info.layer === abcLayer);
+        // 3. Trigger reactivity to update widget configuration
+        editor.layerInfos = [...editor.layerInfos];
+    }
+}).catch(error => console.error(`Error clearing layers:`, error));
+} }); });
 
-  if (abcLayerInfo) {
-    // 2. Dynamically change the 'enabled' property
-    abcLayerInfo.enabled = true;
+Promise.all(deletePromises).then(() => {
+    console.log("Previous edits cleared. Starting new action logic...");
     
-    // You can also change other properties like addEnabled, updateEnabled, deleteEnabled:
-    abcLayerInfo.addEnabled = true; 
-    abcLayerInfo.updateEnabled = true;
-    abcLayerInfo.deleteEnabled = true;
-	abcLayerInfo.geometryUpdatesEnabled = true; 
+    // Define layers to enable
+    const layersToEnable = [abcLayer, sensitiveUseLayer];
+    
+    layersToEnable.forEach(layer => {
+        layer.listMode = "show";
+        const layerInfo = editor.layerInfos.find(info => info.layer === layer);
+        if (layerInfo) {
+            // 2. Dynamically change the 'enabled' property
+            layerInfo.enabled = true;
+            layerInfo.addEnabled = true;
+            layerInfo.updateEnabled = true;
+            layerInfo.deleteEnabled = true;
+            layerInfo.geometryUpdatesEnabled = true;
+            console.log(`Editing enabled for ${layer.title}`);
+        }
+    });
 
-    // 3. (Optional) If changes don't reflect automatically, you can reset the layerInfos array
-    // This forces the widget to re-evaluate its configuration.
-    editor.layerInfos = [...editor.layerInfos]; 
-  }
+    // 3. Reset the layerInfos array to force re-evaluation
+    editor.layerInfos = [...editor.layerInfos];
+});
 
 
 	  
