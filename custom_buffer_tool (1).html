@@ -1978,52 +1978,46 @@ newFeatureLayer.applyEdits({
         if (featuresToDelete.length > 0) {
           console.log(`Clearing features from ${layer.title}...`); //(`Clearing ${featuresToDelete.length} features from ${layer.title}...`);
           return layer.applyEdits({ deleteFeatures: featuresToDelete })
-     .then(() => {
-    // 2. Disable layers in Editor AFTER deletion is successful
-    if (editor && editor.layerInfos) {
-        // Define layers to manage
-        const layersToDisable = [abcLayer, sensitiveUseLayer];
-
-        layersToDisable.forEach(layer => {
-            const layerInfo = editor.layerInfos.find(info => info.layer === layer);
+      .then(() => {
+          // 2. Disable layer in Editor AFTER deletion is successful
+          if (editor && editor.layerInfos) {
+            const layerInfo = editor.layerInfos.find(info => info.layer === abcLayer);
             if (layerInfo) {
-                layerInfo.enabled = false;
-                layerInfo.addEnabled = false;
-                layerInfo.updateEnabled = false;
-                layerInfo.deleteEnabled = false;
-                console.log(`Editing disabled for ${layer.title}`);
+              layerInfo.enabled = false;
+              layerInfo.addEnabled = false;
+              layerInfo.updateEnabled = false;
+              layerInfo.deleteEnabled = false;
+              // 3. Trigger reactivity to update widget configuration
+              editor.layerInfos = [...editor.layerInfos];
+              console.log(`Editing disabled for ${layer.title}`);
             }
-        });
-
-        // 3. Trigger reactivity to update widget configuration
-        editor.layerInfos = [...editor.layerInfos];
-    }
-}).catch(error => console.error(`Error clearing layers:`, error));
-} }); });
-
-Promise.all(deletePromises).then(() => {
-    console.log("Previous edits cleared. Starting new action logic...");
-    
-    // Define layers to enable
-    const layersToEnable = [abcLayer, sensitiveUseLayer];
-    
-    layersToEnable.forEach(layer => {
-        layer.listMode = "show";
-        const layerInfo = editor.layerInfos.find(info => info.layer === layer);
-        if (layerInfo) {
-            // 2. Dynamically change the 'enabled' property
-            layerInfo.enabled = true;
-            layerInfo.addEnabled = true;
-            layerInfo.updateEnabled = true;
-            layerInfo.deleteEnabled = true;
-            layerInfo.geometryUpdatesEnabled = true;
-            console.log(`Editing enabled for ${layer.title}`);
+          }
+        }).catch(error => console.error(`Error clearing ${layer.title}:`, error));
         }
+      });
     });
+    Promise.all(deletePromises).then(() => {
+      console.log("Previous edits cleared. Starting new action logic...");
+	  abcLayer.listMode = "show";
+	  
+	 
 
-    // 3. Reset the layerInfos array to force re-evaluation
-    editor.layerInfos = [...editor.layerInfos];
-});
+	  const abcLayerInfo = editor.layerInfos.find(info => info.layer === abcLayer);
+
+  if (abcLayerInfo) {
+    // 2. Dynamically change the 'enabled' property
+    abcLayerInfo.enabled = true;
+    
+    // You can also change other properties like addEnabled, updateEnabled, deleteEnabled:
+    abcLayerInfo.addEnabled = true; 
+    abcLayerInfo.updateEnabled = true;
+    abcLayerInfo.deleteEnabled = true;
+	abcLayerInfo.geometryUpdatesEnabled = true; 
+
+    // 3. (Optional) If changes don't reflect automatically, you can reset the layerInfos array
+    // This forces the widget to re-evaluate its configuration.
+    editor.layerInfos = [...editor.layerInfos]; 
+  }
 
 
 	  
