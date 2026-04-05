@@ -1885,26 +1885,23 @@ view.on("click", async (event) => {
           // Use applyEdits to delete the found features
            return layer.applyEdits({ deleteFeatures: featuresToDelete })
        .then(() => {
-  // 2. Disable layer in Editor AFTER deletion is successful
-  if (editor && editor.layerInfos) {
-    // Define the layers to be disabled
-    const layersToDisable = [abcLayer, sensitiveUseLayer];
-
-    layersToDisable.forEach(layerToDisable => {
-      const layerInfo = editor.layerInfos.find(info => info.layer === layerToDisable);
-      if (layerInfo) {
-        layerInfo.enabled = false;
-        layerInfo.addEnabled = false;
-        layerInfo.updateEnabled = false;
-        layerInfo.deleteEnabled = false;
-        console.log(`Editing disabled for ${layerToDisable.title}`);
-      }
+          // 2. Disable layer in Editor AFTER deletion is successful
+          if (editor && editor.layerInfos) {
+            const layerInfo = editor.layerInfos.find(info => info.layer === abcLayer);
+            if (layerInfo) {
+              layerInfo.enabled = false;
+              layerInfo.addEnabled = false;
+              layerInfo.updateEnabled = false;
+              layerInfo.deleteEnabled = false;
+              // 3. Trigger reactivity to update widget configuration
+              editor.layerInfos = [...editor.layerInfos];
+              console.log(`Editing disabled for ${layer.title}`);
+            }
+          }
+        }).catch(error => console.error(`Error clearing ${layer.title}:`, error));
+        }
+      });
     });
-
-    // 3. Trigger reactivity to update widget configuration once after loop
-    editor.layerInfos = [...editor.layerInfos];
-  }
-}).catch(error => console.error(`Error clearing ${layer.title}:`, error));
 
     // Wait for all previous edits to be undone/cleared before proceeding with new logic
     Promise.all(deletePromises).then(() => {
