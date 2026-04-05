@@ -1106,34 +1106,9 @@ expand.watch("expanded", (isExpanded) => {
 
 });
 
-  const print = new Print({
-  view: view,
-  printServiceUrl: "https://rpgis.isd.lacounty.gov/arcgis/rest/services/ExportWebMap/GPServer/Export%20Web%20Map",
-  
-  // Add ViewModel options here
-  viewModel: {
-    view: view,
-    printServiceUrl: "https://rpgis.isd.lacounty.gov/arcgis/rest/services/ExportWebMap/GPServer/Export%20Web%20Map",
-	showPrintAreaEnabled: true,
-    updateDelay: 1000 // Example option: interval for job status requests
-  },
-
-  templateOptions: {
-    title: "EXISTING LAND USE",
-    format: "pdf",
-    layout: "Landscape_8.5x11_LU_Map",
-    attributionEnabled: false,
-    forceFeatureAttributes: true,
-    legendEnabled: true,
-    customTextElements: [
-      { "Radius": "600-FOOT RADIUS MAP" },
-      { "Project": "PROJECT NO. 87-150" },
-      { "Case Type and Case Number": "PM RPPL2023001511" }
-    ]
-  }
-});
 	
-	/*const print = new Print({
+	
+const print = new Print({
   view: view,
   printServiceUrl: "https://rpgis.isd.lacounty.gov/arcgis/rest/services/ExportWebMap/GPServer/Export%20Web%20Map",
   templateOptions: {
@@ -1149,7 +1124,7 @@ expand.watch("expanded", (isExpanded) => {
 	  { "Case Type and Case Number": "PM RPPL2023001511" }
     ]
   }
-});*/
+});
 
 const printExpand = new Expand({
   view: view,
@@ -1163,12 +1138,15 @@ const printExpand = new Expand({
 // 3. Add the Expand widget to the UI
 view.ui.add(printExpand, "top-left");
 
-/*printExpand.watch("expanded", (isExpanded) => {
+printExpand.watch("expanded", (isExpanded) => {
   if (isExpanded) {
     // Enable the print area on the print view model
     print.viewModel.showPrintAreaEnabled = true;
   }
-});*/
+  else {
+  	print.viewModel.showPrintAreaEnabled = false;
+	}
+});
 
  // 3. Create the BasemapGallery widget
 var wrapperDiv = document.createElement("div");
