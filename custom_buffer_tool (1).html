@@ -1986,18 +1986,24 @@ newFeatureLayer.applyEdits({
           return layer.applyEdits({ deleteFeatures: featuresToDelete })
       .then(() => {
           // 2. Disable layer in Editor AFTER deletion is successful
-          if (editor && editor.layerInfos) {
-            const layerInfo = editor.layerInfos.find(info => info.layer === abcLayer);
-            if (layerInfo) {
-              layerInfo.enabled = false;
-              layerInfo.addEnabled = false;
-              layerInfo.updateEnabled = false;
-              layerInfo.deleteEnabled = false;
-              // 3. Trigger reactivity to update widget configuration
-              editor.layerInfos = [...editor.layerInfos];
-              console.log(`Editing disabled for ${layer.title}`);
-            }
-          }
+         if (editor && editor.layerInfos) {
+  // Find both layerInfos
+  const targetLayers = editor.layerInfos.filter(info => 
+    info.layer === abcLayer || info.layer === sensitiveUseLayer
+  );
+
+  // Apply configurations to both
+  targetLayers.forEach(layerInfo => {
+    layerInfo.enabled = false;
+    layerInfo.addEnabled = false;
+    layerInfo.updateEnabled = false;
+    layerInfo.deleteEnabled = false;
+    console.log(`Editing disabled for ${layerInfo.layer.title}`);
+  });
+
+  // Trigger reactivity to update widget configuration
+  editor.layerInfos = [...editor.layerInfos];
+}
         }).catch(error => console.error(`Error clearing ${layer.title}:`, error));
         }
       });
