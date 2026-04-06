@@ -1194,25 +1194,6 @@ const printExpand = new Expand({
 // 3. Add the Expand widget to the UI
 view.ui.add(printExpand, "top-left");
 
-// Wait for the 'expanded' property to become true
-/*reactiveUtils.when(
-  () => printExpand.expanded === true,
-  () => {
-    // Small delay ensures the opening animation is 100% finished
-    setTimeout(() => {
-      print.viewModel.showPrintAreaEnabled = true;
-    }, 100);
-  }
-);
-
-// You can also watch for it closing to turn it off immediately
-reactiveUtils.when(
-  () => printExpand.expanded === false,
-  () => {
-    print.viewModel.showPrintAreaEnabled = false;
-  }
-);*/
-
 reactiveUtils.watch(
   () => printExpand.expanded,
   (expanded) => {
