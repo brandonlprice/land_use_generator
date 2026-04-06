@@ -1992,20 +1992,26 @@ newFeatureLayer.applyEdits({
     Promise.all(deletePromises).then(() => {
       console.log("Previous edits cleared. Starting new action logic...");
 	  abcLayer.listMode = "show";
+	  sensitiveUseLayer.listMode = "show";
 	  
 	 
-
+	  const sensitiveUseLayerinfo = editor.layerInfos.find(info => info.layer === sensitiveUseLayer);
 	  const abcLayerInfo = editor.layerInfos.find(info => info.layer === abcLayer);
 
-  if (abcLayerInfo) {
+  if (abcLayerInfo || sensitiveUseLayerinfo) {
     // 2. Dynamically change the 'enabled' property
     abcLayerInfo.enabled = true;
+	sensitiveUseLayerinfo.enabled = true;
     
     // You can also change other properties like addEnabled, updateEnabled, deleteEnabled:
     abcLayerInfo.addEnabled = true; 
     abcLayerInfo.updateEnabled = true;
     abcLayerInfo.deleteEnabled = true;
 	abcLayerInfo.geometryUpdatesEnabled = true; 
+	sensitiveUseLayerinfo.addEnabled = true; 
+    sensitiveUseLayerinfo.updateEnabled = true;
+    sensitiveUseLayerinfo.deleteEnabled = true;
+	sensitiveUseLayerinfo.geometryUpdatesEnabled = true;
 
     // 3. (Optional) If changes don't reflect automatically, you can reset the layerInfos array
     // This forces the widget to re-evaluate its configuration.
