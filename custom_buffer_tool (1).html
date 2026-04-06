@@ -384,7 +384,7 @@ addLayerButton.addEventListener('click', () => {
 const sensitiveUseLayer = new FeatureLayer({
   source: [], // Start empty for client-side editing
   title: "Sensitive Use",
-  listMode: "show", // Changed to show in legend if desired
+  listMode: "hide", // Changed to show in legend if desired
   
   // 1. Removed 'Type' field, kept only necessary fields
   fields: [
@@ -402,7 +402,7 @@ const sensitiveUseLayer = new FeatureLayer({
       type: "simple-marker",
       style: "square", // Changed from triangle to square
       color: "black",
-      size: 8, // Adjust size as needed
+      size: 6, // Adjust size as needed
       outline: {
         color: "white",
         width: 1
@@ -431,7 +431,7 @@ const sensitiveUseLayer = new FeatureLayer({
       color: "black",
       haloColor: "white",
       haloSize: "1px",
-      font: { size: 10, family: "sans-serif", weight: "bold" }
+      font: { size: 8.5, family: "sans-serif", weight: "bold" }
     },
     minScale: 0,
     maxScale: 0,
