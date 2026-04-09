@@ -1211,7 +1211,11 @@ bookmarksWidget = new Bookmarks({
   view: view,
   container:bookmarksContainerDiv,
   bookmarks: bookmarksCollection,
-  editingEnabled: true, 
+  visibleElements: {
+     addBookmarkButton: true,
+     editBookmarkButton: true
+   },
+   draggable: true,
   visible: false
 });
 view.ui.add(bookmarksDiv, "top-right");
