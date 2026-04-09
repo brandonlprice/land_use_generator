@@ -1375,7 +1375,7 @@ layersContainerDiv.style.overflowY = "auto";
 layersDiv.appendChild(layersTitle);
 layersDiv.appendChild(layersContainerDiv);	
 	
-const layerList = new LayerList({
+/*const layerList = new LayerList({
   view: view,
   container: layersContainerDiv,
   visibilityAppearance: "checkbox",
@@ -1404,7 +1404,7 @@ const layerList = new LayerList({
       layer.on("edits", () => {
         updateCount();
       });
-    }*/
+    }
 
     // Default behavior for all layers (including the target one)
     item.panel = {
@@ -1415,7 +1415,46 @@ const layerList = new LayerList({
   visible: false
 });
 
-	view.ui.add(layersDiv, "top-right"); 
+	view.ui.add(layersDiv, "top-right");*/ 
+
+  const layerList = new LayerList({
+  view: view,
+  container: layersContainerDiv,
+  visibilityAppearance: "checkbox",
+  listItemCreatedFunction: async function(event) {
+    const item = event.item;
+    const layer = item.layer;
+
+    // Add legend panel as you already had
+    item.panel = { content: "legend", open: true };
+
+    // Add a custom action for a specific layer (e.g., by title or ID)
+    if (item.title === "Land Use Type (Assessor Use Codes)") {
+      item.actionsSections = [
+        [{
+          title: "Toggle Labels",
+          className: "esri-icon-comment",
+          id: "toggle-labels",
+          type: "button"
+        }]
+      ];
+    }
+  },
+  visible: false
+});
+
+// Listen for the action trigger
+layerList.on("trigger-action", (event) => {
+  const id = event.action.id;
+  const layer = event.item.layer;
+
+  if (id === "toggle-labels") {
+    // Toggle the labelsVisible property
+    layer.labelsVisible = !layer.labelsVisible;
+  }
+});
+
+view.ui.add(layersDiv, "top-right");
 	
 	// 1. Create the custom HTML element (the panel)
   const customPanel = document.createElement("div");
