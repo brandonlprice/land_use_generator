@@ -192,76 +192,6 @@ require([
 	"esri/layers/VectorTileLayer",
 	"esri/layers/MapImageLayer"
 ], function(Map, MapView, FeatureLayer, Graphic, geometryEngine, reactiveUtils, Query, UniqueValueRenderer, CIMSymbol, BasemapToggle, Extent, SpatialReference, Search, Home, Viewpoint, Editor, GraphicsLayer, LayerList, Basemap, WMTSLayer, DistanceMeasurement2D, Expand, BasemapGallery, Bookmarks, Bookmark, Point, Print, LegendLayer, VectorTileLayer, MapImageLayer) {
-
-	const addLayerButton = document.getElementById('addLayerButton');
-const layerUrlInput = document.getElementById('layerUrlInput');
-
-addLayerButton.addEventListener('click', () => {
-    if (layerUrlInput.style.display === 'none' || layerUrlInput.style.display === '') {
-        layerUrlInput.style.display = 'inline-block'; // Show it
-        layerUrlInput.focus(); // Optional: focus the input
-    } else {
-        layerUrlInput.style.display = 'none'; // Hide it
-    }
-}); 
-
-    function addLayerFromUrl() {
-        const urlInput = document.getElementById("layerUrlInput");
-        const url = urlInput.value.trim();
-
-        /*if (!url) {
-            alert("Please enter a valid URL.");
-            return;
-        }*/
-
-        // Determine layer type based on URL keywords (simple approach)
-        let layer;
-        if (url.includes("FeatureServer")) {
-            layer = new FeatureLayer({
-                url: url
-            });
-            console.log("Adding FeatureLayer");
-        } else if (url.includes("MapServer")) {
-            // Note: If the user provides a specific layer index, e.g., MapServer/0, 
-            // it will be treated as a FeatureLayer above. A plain MapServer URL 
-            // typically adds all sublayers as a single image.
-            layer = new MapImageLayer({
-                url: url
-            });
-            console.log("Adding MapImageLayer");
-        } else if (url.toLowerCase().includes(".geojson")) {
-            layer = new GeoJSONLayer({
-                url: url
-            });
-            console.log("Adding GeoJSONLayer");
-        } else if (url.includes("WMS")) {
-            layer = new WMSLayer({
-                url: url
-            });
-            console.log("Adding WMSLayer");
-        } /*else {
-            alert("Unsupported layer type or URL format.");
-            return;
-        }*/
-
-        
-        map.add(layer);
-        
-        // Optional: Zoom to the layer's extent once loaded
-        layer.when(function() {
-            view.goTo(layer.fullExtent);
-        }, function(error) {
-            console.error("Error loading layer: ", error);
-            alert("Failed to load layer. Check the console for details, ensure the URL is correct, and consider potential CORS issues.");
-            map.remove(layer); // Remove the problematic layer
-        });
-
-        // Clear the input box
-        urlInput.value = "";
-    }
-
-    // Attach event listener to the button
-    document.getElementById("addLayerButton").addEventListener("click", addLayerFromUrl);
 	
 
   // 1. Define the schema for the new client-side feature layer
@@ -2145,10 +2075,6 @@ newFeatureLayer.applyEdits({
 		<button id="toggleLegendBtn" class="esri-icon-layers esri-widget--button esri-interactive"></button>
         <button id="toggleEditorBtn" class="esri-icon-edit esri-widget--button esri-interactive"></button>
 		<button id="basemapGalleryBtn" class="esri-icon-basemap esri-widget--button esri-interactive"></button>
-		<div id="ui-container" class="esri-widget">
-        <input type="text" id="layerUrlInput" placeholder="Enter Layer URL" />
-        <button id="addLayerButton" class="esri-icon-upload esri-widget--button esri-interactive"></button>
-		</div>
 		<button id="bookmarksBtn" class="esri-icon-bookmark esri-widget--button esri-interactive"></button>
 		<button id="customPanelBtn" class="esri-icon-announcement esri-widget--button esri-interactive"></button>
     </div>
