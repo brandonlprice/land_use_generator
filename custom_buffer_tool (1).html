@@ -1068,6 +1068,17 @@ view.ui.add([zoomInBtn], "top-left");
 
   
   view.ui.add(homeWidget, "top-left");
+
+  const customBtn = document.createElement("div");
+customBtn.className = "esri-icon-cursor-marquee esri-widget--button esri-widget esri-interactive";
+customBtn.title = "Activate Crosshair Tool";
+
+// 3. Add the click event listener using your code
+customBtn.addEventListener("click", () => {
+    activateTool(view);
+});
+
+view.ui.add(customBtn, "top-left");
 	
 	
   const measurementWidget = new DistanceMeasurement2D({
