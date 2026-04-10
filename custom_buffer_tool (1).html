@@ -77,6 +77,20 @@
 	  calcite-action[icon="legend"] {
 		display: none !important;
 	}
+
+	.google-pegman-icon {
+  /* URL to your Pegman icon image */
+  background-image: url('https://cdn.pixabay.com/photo/2014/04/03/10/23/man-310276_1280.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px; /* Adjust size to fit inside the button */
+}
+
+/* Optional: Override default hover effects if needed */
+.google-pegman-icon:hover {
+  background-color: #f0f0f0;
+}
+		
 	#ui-container {
     display: flex; /* Aligns input and button horizontally */
     align-items: center;
@@ -1070,8 +1084,8 @@ view.ui.add([zoomInBtn], "top-left");
   view.ui.add(homeWidget, "top-left");
 
   const customBtn = document.createElement("div");
-customBtn.className = "esri-icon-cursor-marquee esri-widget--button esri-widget esri-interactive";
-customBtn.title = "Activate Crosshair Tool";
+customBtn.className = "google-pegman-icon esri-widget--button esri-widget esri-interactive";
+customBtn.title = "Google Street View";
 
 // 3. Add the click event listener using your code
 customBtn.addEventListener("click", () => {
