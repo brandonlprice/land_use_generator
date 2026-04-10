@@ -1090,7 +1090,7 @@ function activateTool(view) {
     const { latitude, longitude } = event.mapPoint;
 
     // 2. Construct the Google Street View URL
-    const url = `https://www.google.com/maps?layer=c&cbll={latitude},${longitude}`;
+    const url = `https://www.google.com/maps?layer=c&cbll=${latitude},${longitude}`;
 
     // 3. Open the URL in a new tab
     window.open(url, "_blank");
