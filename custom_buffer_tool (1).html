@@ -1079,6 +1079,30 @@ customBtn.addEventListener("click", () => {
 });
 
 view.ui.add(customBtn, "top-left");
+
+let clickHandle = null;
+
+function activateTool(view) {
+    // Change cursor to crosshair
+    view.cursor = "crosshair";
+
+    // Set up map click event
+    clickHandle = view.on("click", (event) => {
+        console.log("Map point:", event.mapPoint);
+        
+        // Reset the cursor and clean up after one click
+        deactivateTool(view);
+    });
+}
+
+function deactivateTool(view) {
+    // Reset cursor to default
+    view.cursor = "auto";
+    if (clickHandle) {
+        clickHandle.remove();
+        clickHandle = null;
+    }
+}
 	
 	
   const measurementWidget = new DistanceMeasurement2D({
