@@ -1372,47 +1372,7 @@ layersContainerDiv.style.overflowY = "auto";
 layersDiv.appendChild(layersTitle);
 layersDiv.appendChild(layersContainerDiv);	
 	
-/*const layerList = new LayerList({
-  view: view,
-  container: layersContainerDiv,
-  visibilityAppearance: "checkbox",
-  listItemCreatedFunction: async function(event) { // Add async here
-    const item = event.item;
-    const layer = item.layer;
 
-    // Filter by name and ensure it's a feature layer
-    /*if (layer.type === "feature" && layer.title === "Land Use Type") {
-      
-      const updateCount = async () => {
-        try {
-          // It's often safer to wait for the layer to load before querying
-          await layer.when(); 
-          const count = await layer.queryFeatureCount();
-          item.title = `${layer.title} (${count})`;
-        } catch (error) {
-          console.error("Count query failed", error);
-        }
-      };
-
-      // Initial count update
-      updateCount();
-
-      // Refresh count on edits
-      layer.on("edits", () => {
-        updateCount();
-      });
-    }
-
-    // Default behavior for all layers (including the target one)
-    item.panel = {
-      content: "legend",
-      open: true
-    };
-  },
-  visible: false
-});
-
-	view.ui.add(layersDiv, "top-right");*/ 
 
   const layerList = new LayerList({
   view: view,
@@ -1835,10 +1795,6 @@ searchWidget.on('search-complete', function(event) {
 
 view.on("click", async (event) => {
 
-	/*// 1. CHECK: Skip if Measurement Expand is open AND a tool is active
-  if (measurementExpand.expanded && measurementWidget.activeTool) {
-    return; 
-  }*/
   
   if (!parcelLayerView) return;
   
