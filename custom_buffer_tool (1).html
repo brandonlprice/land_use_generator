@@ -1755,7 +1755,8 @@ async function openPopupForFeature(geocodedLocation) {
             }
 
             // 4. Navigate and Open Popup
-            await view.goTo(foundFeature.geometry);
+            //await
+			view.goTo(foundFeature.geometry);
             view.openPopup({
                 features: [foundFeature],
                 location: foundFeature.geometry.centroid || foundFeature.geometry.extent.center,
