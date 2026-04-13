@@ -1682,6 +1682,8 @@ view.whenLayerView(parcelLayer).then((layerView) => {
     parcelLayerView = layerView;
 });
 
+view.ui.add(searchWidget, { position: "top-left", index: 0 });
+
 // Helper to clear safely
 function clearSelectionAndHighlight() {
     if (highlightHandle) {
