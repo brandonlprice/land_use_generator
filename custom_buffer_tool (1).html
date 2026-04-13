@@ -1801,7 +1801,7 @@ searchWidget.on('search-complete', function(event) {
     // 3. DELAYED REMOVAL (3 seconds)
     setTimeout(() => {
       // Safely remove the graphic after 3000 milliseconds
-      searchWidget.view.graphics.remove(event.results[0].results[0].feature);
+      searchWidget.view.graphics.remove(resultGraphic);
     }, 3000); 
   }
 });
