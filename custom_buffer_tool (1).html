@@ -1673,106 +1673,87 @@ customPanelBtn.addEventListener("click", function() {
 });
 	
 	
-	// --- 1. GLOBALS & TRACKING ---
-
-let selectedFeatureIds = [];	
+	let selectedFeatureIds = [];
 let highlightHandle = null;
 let parcelLayerView = null;
-let currentRequestId = 0;
-let isInternalClick = false; // <<< ADDED FLAG
-let closeTimeout; // For watcher
+let currentRequestId = 0; // Prevent out-of-order results
 
 // 1. Get the LayerView when it's ready
 view.whenLayerView(parcelLayer).then((layerView) => {
-    parcelLayerView = layerView;
+  parcelLayerView = layerView;
 });
 
-view.ui.add(searchWidget, { position: "top-left", index: 0 });
+view.ui.add(searchWidget, {
+  position: "top-left",
+  index: 0
+});
 
 // Helper to clear safely
 function clearSelectionAndHighlight() {
-    if (highlightHandle) {
-        highlightHandle.remove();
-        highlightHandle = null;
-    }
-    if (parcelLayerView) {
-        parcelLayerView.selectedFeatureIds = [];
-    }
+  if (highlightHandle) {
+    highlightHandle.remove();
+    highlightHandle = null;
+  }
+  if (parcelLayerView) {
+    parcelLayerView.selectedFeatureIds = [];
+  }
 }
 
-// --- 2. ADDED WATCHER (Same as first snippet) ---
-// Prevents closure when search sets new selection
-reactiveUtils.watch(
-    () => view.popup.visible,
-    (visible) => {
-        if (!visible) {
-            closeTimeout = setTimeout(() => {
-                if (!isInternalClick) {
-                    clearSelectionAndHighlight();
-                }
-            }, 100);
-        } else {
-            clearTimeout(closeTimeout);
-        }
-    }
-);
-
-// 3. Updated open function
+// 2. Updated open function
 async function openPopupForFeature(geocodedLocation) {
-    const requestId = ++currentRequestId;
-    const isPoint = geocodedLocation.type === "point";
-    const bufferDistance = isPoint ? 1 : -7;
-    const negativeBuffer = geometryEngine.buffer(geocodedLocation, bufferDistance, "meters");
+  const requestId = ++currentRequestId;
+  const isPoint = geocodedLocation.type === "point";
+  const bufferDistance = isPoint ? 1 : -7;
+  const negativeBuffer = geometryEngine.buffer(
+    geocodedLocation,
+    bufferDistance,
+    "meters"
+  );
 
-    const query = parcelLayer.createQuery();
-    query.geometry = negativeBuffer;
-    query.outFields = ["*"];
-    query.returnGeometry = true;
+  const query = parcelLayer.createQuery();
+  query.geometry = negativeBuffer;
+  query.outFields = ["*"]; // Ensure fields for actions/templates are present
+  query.returnGeometry = true;
 
-    try {
-        const results = await parcelLayer.queryFeatures(query);
-        if (requestId !== currentRequestId) return;
+  try {
+    const results = await parcelLayer.queryFeatures(query);
+    if (requestId !== currentRequestId) return;
 
-        // --- THE FIX ---
-        isInternalClick = true; // Set flag to true BEFORE acting
-        
-        clearSelectionAndHighlight(); // Now safe from watcher
+    clearSelectionAndHighlight();
 
-        if (results.features.length > 0) {
-            const foundFeature = results.features[0];
-            foundFeature.layer = parcelLayer;
+    if (results.features.length > 0) {
+      const foundFeature = results.features[0];
+      // Explicitly link the layer so actions/templates function
+      foundFeature.layer = parcelLayer;
 
-            if (parcelLayerView) {
-                highlightHandle = parcelLayerView.highlight(foundFeature);
-            }
-            
-            view.openPopup({
-                features: [foundFeature],
-                location: foundFeature.geometry.centroid || foundFeature.geometry.extent.center
-            });
-            view.goTo(foundFeature.geometry);
+      if (parcelLayerView) {
+        highlightHandle = parcelLayerView.highlight(foundFeature);
+      }
 
-            // Reset flag after actions complete
-            setTimeout(() => { isInternalClick = false; }, 200);
-        } else {
-            isInternalClick = false; // Reset if nothing found
-        }
-    } catch (error) {
-        console.error("Search Error: ", error);
-        isInternalClick = false; // Reset on error
+      view.openPopup({
+        features: [foundFeature],
+        location: foundFeature.geometry.centroid ||
+          foundFeature.geometry.extent.center
+      });
+      view.goTo(foundFeature.geometry);
     }
+  } catch (error) {
+    console.error("Search Error: ", error);
+  }
 }
 
 searchWidget.on('search-complete', function(event) {
-    if (event.results && event.results.length > 0) {
-        const geocodedLocation = event.results[0].results[0].feature.geometry;
-        openPopupForFeature(geocodedLocation);
-        
-        setTimeout(() => {
-            searchWidget.clear();
-        }, 500);
-    }
+  if (event.results && event.results.length > 0) {
+    const geocodedLocation = event.results[0].results[0].feature.geometry;
+    openPopupForFeature(geocodedLocation);
+
+    // Delay the clear to allow the popup and its actions to initialize
+    setTimeout(() => {
+      searchWidget.clear();
+    }, 500);
+  }
 });
+
 	
 
 /*let highlightHandle = null;
