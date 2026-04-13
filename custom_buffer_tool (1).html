@@ -1701,6 +1701,49 @@ async function openPopupForFeature(geocodedLocation) {
     const isPoint = geocodedLocation.type === "point";
     const bufferDistance = isPoint ? 1 : -7;
     const negativeBuffer = geometryEngine.buffer(geocodedLocation, bufferDistance, "meters");
+    
+    const query = parcelLayer.createQuery();
+    query.geometry = negativeBuffer;
+    query.outFields = ["*"];
+    query.returnGeometry = true;
+
+    try {
+        const results = await parcelLayer.queryFeatures(query);
+        if (requestId !== currentRequestId) return;
+
+        // --- THE FIXES ---
+        // 1. Properly clear previous highlights
+        clearSelectionAndHighlight();                
+
+        if (results.features.length > 0) {
+            const foundFeature = results.features[0];
+            
+            // 2. IMPORTANT: Explicitly assign popupTemplate from layer
+            foundFeature.popupTemplate = parcelLayer.popupTemplate;
+            // Also link the layer to ensure actions function
+            foundFeature.layer = parcelLayer; 
+
+            if (parcelLayerView) {
+                highlightHandle = parcelLayerView.highlight(foundFeature);
+            }
+            
+            // 3. Open Popup
+            view.openPopup({
+                features: [foundFeature],
+                location: foundFeature.geometry.centroid || foundFeature.geometry.extent.center
+            });
+            view.goTo(foundFeature.geometry);
+        }
+    } catch (error) {
+        console.error("Search Error: ", error);
+    }
+}	
+
+/*async function openPopupForFeature(geocodedLocation) {
+    const requestId = ++currentRequestId;
+    const isPoint = geocodedLocation.type === "point";
+    const bufferDistance = isPoint ? 1 : -7;
+    const negativeBuffer = geometryEngine.buffer(geocodedLocation, bufferDistance, "meters");
 
     const query = parcelLayer.createQuery();
     query.geometry = negativeBuffer;
@@ -1732,7 +1775,7 @@ async function openPopupForFeature(geocodedLocation) {
     } catch (error) {
         console.error("Search Error: ", error);
     }
-}
+}*/
 
 
 // 2. Optimized Function for search and click
