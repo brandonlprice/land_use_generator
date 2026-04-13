@@ -1782,11 +1782,23 @@ async function openPopupForFeature(geocodedLocation) {
 }*/
 
 // 3. Optimized Search Event
-searchWidget.on('search-complete', function(event) {
+/*searchWidget.on('search-complete', function(event) {
     if (event.results && event.results.length > 0) {
         const geocodedLocation = event.results[0].results[0].feature.geometry;
         openPopupForFeature(geocodedLocation);
         searchWidget.clear(); // Clear input immediately
+    }
+});*/
+
+	searchWidget.on('search-complete', function(event) {
+    if (event.results && event.results.length > 0) {
+        const geocodedLocation = event.results[0].results[0].feature.geometry;
+        openPopupForFeature(geocodedLocation);
+        
+        // Delay the clear to allow the popup and its actions to initialize
+        setTimeout(() => {
+            searchWidget.clear();
+        }, 500); 
     }
 });
 	
