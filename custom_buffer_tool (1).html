@@ -1672,97 +1672,8 @@ customPanelBtn.addEventListener("click", function() {
     bookmarksTitle.style.display = "none";
 });
 	
-	
-	let selectedFeatureIds = [];
+
 let highlightHandle = null;
-let currentRequestId = 0; // Prevent out-of-order results
-let parcelLayerView = null;
-
-// 1. Get the LayerView when it's ready - crucial for layerView.queryFeatures
-view.whenLayerView(parcelLayer).then((layerView) => {
-    parcelLayerView = layerView;
-}).catch(console.error);
-
-view.ui.add(searchWidget, { position: "top-left", index: 0 });
-
-function clearSelectionAndHighlight() {
-    // Clear the highlight if it exists
-    if (highlightHandle) {
-        highlightHandle.remove();
-        highlightHandle = null;
-    }
-    // Clear the feature selection
-    if (parcelLayerView) {
-        parcelLayerView.selectedFeatureIds = [];
-    }
-    selectedFeatureIds = []; // Clear local tracker
-    console.log("Highlights and selection cleared.");
-}
-
-// 2. Updated open function using FeatureLayerView
-async function openPopupForFeature(geocodedLocation) {
-    const requestId = ++currentRequestId;
-    
-    // Ensure we have a valid point
-    if (!geocodedLocation) return;
-    
-    // Create a small buffer around the point for selection
-    const bufferDistance = 1; // 1 meter, adjust based on parcel size
-    const bufferGeometry = geometryEngine.buffer(
-        geocodedLocation,
-        bufferDistance,
-        "meters"
-    );
-
-    // Create a query object
-    const query = new Query(); // Using Query from esri/rest/support/Query
-    query.geometry = bufferGeometry;
-    query.spatialRelationship = "intersects"; // Use intersections
-    query.outFields = ["*"];
-    query.returnGeometry = true;
-
-    try {
-        // Use layerView.queryFeatures instead of layer.queryFeatures
-        if (!parcelLayerView) return; 
-        const results = await parcelLayerView.queryFeatures(query);
-        
-        // Prevent out-of-order results
-        if (requestId !== currentRequestId) return;
-        
-        clearSelectionAndHighlight();
-
-        if (results.features.length > 0) {
-            const foundFeature = results.features[0];
-            
-            // Highlight
-            highlightHandle = parcelLayerView.highlight(foundFeature);
-            
-            // Open Popup
-            view.openPopup({
-                features: [foundFeature],
-                location: geocodedLocation // Center on click
-            });
-            
-            view.goTo(foundFeature.geometry);
-        }
-    } catch (error) {
-        console.error("Search Error: ", error);
-    }
-}
-
-// 3. Search complete listener
-searchWidget.on('search-complete', function(event) {
-    if (event.results && event.results.length > 0) {
-        const topResult = event.results[0].results[0];
-        if (topResult) {
-            openPopupForFeature(topResult.feature.geometry);
-        }
-    }
-});
-
-	
-
-/*let highlightHandle = null;
 let selectedFeatureIds = [];
 let parcelLayerView = null;
 let closeTimeout; // Define in outer scope
@@ -1875,7 +1786,7 @@ searchWidget.on('search-complete', function(event) {
             searchWidget.clear();
         }, 500);
     }
-});*/
+});
 	
 
 view.on("click", async (event) => {
