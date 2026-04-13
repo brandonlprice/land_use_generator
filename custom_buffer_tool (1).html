@@ -1691,9 +1691,35 @@ let isInternalClick = false; // Flag to track source of closure
     position: "top-left",
     index: 0 // Optional: places it at index 0 in that position
   });
+
+searchWidget.on('search-complete', async (event) => {
+  const result = event.results[0]?.results[0];
+  if (!result) return;
+
+  const foundFeature = result.feature;
+  
+  // 1. Instant UI Cleanup
+  clearSelectionAndHighlight();
+  searchWidget.clear(); // Clear immediately instead of 1000ms delay
+
+  // 2. Immediate Visual Feedback (Highlight & Popup)
+  if (parcelLayerView) {
+    highlightHandle = parcelLayerView.highlight(foundFeature);
+  }
+
+  // Open popup and move camera in parallel (No 'await' on goTo)
+  view.openPopup({
+    features: [foundFeature],
+    location: foundFeature.geometry.type === "polygon" 
+              ? foundFeature.geometry.centroid 
+              : foundFeature.geometry
+  });
+
+  view.goTo(foundFeature.geometry, { duration: 400 }); // Fast, snappy transition
+});
   
  // Function to handle the clearing logic
-function clearSelectionAndHighlight() {
+/*function clearSelectionAndHighlight() {
   // Clear the highlight if it exists
   if (highlightHandle) {
     highlightHandle.remove();
@@ -1789,7 +1815,7 @@ searchWidget.on('search-complete', function(event) {
         // Calling clear() removes the result graphic and clears the search box
         searchWidget.clear(); 
     }, 500);
-});
+});*/
 
 
 
