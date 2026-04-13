@@ -1778,7 +1778,7 @@ async function openPopupForFeature(geocodedLocation) {
 
 
 // 3. Call the function in the search-complete event
-searchWidget.on('search-complete', function(event) {
+/*searchWidget.on('search-complete', function(event) {
     if (event.results && event.results.length > 0) {
         const geocodedLocation = event.results[0].results[0].feature.geometry;
         openPopupForFeature(geocodedLocation);
@@ -1787,6 +1787,16 @@ searchWidget.on('search-complete', function(event) {
             searchWidget.clear();
         }, 500);
     }
+});*/
+
+// Optimized search-complete callback
+searchWidget.on('search-complete', function(event) {
+  if (event.results && event.results.length > 0) {
+    const geocodedLocation = event.results[0].results[0].feature.geometry;
+    openPopupForFeature(geocodedLocation);                
+    // Reduce this time or remove entirely
+    searchWidget.clear(); 
+  }
 });
 	
 
