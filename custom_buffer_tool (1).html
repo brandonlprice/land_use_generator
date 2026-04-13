@@ -1673,127 +1673,82 @@ customPanelBtn.addEventListener("click", function() {
 });
 	
 	
-	
-	/*let highlightHandle = null;
-let selectedFeatureIds = [];
-let parcelLayerView = null; // Store the LayerView here
+	let highlightHandle = null;
+let parcelLayerView = null;
+let currentRequestId = 0; // Prevent out-of-order results
 
 // 1. Get the LayerView when it's ready
 view.whenLayerView(parcelLayer).then((layerView) => {
     parcelLayerView = layerView;
 });
 
-
-let isInternalClick = false; // Flag to track source of closure
-
- // Add the search widget to the top-right corner of the UI
-  view.ui.add(searchWidget, {
-    position: "top-left",
-    index: 0 // Optional: places it at index 0 in that position
-  });
-
-
-  
- // Function to handle the clearing logic
+// Helper to clear safely
 function clearSelectionAndHighlight() {
-  // Clear the highlight if it exists
-  if (highlightHandle) {
-    highlightHandle.remove();
-    highlightHandle = null;
-  }
-  // Clear the feature selection
-  parcelLayerView.selectedFeatureIds = [];
-  console.log("Highlights and selection cleared.");
-} 
-// To this (using a small delay to check if a new selection happens):
-let closeTimeout;
-reactiveUtils.watch( () => view.popup.visible, (visible) => {
-  if (!visible) {
-    closeTimeout = setTimeout(() => {
-      if (!isInternalClick) {
-        clearSelectionAndHighlight();
-        selectedFeatureIds = [];
-      }
-    }, 50); // Delay ensures click handler runs first
-  } else {
-    clearTimeout(closeTimeout);
-  }
-}); 
-
-// 1. Define a function that handles your click logic
-async function openPopupForFeature(geocodedLocation) {
-
-const isPoint = geocodedLocation.type === "point";
-// Use positive buffer for points to find the parcel "containing" it
-// Use negative buffer for polygons to ensure you select the "same" parcel
-const bufferDistance = isPoint ? 1 : -7; 
-const spatialRel = isPoint ? "intersects" : "within";
-
-const negativeBuffer = geometryEngine.buffer(geocodedLocation, bufferDistance, "meters");
-
-const query = {
-    returnGeometry: true,
-    outFields: ["OBJECTID", "AIN"], // Consider limiting fields if possible for performance
-    spatialRelationship: spatialRel,
-    geometry: negativeBuffer,
-	num: 1
-  };
-
-  try {
-    const results = await parcelLayer.queryFeatures(query);
-
-    if (results.features.length > 0) {
-      const foundFeature = results.features[0];
-
-      // 1. Set internal flag to manage interaction logic
-      isInternalClick = true;
-
-      // 2. Clear previous and highlight found feature
-      clearSelectionAndHighlight(); // Assuming this is defined elsewhere
-      selectedFeatureIds = [foundFeature.attributes[parcelLayer.objectIdField]]; // Assuming this is defined elsewhere
-      if (parcelLayerView) {
-        highlightHandle = parcelLayerView.highlight(foundFeature);
-      }
-
-      // 3. Navigate and Open Popup
-      await view.goTo(foundFeature.geometry);
-      view.openPopup({
-        features: [foundFeature],
-        location: foundFeature.geometry.centroid || foundFeature.geometry.extent.center,
-        // The popup template should ideally be set on the layer itself for simplicity
-      });
-
-      // Reset internal click flag after a short delay
-      setTimeout(() => {
-        isInternalClick = false;
-      }, 100);
-    } else {
-      console.log("No feature found at geocoded location.");
-      clearSelectionAndHighlight();
+    if (highlightHandle) {
+        highlightHandle.remove();
+        highlightHandle = null;
     }
-  } catch (error) {
-    console.error("Error during feature query: ", error);
-    isInternalClick = false;
-  }
+    if (parcelLayerView) {
+        parcelLayerView.selectedFeatureIds = [];
+    }
 }
 
-// 2. Attach the function to the view's click event (optional/commented out as in original)
-//view.on("click", clickHandler);
+// 2. Optimized Function for search and click
+async function openPopupForFeature(geocodedLocation) {
+    const requestId = ++currentRequestId; // Unique ID for this request
+    const isPoint = geocodedLocation.type === "point";
+    const bufferDistance = isPoint ? 1 : -7;
+    const spatialRel = isPoint ? "intersects" : "within";
+    const negativeBuffer = geometryEngine.buffer(geocodedLocation, bufferDistance, "meters");
 
-// 3. Call the function in the search-complete event
+    const query = {
+        returnGeometry: true,
+        outFields: ["OBJECTID"],
+        spatialRelationship: spatialRel,
+        geometry: negativeBuffer,
+        num: 1
+    };
+
+    try {
+        const results = await parcelLayer.queryFeatures(query);
+        
+        // If a newer request has started, ignore this one
+        if (requestId !== currentRequestId) return;
+
+        // Clear instantly, do not wait for timeout
+        clearSelectionAndHighlight();
+
+        if (results.features.length > 0) {
+            const foundFeature = results.features[0];
+            
+            // Highlight
+            if (parcelLayerView) {
+                highlightHandle = parcelLayerView.highlight(foundFeature);
+            }
+
+            // Open Popup and navigate simultaneously
+            view.openPopup({
+                features: [foundFeature],
+                location: foundFeature.geometry.centroid || foundFeature.geometry.extent.center,
+            });
+            view.goTo(foundFeature.geometry); // Let popup appear, then zoom
+        }
+    } catch (error) {
+        console.error("Error: ", error);
+    }
+}
+
+// 3. Optimized Search Event
 searchWidget.on('search-complete', function(event) {
-    const geocodedLocation = event.results[0].results[0].feature.geometry;
-    
-    // Call the shared click handler function with the map point
-    openPopupForFeature(geocodedLocation);
+    if (event.results && event.results.length > 0) {
+        const geocodedLocation = event.results[0].results[0].feature.geometry;
+        openPopupForFeature(geocodedLocation);
+        searchWidget.clear(); // Clear input immediately
+    }
+});
 	
-	setTimeout(function() {
-        // Calling clear() removes the result graphic and clears the search box
-        searchWidget.clear(); 
-    }, 500);
-});*/
 
-let highlightHandle = null;
+/*let highlightHandle = null;
 let selectedFeatureIds = [];
 let parcelLayerView = null;
 let closeTimeout; // Define in outer scope
@@ -1906,7 +1861,7 @@ searchWidget.on('search-complete', function(event) {
             searchWidget.clear();
         }, 500);
     }
-});
+});*/
 	
 
 view.on("click", async (event) => {
