@@ -1824,7 +1824,7 @@ function clearSelectionAndHighlight() {
 
 // --- THE FIX ---
 // Use a small delay to check if a new selection happens via search/click
-/*reactiveUtils.watch(
+reactiveUtils.watch(
     () => view.popup.visible,
     (visible) => {
         if (!visible) {
@@ -1893,73 +1893,8 @@ async function openPopupForFeature(geocodedLocation) {
         console.error("Error during feature query: ", error);
         isInternalClick = false; // Reset on error
     }
-}*/
-
-// 1. The Watcher: Only clears if we aren't in the middle of a new selection
-reactiveUtils.watch(
-  () => view.popup.visible,
-  (visible) => {
-    if (!visible) {
-      // Clear any existing timeout to prevent multiple triggers
-      if (closeTimeout) clearTimeout(closeTimeout);
-      
-      closeTimeout = setTimeout(() => {
-        // Only clear if the popup was closed by the user (X button/map click)
-        // and NOT because our search script is swapping features
-        if (!isInternalClick) {
-          clearSelectionAndHighlight();
-          selectedFeatureIds = [];
-        }
-      }, 100); // Slightly longer delay helps stability
-    } else {
-      // If popup becomes visible, cancel any pending clear
-      if (closeTimeout) clearTimeout(closeTimeout);
-    }
-  }
-);
-
-// 2. The Updated Logic Function
-async function openPopupForFeature(geocodedLocation) {
-  // ... (buffer and query logic stays exactly the same) ...
-
-  try {
-    const results = await parcelLayer.queryFeatures(query);
-    if (results.features.length > 0) {
-      const foundFeature = results.features[0];
-
-      // CRITICAL: Set flag BEFORE closing/opening anything
-      isInternalClick = true;
-
-      // Clear old state manually before setting new state
-      if (highlightHandle) highlightHandle.remove();
-
-      selectedFeatureIds = [foundFeature.attributes[parcelLayer.objectIdField]];
-      if (parcelLayerView) {
-        highlightHandle = parcelLayerView.highlight(foundFeature);
-      }
-
-      await view.goTo(foundFeature.geometry);
-      
-      // view.openPopup will trigger the 'visible' watch. 
-      // Because isInternalClick is true, the watcher's timeout will see it and "do nothing".
-      view.openPopup({
-        features: [foundFeature],
-        location: foundFeature.geometry.centroid || foundFeature.geometry.extent.center
-      });
-
-      // Reset flag only after the popup is fully established
-      setTimeout(() => {
-        isInternalClick = false;
-      }, 500); 
-
-    } else {
-      clearSelectionAndHighlight();
-    }
-  } catch (error) {
-    console.error("Error:", error);
-    isInternalClick = false;
-  }
 }
+
 
 // 3. Call the function in the search-complete event
 searchWidget.on('search-complete', function(event) {
