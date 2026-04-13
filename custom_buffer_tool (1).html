@@ -1685,6 +1685,20 @@ view.whenLayerView(parcelLayer).then((layerView) => {
 
 view.ui.add(searchWidget, { position: "top-left", index: 0 });
 
+function clearSelectionAndHighlight() {
+    // Clear the highlight if it exists
+    if (highlightHandle) {
+        highlightHandle.remove();
+        highlightHandle = null;
+    }
+    // Clear the feature selection
+    if (parcelLayerView) {
+        parcelLayerView.selectedFeatureIds = [];
+    }
+    selectedFeatureIds = []; // Clear local tracker
+    console.log("Highlights and selection cleared.");
+}
+
 // 2. Updated open function using FeatureLayerView
 async function openPopupForFeature(geocodedLocation) {
     const requestId = ++currentRequestId;
