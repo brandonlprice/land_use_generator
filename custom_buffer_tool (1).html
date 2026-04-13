@@ -1807,14 +1807,6 @@ searchWidget.on('search-complete', function(event) {
     }, 3000); */
   }
 });
-
-	searchWidget.on('select-result', function(event) {
-  // 1. Get the geocoded location
-
-  // 3. REMOVE ONLY THE HIGHLIGHT POINT
-  // viewModel.clear() removes graphics/popups but keeps input text
-  searchWidget.viewModel.clear();
-});
 	
 
 view.on("click", async (event) => {
