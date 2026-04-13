@@ -1797,7 +1797,7 @@ searchWidget.on('search-complete', function(event) {
     
     // 2. Open your custom popup
     openPopupForFeature(geocodedLocation);
-
+	searchWidget.viewModel.resultGraphic = null;
     // 3. DELAYED REMOVAL (3 seconds)
     /*setTimeout(() => {
       // Safely remove the graphic after 3000 milliseconds
