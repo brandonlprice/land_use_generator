@@ -1790,7 +1790,7 @@ async function openPopupForFeature(geocodedLocation) {
     }
 });*/
 
-searchWidget.on('search-complete', function(event) {
+/*searchWidget.on('search-complete', function(event) {
   if (event.results && event.results.length > 0) {
     // 1. Get the geocoded location
     const geocodedLocation = event.results[0].results[0].feature.geometry;
@@ -1804,8 +1804,20 @@ searchWidget.on('search-complete', function(event) {
     /*setTimeout(() => {
       // Safely remove the graphic after 3000 milliseconds
       searchWidget.view.graphics.remove(resultGraphic);
-    }, 3000); */
+    }, 3000); 
   }
+});*/
+
+	searchWidget.on('select-result', function(event) {
+  // 1. Get the geocoded location
+  const geocodedLocation = event.result.feature.geometry;
+
+  // 2. Open your custom popup
+  openPopupForFeature(geocodedLocation);
+
+  // 3. REMOVE ONLY THE HIGHLIGHT POINT
+  // viewModel.clear() removes graphics/popups but keeps input text
+  searchWidget.viewModel.clear();
 });
 	
 
