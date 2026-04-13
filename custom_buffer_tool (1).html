@@ -1795,7 +1795,11 @@ searchWidget.on('search-complete', function(event) {
     const geocodedLocation = event.results[0].results[0].feature.geometry;
     openPopupForFeature(geocodedLocation);                
     // Reduce this time or remove entirely
-    searchWidget.clear(); 
+    //searchWidget.clear(); 
+	setTimeout(() => {
+      searchWidget.clear();
+    }, 2000); // Adjust this time as needed
+  }
   }
 });
 	
