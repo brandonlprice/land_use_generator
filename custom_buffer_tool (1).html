@@ -1677,81 +1677,74 @@ customPanelBtn.addEventListener("click", function() {
 let highlightHandle = null;
 let parcelLayerView = null;
 let currentRequestId = 0; // Prevent out-of-order results
+let parcelLayerView = null;
 
-// 1. Get the LayerView when it's ready
+// 1. Get the LayerView when it's ready - crucial for layerView.queryFeatures
 view.whenLayerView(parcelLayer).then((layerView) => {
-  parcelLayerView = layerView;
-});
+    parcelLayerView = layerView;
+}).catch(console.error);
 
-view.ui.add(searchWidget, {
-  position: "top-left",
-  index: 0
-});
+view.ui.add(searchWidget, { position: "top-left", index: 0 });
 
-// Helper to clear safely
-function clearSelectionAndHighlight() {
-  if (highlightHandle) {
-    highlightHandle.remove();
-    highlightHandle = null;
-  }
-  if (parcelLayerView) {
-    parcelLayerView.selectedFeatureIds = [];
-  }
-}
-
-// 2. Updated open function
+// 2. Updated open function using FeatureLayerView
 async function openPopupForFeature(geocodedLocation) {
-  const requestId = ++currentRequestId;
-  const isPoint = geocodedLocation.type === "point";
-  const bufferDistance = isPoint ? 1 : -7;
-  const negativeBuffer = geometryEngine.buffer(
-    geocodedLocation,
-    bufferDistance,
-    "meters"
-  );
+    const requestId = ++currentRequestId;
+    
+    // Ensure we have a valid point
+    if (!geocodedLocation) return;
+    
+    // Create a small buffer around the point for selection
+    const bufferDistance = 1; // 1 meter, adjust based on parcel size
+    const bufferGeometry = geometryEngine.buffer(
+        geocodedLocation,
+        bufferDistance,
+        "meters"
+    );
 
-  const query = parcelLayer.createQuery();
-  query.geometry = negativeBuffer;
-  query.outFields = ["*"]; // Ensure fields for actions/templates are present
-  query.returnGeometry = true;
+    // Create a query object
+    const query = new Query(); // Using Query from esri/rest/support/Query
+    query.geometry = bufferGeometry;
+    query.spatialRelationship = "intersects"; // Use intersections
+    query.outFields = ["*"];
+    query.returnGeometry = true;
 
-  try {
-    const results = await parcelLayer.queryFeatures(query);
-    if (requestId !== currentRequestId) return;
+    try {
+        // Use layerView.queryFeatures instead of layer.queryFeatures
+        if (!parcelLayerView) return; 
+        const results = await parcelLayerView.queryFeatures(query);
+        
+        // Prevent out-of-order results
+        if (requestId !== currentRequestId) return;
+        
+        clearSelectionAndHighlight();
 
-    clearSelectionAndHighlight();
-
-    if (results.features.length > 0) {
-      const foundFeature = results.features[0];
-      // Explicitly link the layer so actions/templates function
-      foundFeature.layer = parcelLayer;
-
-      if (parcelLayerView) {
-        highlightHandle = parcelLayerView.highlight(foundFeature);
-      }
-
-      view.openPopup({
-        features: [foundFeature],
-        location: foundFeature.geometry.centroid ||
-          foundFeature.geometry.extent.center
-      });
-      view.goTo(foundFeature.geometry);
+        if (results.features.length > 0) {
+            const foundFeature = results.features[0];
+            
+            // Highlight
+            highlightHandle = parcelLayerView.highlight(foundFeature);
+            
+            // Open Popup
+            view.openPopup({
+                features: [foundFeature],
+                location: geocodedLocation // Center on click
+            });
+            
+            view.goTo(foundFeature.geometry);
+        }
+    } catch (error) {
+        console.error("Search Error: ", error);
     }
-  } catch (error) {
-    console.error("Search Error: ", error);
-  }
 }
 
+// 3. Search complete listener
 searchWidget.on('search-complete', function(event) {
-  if (event.results && event.results.length > 0) {
-    const geocodedLocation = event.results[0].results[0].feature.geometry;
-    openPopupForFeature(geocodedLocation);
-
-    // Delay the clear to allow the popup and its actions to initialize
-    setTimeout(() => {
-      searchWidget.clear();
-    }, 500);
-  }
+    if (event.results && event.results.length > 0) {
+        const topResult = event.results[0].results[0];
+        if (topResult) {
+            openPopupForFeature(topResult.feature.geometry);
+        }
+    }
 });
 
 	
