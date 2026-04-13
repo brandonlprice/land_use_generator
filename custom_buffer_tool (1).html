@@ -1696,8 +1696,48 @@ function clearSelectionAndHighlight() {
     }
 }
 
-// 2. Optimized Function for search and click
+// 2. Updated open function
 async function openPopupForFeature(geocodedLocation) {
+  const requestId = ++currentRequestId;
+  const isPoint = geocodedLocation.type === "point";
+  const bufferDistance = isPoint ? 1 : -7;
+  const negativeBuffer = geometryEngine.buffer(geocodedLocation, bufferDistance, "meters");
+
+  const query = parcelLayer.createQuery();
+  query.geometry = negativeBuffer;
+  query.outFields = ["*"]; // Ensure fields for actions/templates are present
+  query.returnGeometry = true;
+
+  try {
+    const results = await parcelLayer.queryFeatures(query);
+    if (requestId !== currentRequestId) return;
+
+    clearSelectionAndHighlight();
+
+    if (results.features.length > 0) {
+      const foundFeature = results.features[0];
+      // Explicitly link the layer so actions/templates function
+      foundFeature.layer = parcelLayer; 
+
+      if (parcelLayerView) {
+        highlightHandle = parcelLayerView.highlight(foundFeature);
+      }
+
+      view.openPopup({
+        features: [foundFeature],
+        location: foundFeature.geometry.centroid || foundFeature.geometry.extent.center
+      });
+
+      view.goTo(foundFeature.geometry);
+    }
+  } catch (error) {
+    console.error("Search Error: ", error);
+  }
+}
+
+
+// 2. Optimized Function for search and click
+/*async function openPopupForFeature(geocodedLocation) {
     const requestId = ++currentRequestId; // Unique ID for this request
     const isPoint = geocodedLocation.type === "point";
     const bufferDistance = isPoint ? 1 : -7;
@@ -1739,7 +1779,7 @@ async function openPopupForFeature(geocodedLocation) {
     } catch (error) {
         console.error("Error: ", error);
     }
-}
+}*/
 
 // 3. Optimized Search Event
 searchWidget.on('search-complete', function(event) {
