@@ -1779,7 +1779,7 @@ const query = {
 //view.on("click", clickHandler);
 
 // 3. Call the function in the search-complete event
-searchWidget.on('select-result', function(event) {
+searchWidget.on('search-complete', function(event) {
     const geocodedLocation = event.results[0].results[0].feature.geometry;
     
     // Call the shared click handler function with the map point
