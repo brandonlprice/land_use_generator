@@ -1673,10 +1673,12 @@ customPanelBtn.addEventListener("click", function() {
 });
 	
 	
-	let selectedFeatureIds = [];
-	let highlightHandle = null;
+	// --- 1. GLOBALS & TRACKING ---
+let highlightHandle = null;
 let parcelLayerView = null;
-let currentRequestId = 0; // Prevent out-of-order results
+let currentRequestId = 0;
+let isInternalClick = false; // <<< ADDED FLAG
+let closeTimeout; // For watcher
 
 // 1. Get the LayerView when it's ready
 view.whenLayerView(parcelLayer).then((layerView) => {
@@ -1696,12 +1698,30 @@ function clearSelectionAndHighlight() {
     }
 }
 
+// --- 2. ADDED WATCHER (Same as first snippet) ---
+// Prevents closure when search sets new selection
+reactiveUtils.watch(
+    () => view.popup.visible,
+    (visible) => {
+        if (!visible) {
+            closeTimeout = setTimeout(() => {
+                if (!isInternalClick) {
+                    clearSelectionAndHighlight();
+                }
+            }, 100);
+        } else {
+            clearTimeout(closeTimeout);
+        }
+    }
+);
+
+// 3. Updated open function
 async function openPopupForFeature(geocodedLocation) {
     const requestId = ++currentRequestId;
     const isPoint = geocodedLocation.type === "point";
     const bufferDistance = isPoint ? 1 : -7;
     const negativeBuffer = geometryEngine.buffer(geocodedLocation, bufferDistance, "meters");
-    
+
     const query = parcelLayer.createQuery();
     query.geometry = negativeBuffer;
     query.outFields = ["*"];
@@ -1711,124 +1731,44 @@ async function openPopupForFeature(geocodedLocation) {
         const results = await parcelLayer.queryFeatures(query);
         if (requestId !== currentRequestId) return;
 
-        // --- THE FIXES ---
-        // 1. Properly clear previous highlights
-        clearSelectionAndHighlight();                
+        // --- THE FIX ---
+        isInternalClick = true; // Set flag to true BEFORE acting
+        
+        clearSelectionAndHighlight(); // Now safe from watcher
 
         if (results.features.length > 0) {
             const foundFeature = results.features[0];
-            
-            // 2. IMPORTANT: Explicitly assign popupTemplate from layer
-            foundFeature.popupTemplate = parcelLayer.popupTemplate;
-            // Also link the layer to ensure actions function
-            foundFeature.layer = parcelLayer; 
-
-            if (parcelLayerView) {
-                highlightHandle = parcelLayerView.highlight(foundFeature);
-            }
-            
-            // 3. Open Popup
-            view.openPopup({
-                features: [foundFeature],
-                location: foundFeature.geometry.centroid || foundFeature.geometry.extent.center
-            });
-            view.goTo(foundFeature.geometry);
-        }
-    } catch (error) {
-        console.error("Search Error: ", error);
-    }
-}	
-
-/*async function openPopupForFeature(geocodedLocation) {
-    const requestId = ++currentRequestId;
-    const isPoint = geocodedLocation.type === "point";
-    const bufferDistance = isPoint ? 1 : -7;
-    const negativeBuffer = geometryEngine.buffer(geocodedLocation, bufferDistance, "meters");
-
-    const query = parcelLayer.createQuery();
-    query.geometry = negativeBuffer;
-    query.outFields = ["*"]; // Ensure fields for actions/templates are present
-    query.returnGeometry = true;
-
-    try {
-        const results = await parcelLayer.queryFeatures(query);
-
-        if (requestId !== currentRequestId) return;
-
-        clearSelectionAndHighlight();
-
-        if (results.features.length > 0) {
-            const foundFeature = results.features[0];
-            // Explicitly link the layer so actions/templates function
             foundFeature.layer = parcelLayer;
 
             if (parcelLayerView) {
                 highlightHandle = parcelLayerView.highlight(foundFeature);
             }
-
+            
             view.openPopup({
                 features: [foundFeature],
                 location: foundFeature.geometry.centroid || foundFeature.geometry.extent.center
             });
             view.goTo(foundFeature.geometry);
+
+            // Reset flag after actions complete
+            setTimeout(() => { isInternalClick = false; }, 200);
+        } else {
+            isInternalClick = false; // Reset if nothing found
         }
     } catch (error) {
         console.error("Search Error: ", error);
+        isInternalClick = false; // Reset on error
     }
-}*/
+}
 
-
-// 2. Optimized Function for search and click
-/*async function openPopupForFeature(geocodedLocation) {
-    const requestId = ++currentRequestId; // Unique ID for this request
-    const isPoint = geocodedLocation.type === "point";
-    const bufferDistance = isPoint ? 1 : -7;
-    const spatialRel = isPoint ? "intersects" : "within";
-    const negativeBuffer = geometryEngine.buffer(geocodedLocation, bufferDistance, "meters");
-
-    const query = {
-        returnGeometry: true,
-        outFields: ["OBJECTID"],
-        spatialRelationship: spatialRel,
-        geometry: negativeBuffer,
-        num: 1
-    };
-
-    try {
-        const results = await parcelLayer.queryFeatures(query);
-        
-        // If a newer request has started, ignore this one
-        if (requestId !== currentRequestId) return;
-
-        // Clear instantly, do not wait for timeout
-        clearSelectionAndHighlight();
-
-        if (results.features.length > 0) {
-            const foundFeature = results.features[0];
-            
-            // Highlight
-            if (parcelLayerView) {
-                highlightHandle = parcelLayerView.highlight(foundFeature);
-            }
-
-            // Open Popup and navigate simultaneously
-            view.openPopup({
-                features: [foundFeature],
-                location: foundFeature.geometry.centroid || foundFeature.geometry.extent.center,
-            });
-            view.goTo(foundFeature.geometry); // Let popup appear, then zoom
-        }
-    } catch (error) {
-        console.error("Error: ", error);
-    }
-}*/
-
-// 3. Optimized Search Event
 searchWidget.on('search-complete', function(event) {
     if (event.results && event.results.length > 0) {
         const geocodedLocation = event.results[0].results[0].feature.geometry;
         openPopupForFeature(geocodedLocation);
-        searchWidget.clear(); // Clear input immediately
+        
+        setTimeout(() => {
+            searchWidget.clear();
+        }, 500);
     }
 });
 	
