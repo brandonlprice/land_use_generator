@@ -1699,46 +1699,46 @@ function clearSelectionAndHighlight() {
 searchWidget.popupEnabled = false; // Prevent default popup behavior
 
 async function openPopupForFeature(geocodedLocation) {
-  const requestId = ++currentRequestId;
-  const isPoint = geocodedLocation.type === "point";
-  const bufferDistance = isPoint ? 1 : -7;
-  const negativeBuffer = geometryEngine.buffer(geocodedLocation, bufferDistance, "meters");
-  
-  const query = parcelLayer.createQuery();
-  query.geometry = negativeBuffer;
-  query.outFields = ["*"]; 
-  query.returnGeometry = true;
+    const requestId = ++currentRequestId;
+    const isPoint = geocodedLocation.type === "point";
+    const bufferDistance = isPoint ? 1 : -7;
+    const negativeBuffer = geometryEngine.buffer(geocodedLocation, bufferDistance, "meters");
+    
+    const query = parcelLayer.createQuery();
+    query.geometry = negativeBuffer;
+    query.outFields = ["*"];
+    query.returnGeometry = true;
 
-  try {
-    const results = await parcelLayer.queryFeatures(query);
-    if (requestId !== currentRequestId) return;
+    try {
+        const results = await parcelLayer.queryFeatures(query);
+        if (requestId !== currentRequestId) return;
 
-    // Clear previous UI state
-    clearSelectionAndHighlight();
-    view.closePopup(); // Reset popup state
+        // --- THE FIXES ---
+        // 1. Properly clear previous highlights
+        clearSelectionAndHighlight();                
 
-    if (results.features.length > 0) {
-      const foundFeature = results.features[0];
-      
-      // Ensure the feature has the layer and correct template
-      foundFeature.layer = parcelLayer;
-      
-      if (parcelLayerView) {
-        highlightHandle = parcelLayerView.highlight(foundFeature);
-      }
+        if (results.features.length > 0) {
+            const foundFeature = results.features[0];
+            
+            // 2. IMPORTANT: Explicitly assign popupTemplate from layer
+            foundFeature.popupTemplate = parcelLayer.popupTemplate;
+            // Also link the layer to ensure actions function
+            foundFeature.layer = parcelLayer; 
 
-      // Open popup with explicit feature options
-      view.openPopup({
-        features: [foundFeature],
-        location: foundFeature.geometry.centroid || foundFeature.geometry.extent.center,
-        shouldFocus: true // Ensures actions are accessible
-      });
-
-      view.goTo(foundFeature.geometry);
+            if (parcelLayerView) {
+                highlightHandle = parcelLayerView.highlight(foundFeature);
+            }
+            
+            // 3. Open Popup
+            view.openPopup({
+                features: [foundFeature],
+                location: foundFeature.geometry.centroid || foundFeature.geometry.extent.center
+            });
+            view.goTo(foundFeature.geometry);
+        }
+    } catch (error) {
+        console.error("Search Error: ", error);
     }
-  } catch (error) {
-    console.error("Search Error: ", error);
-  }
 }
 
 
