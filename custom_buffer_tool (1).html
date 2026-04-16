@@ -670,14 +670,14 @@ const abcLayer = new FeatureLayer({
 	'Skating Rinks': 7,
 	'Theaters': 7,
 	'Water Parks': 7,
-	'Five or more apartments': 8,
-	'Four Units (Any Combination)': 8,
-	'Rooming Houses': 8,
-	'Three Units (Any Combination)': 8,
-	'Mobile Home Parks': 9,
-	'Mobile Homes': 9,
-	'Single': 10,
-	'Two Units': 11
+	'Mobile Home Parks': 8,
+	'Mobile Homes': 8,
+	'Single': 9,
+	'Two Units': 10,
+	'Five or more apartments': 11,
+	'Four Units (Any Combination)': 11,
+	'Rooming Houses': 11,
+	'Three Units (Any Combination)': 11
 	};
 
 return DefaultValue(landUseMap[state], 12);`,
@@ -761,7 +761,7 @@ return DefaultValue(landUseMap[state], 12);`,
             }
         },
 		{
-            value: 9,
+            value: 8,
             label: "Residential - Mobile Home Parks",
             symbol: {
                 type: "simple-fill",
@@ -770,7 +770,7 @@ return DefaultValue(landUseMap[state], 12);`,
             }
         },
 		{
-            value: 10,
+            value: 9,
             label: "Residential - Single Unit*",
             symbol: {
                 type: "simple-fill",
@@ -779,7 +779,7 @@ return DefaultValue(landUseMap[state], 12);`,
             }
         },
 		{
-            value: 11,
+            value: 10,
             label: "Residential - Two Units*",
             symbol: {
                 type: "simple-fill",
@@ -788,7 +788,7 @@ return DefaultValue(landUseMap[state], 12);`,
             }
         },
 		{
-            value: 8,
+            value: 11,
             label: "Residential - Multi-Unit*",
             symbol: {
                 type: "simple-fill",
