@@ -1380,6 +1380,8 @@ layersDiv.appendChild(layersContainerDiv);
       min: 0,
       max: 35000,
       values: [item.layer.minScale],
+	  steps: 1,
+  	  precision: 0, 
       visibleElements: { labels: true, rangeLabels: true },
       container: document.createElement("div") // Best practice for custom panel content
     });
