@@ -1379,10 +1379,8 @@ layersDiv.appendChild(layersContainerDiv);
     const item = event.item;
     const layer = item.layer;
 
-    // Add legend panel as you already had
-    item.panel = { content: "legend", open: true };
-
-    // Add a custom action for a specific layer (e.g., by title or ID)
+    // --- Logic from Function 1 ---
+    // Add a custom action for a specific layer
     if (item.title === "Land Use Type (Assessor Use Codes)") {
       item.actionsSections = [
         [{
@@ -1393,30 +1391,32 @@ layersDiv.appendChild(layersContainerDiv);
         }]
       ];
     }
-  },
-  listItemCreatedFunction: (event) => {
-    const item = event.item;
 
-    // Create a slider for scale or specific visibility logic
+    // --- Logic from Function 2 ---
+    // Create the slider
     const scaleSlider = new Slider({
       min: 0,
-      max: 1000000, // Adjust based on your needed scale range
-      values: [item.layer.minScale],
+      max: 1000000,
+      values: [layer.minScale],
       visibleElements: { labels: true, rangeLabels: true }
     });
 
-    // Add the slider to the item's panel
+    scaleSlider.on("thumb-drag", (event) => {
+      layer.minScale = event.value;
+    });
+
+    // --- Combine Panel Content ---
+    // Note: If you want BOTH the legend and the slider, 
+    // you should create a DOM element to hold both.
+    const panelContainer = document.createElement("div");
+    
+    // Add a legend (as a widget or string keyword)
+    // If you use "legend", ArcGIS handles it, but combining 
+    // custom widgets usually requires a custom DOM container.
     item.panel = {
-      content: scaleSlider,
-      className: "esri-icon-sliders-horizontal",
-      title: "Adjust Visibility Scale",
+      content: [scaleSlider, "legend"], // SDK supports arrays of content
       open: false
     };
-
-    // Sync slider changes to the layer's minScale
-    scaleSlider.on("thumb-drag", (event) => {
-      item.layer.minScale = event.value;
-    });
   },
   visible: false
 });
