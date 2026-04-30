@@ -1393,7 +1393,7 @@ layersDiv.appendChild(layersContainerDiv);
 
       // 3. Robustly watch for slider value changes
     // To this for better performance:
-scaleSlider.on("change", (event) => {
+scaleSlider.on("thumb-drag", (event) => {
   item.layer.minScale = event.value;
 });
 
