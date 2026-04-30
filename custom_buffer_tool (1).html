@@ -1372,23 +1372,18 @@ layersDiv.appendChild(layersContainerDiv);
 	
 
 
-  const layerList = new LayerList({
+    const layerList = new LayerList({
   view: view,
   container: layersContainerDiv,
   visibilityAppearance: "checkbox",
-  visible: false,
-  listItemCreatedFunction: (event) => {
+  listItemCreatedFunction: async function(event) {
     const item = event.item;
     const layer = item.layer;
 
-    // 1. INTEGRATE LEGEND PANEL
-    // Note: To show multiple things in a panel, we use an array for 'content'
-    item.panel = {
-      content: "legend", 
-      open: true
-    };
+    // Add legend panel as you already had
+    item.panel = { content: "legend", open: true };
 
-    // 2. INTEGRATE LABEL LOGIC (Custom Actions)
+    // Add a custom action for a specific layer (e.g., by title or ID)
     if (item.title === "Land Use Type (Assessor Use Codes)") {
       item.actionsSections = [
         [{
@@ -1399,26 +1394,8 @@ layersDiv.appendChild(layersContainerDiv);
         }]
       ];
     }
-
-    // 3. INTEGRATE SLIDER LOGIC
-    // We create the slider and can append it to the panel or keep it as a separate UI element logic
-    const scaleSlider = new Slider({
-      min: 0,
-      max: 1000000,
-      values: [layer.minScale],
-      visibleElements: { labels: true, rangeLabels: true }
-    });
-
-    // If you want BOTH the legend and slider in the panel, 
-    // you typically set content to a DOM element containing both.
-    // For simplicity, here we update the layer minScale when the slider moves:
-    scaleSlider.on("thumb-drag", (event) => {
-      layer.minScale = event.value;
-    });
-
-    // Note: If you need the slider physically inside the LayerList item, 
-    // you would append scaleSlider.container to a custom div in item.panel.content.
-  }
+  },
+  visible: false
 });
 
 // Listen for the action trigger
