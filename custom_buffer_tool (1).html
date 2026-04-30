@@ -1372,61 +1372,56 @@ layersDiv.appendChild(layersContainerDiv);
 	
 
 
- const layerList = new LayerList({
+   const layerList = new LayerList({
   view: view,
   container: layersContainerDiv,
   visibilityAppearance: "checkbox",
-  listItemCreatedFunction: function(event) { // Removed async
-  const item = event.item;
-  const layer = item.layer;
+  /*listItemCreatedFunction: async function(event) {
+    const item = event.item;
+    const layer = item.layer;
 
-  if (item.title === "Land Use Type (Assessor Use Codes)") {
-    item.actionsSections = [[{
-      title: "Toggle Labels",
-      className: "esri-icon-labels",
-      id: "toggle-labels",
-      type: "button"
-    }]];
-  }
+    // Add legend panel as you already had
+    item.panel = { content: "legend", open: true };
 
-  const panelDiv = document.createElement("div");
-  panelDiv.style.padding = "10px";
+    // Add a custom action for a specific layer (e.g., by title or ID)
+    if (item.title === "Land Use Type (Assessor Use Codes)") {
+      item.actionsSections = [
+        [{
+          title: "Toggle Labels",
+          className: "esri-icon-labels",
+          id: "toggle-labels",
+          type: "button"
+        }]
+      ];
+    }
+  },*/
+	   listItemCreatedFunction: (event) => {
+    const item = event.item;
 
-  const sliderDiv = document.createElement("div");
-  panelDiv.appendChild(sliderDiv);
-	  sliderDiv.style.width = "200px";
-sliderDiv.style.height = "50px"; 
+    // Create a slider for scale or specific visibility logic
+    const scaleSlider = new Slider({
+      min: 0,
+      max: 1000000, // Adjust based on your needed scale range
+      values: [item.layer.minScale],
+      visibleElements: { labels: true, rangeLabels: true }
+    });
 
-  // Note: Ensure Slider is imported in your require() block
-  const scaleSlider = new Slider({
-    container: sliderDiv,
-    min: 0,
-    max: 1000000,
-    values: [layer.minScale || 0],
-    visibleElements: { labels: true, rangeLabels: true }
-  });
-setTimeout(() => {
-  scaleSlider.startup();
-}, 0);
-  scaleSlider.on("thumb-drag", (event) => {
-    layer.minScale = event.value;
-  });
+    // Add the slider to the item's panel
+    item.panel = {
+      content: scaleSlider,
+      className: "esri-icon-sliders-horizontal",
+      title: "Adjust Visibility Scale",
+      open: false
+    };
 
-  const legendDiv = document.createElement("div");
-  panelDiv.appendChild(legendDiv);
-  
-  new Legend({
-    view: view,
-    container: legendDiv,
-    layerInfos: [{ layer: layer }]
-  });
+    // Sync slider changes to the layer's minScale
+    scaleSlider.on("thumb-drag", (event) => {
+      item.layer.minScale = event.value;
+    });
+  },
 
-  item.panel = {
-    content: panelDiv,
-    className: "esri-icon-layer-list", // Optional: adds an icon to the panel button
-    open: false
-  };
-}
+  visible: false
+});
 
 // Listen for the action trigger
 layerList.on("trigger-action", (event) => {
