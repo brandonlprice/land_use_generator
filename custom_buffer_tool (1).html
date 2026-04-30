@@ -1369,21 +1369,19 @@ layersContainerDiv.style.overflowY = "auto";
 // 4. Append both divs to the wrapper
 layersDiv.appendChild(layersTitle);
 layersDiv.appendChild(layersContainerDiv);	
-	
 
+	async function defineActions(event) {
+          const item = event.item;
 
-    const layerList = new LayerList({
-  view: view,
-  container: layersContainerDiv,
-  visibilityAppearance: "checkbox",
-  // Define the function directly within the constructor
-  listItemCreatedFunction: async (event) => {
-    const item = event.item;
-    // Wait for the layer to load to access its properties
-    await item.layer.when(); 
+          await item.layer.when();
 
-    // Apply logic only to a specific layer
-    //if (item.title === "Parcels") {
+                item.panel = {
+                    content: "legend",
+                    open: true
+                };
+                
+
+            if (item.title === "Parcels") {
       const scaleSlider = new Slider({
       min: 0,
       max: 1000000, // Adjust based on your needed scale range
@@ -1391,23 +1389,16 @@ layersDiv.appendChild(layersContainerDiv);
       visibleElements: { labels: true, rangeLabels: true }
     });
 
-      // Add slider and legend to the panel
-      item.panel = {
-        content: ["legend", scaleSlider],
-        open: true,
-        className: "esri-icon-sliders-horizontal",
-        title: "Layer Info"
-      };
+      
 
       // Set up the slider interaction
       scaleSlider.on("thumb-drag", (event) => {
       item.layer.minScale = event.value;
     });
 	
-	//}
+	}
 	
-	// Add a custom action for a specific layer (e.g., by title or ID)
-    if (item.title === "Land Use Type (Assessor Use Codes)") {
+	if (item.title === "Land Use Type (Assessor Use Codes)") {
       item.actionsSections = [
         [{
           title: "Toggle Labels",
@@ -1417,7 +1408,16 @@ layersDiv.appendChild(layersContainerDiv);
         }]
       ];
     }
-  },
+            });
+	
+
+
+    const layerList = new LayerList({
+  view: view,
+  container: layersContainerDiv,
+  visibilityAppearance: "checkbox",
+  // Define the function directly within the constructor
+  listItemCreatedFunction: defineActions,
   visible: false
 });
 
