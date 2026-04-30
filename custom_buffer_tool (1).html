@@ -1394,6 +1394,30 @@ layersDiv.appendChild(layersContainerDiv);
       ];
     }
   },
+  listItemCreatedFunction: (event) => {
+    const item = event.item;
+
+    // Create a slider for scale or specific visibility logic
+    const scaleSlider = new Slider({
+      min: 0,
+      max: 1000000, // Adjust based on your needed scale range
+      values: [item.layer.minScale],
+      visibleElements: { labels: true, rangeLabels: true }
+    });
+
+    // Add the slider to the item's panel
+    item.panel = {
+      content: scaleSlider,
+      className: "esri-icon-sliders-horizontal",
+      title: "Adjust Visibility Scale",
+      open: false
+    };
+
+    // Sync slider changes to the layer's minScale
+    scaleSlider.on("thumb-drag", (event) => {
+      item.layer.minScale = event.value;
+    });
+  },
   visible: false
 });
 
