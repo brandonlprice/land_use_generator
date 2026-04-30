@@ -1391,13 +1391,6 @@ layersDiv.appendChild(layersContainerDiv);
       visibleElements: { labels: true, rangeLabels: true }
     });
 
-      // Add slider and legend to the panel
-      item.panel = {
-        content: ["legend", scaleSlider],
-        open: true,
-        className: "esri-icon-sliders-horizontal",
-        title: "Layer Info"
-      };
 
       // Set up the slider interaction
       scaleSlider.on("thumb-drag", (event) => {
@@ -1415,6 +1408,13 @@ layersDiv.appendChild(layersContainerDiv);
         }]
       ];
     }
+	      // Add slider and legend to the panel
+      item.panel = {
+        content: ["legend", scaleSlider],
+        open: false,
+        className: "esri-icon-sliders-horizontal",
+        title: "Layer Info"
+      };
   },
   visible: false
 });
