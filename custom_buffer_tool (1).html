@@ -1371,48 +1371,50 @@ layersDiv.appendChild(layersTitle);
 layersDiv.appendChild(layersContainerDiv);	
 
 	async function defineActions(event) {
-          const item = event.item;
+  const item = event.item;
+  await item.layer.when();
 
-          await item.layer.when();
-
-                 item.panel = {
-              content: "legend",
-              open: true
-            };
-                
-
-            if (item.title === "Parcels") {
-      const scaleSlider = new Slider({
+  if (item.title === "Parcels") {
+    // 1. Create the Slider specifically for Parcels
+    const scaleSlider = new Slider({
       min: 0,
-      max: 1000000, // Adjust based on your needed scale range
+      max: 1000000,
       values: [item.layer.minScale],
-      visibleElements: { labels: true, rangeLabels: true }
+      visibleElements: { labels: true, rangeLabels: true },
+      container: document.createElement("div") // Best practice for custom panel content
     });
 
-      item.panel = {
-  content: scaleSlider, // Add legend AND slider
-  open: true,
-  title: "Settings"
-};
+    // 2. Set the panel to ONLY the slider
+    item.panel = {
+      content: scaleSlider,
+      open: true,
+      title: "Scale Settings"
+    };
 
-      // Set up the slider interaction
-      scaleSlider.on("thumb-drag", (event) => {
+    // 3. Robustly watch for slider value changes
+    scaleSlider.on("thumb-drag", (event) => {
       item.layer.minScale = event.value;
     });
-	
-	}
-	
-	if (item.title === "Land Use Type (Assessor Use Codes)") {
-      item.actionsSections = [
-        [{
-          title: "Toggle Labels",
-          className: "esri-icon-labels",
-          id: "toggle-labels",
-          type: "button"
-        }]
-      ];
-    }
-            }
+  } else {
+    // 4. Default behavior: Show legend for all other layers
+    item.panel = {
+      content: "legend",
+      open: true
+    };
+  }
+
+  // 5. Add custom actions separately
+  if (item.title === "Land Use Type (Assessor Use Codes)") {
+    item.actionsSections = [[
+      {
+        title: "Toggle Labels",
+        className: "esri-icon-labels",
+        id: "toggle-labels",
+        type: "button"
+      }
+    ]];
+  }
+}
 	
 
 
