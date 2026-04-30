@@ -1391,10 +1391,12 @@ layersDiv.appendChild(layersContainerDiv);
       title: "Scale Settings"
     };
 
-    // 3. Robustly watch for slider value changes
-    scaleSlider.on("thumb-drag", (event) => {
-      item.layer.minScale = event.value;
-    });
+    reactiveUtils.watch(
+        () => scaleSlider.values[0], 
+        (val) => { item.layer.minScale = val; },
+        { initial: true }
+      );
+
   } else {
     // 4. Default behavior: Show legend for all other layers
     item.panel = {
