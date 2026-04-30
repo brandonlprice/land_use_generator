@@ -1394,6 +1394,8 @@ layersDiv.appendChild(layersContainerDiv);
 
   const sliderDiv = document.createElement("div");
   panelDiv.appendChild(sliderDiv);
+	  sliderDiv.style.width = "200px";
+sliderDiv.style.height = "50px"; 
 
   // Note: Ensure Slider is imported in your require() block
   const scaleSlider = new Slider({
@@ -1403,7 +1405,9 @@ layersDiv.appendChild(layersContainerDiv);
     values: [layer.minScale || 0],
     visibleElements: { labels: true, rangeLabels: true }
   });
-
+setTimeout(() => {
+  scaleSlider.startup();
+}, 0);
   scaleSlider.on("thumb-drag", (event) => {
     layer.minScale = event.value;
   });
