@@ -1393,7 +1393,7 @@ layersDiv.appendChild(layersContainerDiv);
 
       // Add slider and legend to the panel
       item.panel = {
-        content: ["legend", slider],
+        content: ["legend", scaleSlider],
         open: true,
         className: "esri-icon-sliders-horizontal",
         title: "Layer Info"
@@ -1402,8 +1402,8 @@ layersDiv.appendChild(layersContainerDiv);
       // Set up the slider interaction
       scaleSlider.on("thumb-drag", (event) => {
       item.layer.minScale = event.value;
-    });
-	
+      });
+	}
 	// Add a custom action for a specific layer (e.g., by title or ID)
     if (item.title === "Land Use Type (Assessor Use Codes)") {
       item.actionsSections = [
