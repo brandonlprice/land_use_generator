@@ -1376,14 +1376,35 @@ layersDiv.appendChild(layersContainerDiv);
   view: view,
   container: layersContainerDiv,
   visibilityAppearance: "checkbox",
-  listItemCreatedFunction: async function(event) {
+  // Define the function directly within the constructor
+  listItemCreatedFunction: async (event) => {
     const item = event.item;
-    const layer = item.layer;
+    // Wait for the layer to load to access its properties
+    await item.layer.when(); 
 
-    // Add legend panel as you already had
-    item.panel = { content: "legend", open: true };
+    // Apply logic only to a specific layer
+    if (item.title === "Parcels") {
+      const scaleSlider = new Slider({
+      min: 0,
+      max: 1000000, // Adjust based on your needed scale range
+      values: [item.layer.minScale],
+      visibleElements: { labels: true, rangeLabels: true }
+    });
 
-    // Add a custom action for a specific layer (e.g., by title or ID)
+      // Add slider and legend to the panel
+      item.panel = {
+        content: ["legend", slider],
+        open: true,
+        className: "esri-icon-sliders-horizontal",
+        title: "Layer Info"
+      };
+
+      // Set up the slider interaction
+      scaleSlider.on("thumb-drag", (event) => {
+      item.layer.minScale = event.value;
+    });
+	
+	// Add a custom action for a specific layer (e.g., by title or ID)
     if (item.title === "Land Use Type (Assessor Use Codes)") {
       item.actionsSections = [
         [{
