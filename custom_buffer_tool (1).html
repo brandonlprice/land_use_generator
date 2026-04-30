@@ -1392,9 +1392,10 @@ layersDiv.appendChild(layersContainerDiv);
     };
 
       // 3. Robustly watch for slider value changes
-    scaleSlider.on("thumb-drag", (event) => {
-      item.layer.minScale = event.value;
-    });
+    // To this for better performance:
+scaleSlider.on("change", (event) => {
+  item.layer.minScale = event.value;
+});
 
   } else {
     // 4. Default behavior: Show legend for all other layers
