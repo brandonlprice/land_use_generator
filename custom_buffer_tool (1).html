@@ -1371,55 +1371,57 @@ layersDiv.appendChild(layersContainerDiv);
 	
 
 
-  const layerList = new LayerList({
+ const layerList = new LayerList({
   view: view,
   container: layersContainerDiv,
   visibilityAppearance: "checkbox",
-  listItemCreatedFunction: async function(event) {
-    const item = event.item;
-    const layer = item.layer;
+  listItemCreatedFunction: function(event) { // Removed async
+  const item = event.item;
+  const layer = item.layer;
 
-    // --- Logic from Function 1 ---
-    // Add a custom action for a specific layer
-    if (item.title === "Land Use Type (Assessor Use Codes)") {
-      item.actionsSections = [
-        [{
-          title: "Toggle Labels",
-          className: "esri-icon-labels",
-          id: "toggle-labels",
-          type: "button"
-        }]
-      ];
-    }
+  if (item.title === "Land Use Type (Assessor Use Codes)") {
+    item.actionsSections = [[{
+      title: "Toggle Labels",
+      className: "esri-icon-labels",
+      id: "toggle-labels",
+      type: "button"
+    }]];
+  }
 
-    // --- Logic from Function 2 ---
-    // Create the slider
-    const scaleSlider = new Slider({
-      min: 0,
-      max: 1000000,
-      values: [layer.minScale],
-      visibleElements: { labels: true, rangeLabels: true }
-    });
+  const panelDiv = document.createElement("div");
+  panelDiv.style.padding = "10px";
 
-    scaleSlider.on("thumb-drag", (event) => {
-      layer.minScale = event.value;
-    });
+  const sliderDiv = document.createElement("div");
+  panelDiv.appendChild(sliderDiv);
 
-    // --- Combine Panel Content ---
-    // Note: If you want BOTH the legend and the slider, 
-    // you should create a DOM element to hold both.
-    const panelContainer = document.createElement("div");
-    
-    // Add a legend (as a widget or string keyword)
-    // If you use "legend", ArcGIS handles it, but combining 
-    // custom widgets usually requires a custom DOM container.
-    item.panel = {
-      content: [scaleSlider, "legend"], // SDK supports arrays of content
-      open: false
-    };
-  },
-  visible: false
-});
+  // Note: Ensure Slider is imported in your require() block
+  const scaleSlider = new Slider({
+    container: sliderDiv,
+    min: 0,
+    max: 1000000,
+    values: [layer.minScale || 0],
+    visibleElements: { labels: true, rangeLabels: true }
+  });
+
+  scaleSlider.on("thumb-drag", (event) => {
+    layer.minScale = event.value;
+  });
+
+  const legendDiv = document.createElement("div");
+  panelDiv.appendChild(legendDiv);
+  
+  new Legend({
+    view: view,
+    container: legendDiv,
+    layerInfos: [{ layer: layer }]
+  });
+
+  item.panel = {
+    content: panelDiv,
+    className: "esri-icon-layer-list", // Optional: adds an icon to the panel button
+    open: false
+  };
+}
 
 // Listen for the action trigger
 layerList.on("trigger-action", (event) => {
