@@ -1375,7 +1375,10 @@ layersDiv.appendChild(layersContainerDiv);
 
           await item.layer.when();
 
-                
+                 item.panel = {
+              content: "legend",
+              open: true
+            };
                 
 
             if (item.title === "Parcels") {
@@ -1387,9 +1390,10 @@ layersDiv.appendChild(layersContainerDiv);
     });
 
       item.panel = {
-              content: "legend",
-              open: true
-            };
+  content: ["legend", scaleSlider], // Add legend AND slider
+  open: true,
+  title: "Settings"
+};
 
       // Set up the slider interaction
       scaleSlider.on("thumb-drag", (event) => {
