@@ -1382,6 +1382,8 @@ layersDiv.appendChild(layersContainerDiv);
     // Wait for the layer to load to access its properties
     await item.layer.when(); 
 
+	let panelContent = ["legend"];
+	  
     // Apply logic only to a specific layer
     if (item.title === "Parcels") {
       const scaleSlider = new Slider({
@@ -1396,6 +1398,9 @@ layersDiv.appendChild(layersContainerDiv);
       scaleSlider.on("thumb-drag", (event) => {
       item.layer.minScale = event.value;
       });
+
+	  // Push the actual widget instance into the content array
+      panelContent.push(scaleSlider);
 	}
 	// Add a custom action for a specific layer (e.g., by title or ID)
     if (item.title === "Land Use Type (Assessor Use Codes)") {
@@ -1408,13 +1413,14 @@ layersDiv.appendChild(layersContainerDiv);
         }]
       ];
     }
-	      // Add slider and legend to the panel
-      item.panel = {
-        content: ["legend", scaleSlider],
-        open: false,
-        className: "esri-icon-sliders-horizontal",
-        title: "Layer Info"
-      };
+	
+	// 4. Assign the panel ONLY ONCE using the built content array
+  	item.panel = {
+    	content: panelContent,
+    	open: false,
+    	className: "esri-icon-sliders-horizontal",
+    	title: "Layer Info"
+  	};
   },
   visible: false
 });
